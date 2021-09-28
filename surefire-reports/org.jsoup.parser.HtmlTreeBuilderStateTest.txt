@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+Test set: org.jsoup.parser.HtmlTreeBuilderStateTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.017 s <<< FAILURE! - in org.jsoup.parser.HtmlTreeBuilderStateTest
+org.jsoup.parser.HtmlTreeBuilderStateTest.ensureArraysAreSorted  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.ClassCastException: [I cannot be cast to [Ljava.lang.Object;
+	at org.jsoup.parser.HtmlTreeBuilderStateTest.findConstantArrays(HtmlTreeBuilderStateTest.java:26)
+	at org.jsoup.parser.HtmlTreeBuilderStateTest.ensureArraysAreSorted(HtmlTreeBuilderStateTest.java:46)
+
+org.jsoup.parser.HtmlTreeBuilderStateTest.ensureTagSearchesAreKnownTags  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.ClassCastException: [I cannot be cast to [Ljava.lang.Object;
+	at org.jsoup.parser.HtmlTreeBuilderStateTest.findConstantArrays(HtmlTreeBuilderStateTest.java:26)
+	at org.jsoup.parser.HtmlTreeBuilderStateTest.ensureTagSearchesAreKnownTags(HtmlTreeBuilderStateTest.java:52)
+

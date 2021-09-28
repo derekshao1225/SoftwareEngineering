@@ -1,0 +1,330 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Coverage Report</title>
+<link title="Style" type="text/css" rel="stylesheet" href="css/main.css"/>
+<script type="text/javascript" src="js/popup.js"></script>
+</head>
+<body>
+<h5>Coverage Report - org.jsoup.select.Selector</h5>
+<div class="separator">&nbsp;</div>
+<table class="report">
+<thead><tr>  <td class="heading">Classes in this File</td>  <td class="heading"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Line Coverage</a></td>  <td class="heading"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Branch Coverage</a></td>  <td class="heading"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Complexity</a></td></tr></thead>
+  <tr><td><a href="org.jsoup.select.Selector.html">Selector</a></td><td><table cellpadding="0px" cellspacing="0px" class="percentgraph"><tr class="percentgraph"><td align="right" class="percentgraph" width="40">96%</td><td class="percentgraph"><div class="percentgraph"><div class="greenbar" style="width:96px"><span class="text">32/33</span></div></div></td></tr></table></td><td><table cellpadding="0px" cellspacing="0px" class="percentgraph"><tr class="percentgraph"><td align="right" class="percentgraph" width="40">92%</td><td class="percentgraph"><div class="percentgraph"><div class="greenbar" style="width:92px"><span class="text">13/14</span></div></div></td></tr></table></td><td class="value"><span class="hidden">2.0;</span>2</td></tr>
+  <tr><td><a href="org.jsoup.select.Selector.html">Selector$SelectorParseException</a></td><td><table cellpadding="0px" cellspacing="0px" class="percentgraph"><tr class="percentgraph"><td align="right" class="percentgraph" width="40">100%</td><td class="percentgraph"><div class="percentgraph"><div class="greenbar" style="width:100px"><span class="text">2/2</span></div></div></td></tr></table></td><td><table cellpadding="0px" cellspacing="0px" class="percentgraph"><tr class="percentgraph"><td align="right" class="percentgraph" width="40"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">N/A</a></td><td class="percentgraph"><div class="percentgraph"><div class="na" style="width:100px"><span class="text"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">N/A</a></span></div></div></td></tr></table></td><td class="value"><span class="hidden">2.0;</span>2</td></tr>
+
+</table>
+<div class="separator">&nbsp;</div>
+<table cellspacing="0" cellpadding="0" class="src">
+<tr>  <td class="numLine">&nbsp;1</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">package</span> org.jsoup.select;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;2</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;3</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.jsoup.helper.Validate;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;4</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.jsoup.nodes.Element;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;5</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;6</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> javax.annotation.Nullable;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;7</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.ArrayList;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;8</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.Collection;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;9</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.IdentityHashMap;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;10</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;11</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">/**</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;12</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * CSS-like element selector, that finds elements matching a query.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;13</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> *</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;14</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;h2&gt;Selector syntax&lt;/h2&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;15</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;p&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;16</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * A selector is a chain of simple selectors, separated by combinators. Selectors are &lt;b&gt;case insensitive&lt;/b&gt; (including against</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;17</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * elements, attributes, and attribute values).</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;18</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;/p&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;19</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;p&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;20</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * The universal selector (*) is implicit when no element selector is supplied (i.e. {@code *.header} and {@code .header}</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;21</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * is equivalent).</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;22</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;/p&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;23</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;style&gt;table.syntax tr td {vertical-align: top; padding-right: 2em; padding-top:0.5em; padding-bottom:0.5em; } table.syntax tr:hover{background-color: #eee;} table.syntax {border-spacing: 0px 0px;}&lt;/style&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;24</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;table summary="" class="syntax"&gt;&lt;colgroup&gt;&lt;col span="1" style="width: 20%;"&gt;&lt;col span="1" style="width: 40%;"&gt;&lt;col span="1" style="width: 40%;"&gt;&lt;/colgroup&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;25</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;th align="left"&gt;Pattern&lt;/th&gt;&lt;th align="left"&gt;Matches&lt;/th&gt;&lt;th align="left"&gt;Example&lt;/th&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;26</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;*&lt;/code&gt;&lt;/td&gt;&lt;td&gt;any element&lt;/td&gt;&lt;td&gt;&lt;code&gt;*&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;27</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;tag&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements with the given tag name&lt;/td&gt;&lt;td&gt;&lt;code&gt;div&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;28</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;*|E&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements of type E in any namespace (including non-namespaced)&lt;/td&gt;&lt;td&gt;&lt;code&gt;*|name&lt;/code&gt; finds &lt;code&gt;&amp;lt;fb:name&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;name&amp;gt;&lt;/code&gt; elements&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;29</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;ns|E&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements of type E in the namespace &lt;i&gt;ns&lt;/i&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;fb|name&lt;/code&gt; finds &lt;code&gt;&amp;lt;fb:name&amp;gt;&lt;/code&gt; elements&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;30</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;#id&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements with attribute ID of "id"&lt;/td&gt;&lt;td&gt;&lt;code&gt;div#wrap&lt;/code&gt;, &lt;code&gt;#logo&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;31</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;.class&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements with a class name of "class"&lt;/td&gt;&lt;td&gt;&lt;code&gt;div.left&lt;/code&gt;, &lt;code&gt;.result&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;32</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;[attr]&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements with an attribute named "attr" (with any value)&lt;/td&gt;&lt;td&gt;&lt;code&gt;a[href]&lt;/code&gt;, &lt;code&gt;[title]&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;33</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;[^attrPrefix]&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements with an attribute name starting with "attrPrefix". Use to find elements with HTML5 datasets&lt;/td&gt;&lt;td&gt;&lt;code&gt;[^data-]&lt;/code&gt;, &lt;code&gt;div[^data-]&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;34</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;[attr=val]&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements with an attribute named "attr", and value equal to "val"&lt;/td&gt;&lt;td&gt;&lt;code&gt;img[width=500]&lt;/code&gt;, &lt;code&gt;a[rel=nofollow]&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;35</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;[attr=&amp;quot;val&amp;quot;]&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements with an attribute named "attr", and value equal to "val"&lt;/td&gt;&lt;td&gt;&lt;code&gt;span[hello="Cleveland"][goodbye="Columbus"]&lt;/code&gt;, &lt;code&gt;a[rel=&amp;quot;nofollow&amp;quot;]&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;36</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;[attr^=valPrefix]&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements with an attribute named "attr", and value starting with "valPrefix"&lt;/td&gt;&lt;td&gt;&lt;code&gt;a[href^=http:]&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;37</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;[attr$=valSuffix]&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements with an attribute named "attr", and value ending with "valSuffix"&lt;/td&gt;&lt;td&gt;&lt;code&gt;img[src$=.png]&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;38</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;[attr*=valContaining]&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements with an attribute named "attr", and value containing "valContaining"&lt;/td&gt;&lt;td&gt;&lt;code&gt;a[href*=/search/]&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;39</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;[attr~=&lt;em&gt;regex&lt;/em&gt;]&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements with an attribute named "attr", and value matching the regular expression&lt;/td&gt;&lt;td&gt;&lt;code&gt;img[src~=(?i)\\.(png|jpe?g)]&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;40</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;The above may be combined in any order&lt;/td&gt;&lt;td&gt;&lt;code&gt;div.header[title]&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;41</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;td colspan="3"&gt;&lt;h3&gt;Combinators&lt;/h3&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;42</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;E F&lt;/code&gt;&lt;/td&gt;&lt;td&gt;an F element descended from an E element&lt;/td&gt;&lt;td&gt;&lt;code&gt;div a&lt;/code&gt;, &lt;code&gt;.logo h1&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;43</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;E {@literal &gt;} F&lt;/code&gt;&lt;/td&gt;&lt;td&gt;an F direct child of E&lt;/td&gt;&lt;td&gt;&lt;code&gt;ol {@literal &gt;} li&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;44</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;E + F&lt;/code&gt;&lt;/td&gt;&lt;td&gt;an F element immediately preceded by sibling E&lt;/td&gt;&lt;td&gt;&lt;code&gt;li + li&lt;/code&gt;, &lt;code&gt;div.head + div&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;45</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;E ~ F&lt;/code&gt;&lt;/td&gt;&lt;td&gt;an F element preceded by sibling E&lt;/td&gt;&lt;td&gt;&lt;code&gt;h1 ~ p&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;46</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;E, F, G&lt;/code&gt;&lt;/td&gt;&lt;td&gt;all matching elements E, F, or G&lt;/td&gt;&lt;td&gt;&lt;code&gt;a[href], div, h3&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;47</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;td colspan="3"&gt;&lt;h3&gt;Pseudo selectors&lt;/h3&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;48</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:lt(&lt;em&gt;n&lt;/em&gt;)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements whose sibling index is less than &lt;em&gt;n&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;td:lt(3)&lt;/code&gt; finds the first 3 cells of each row&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;49</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:gt(&lt;em&gt;n&lt;/em&gt;)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements whose sibling index is greater than &lt;em&gt;n&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;td:gt(1)&lt;/code&gt; finds cells after skipping the first two&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;50</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:eq(&lt;em&gt;n&lt;/em&gt;)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements whose sibling index is equal to &lt;em&gt;n&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;td:eq(0)&lt;/code&gt; finds the first cell of each row&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;51</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:has(&lt;em&gt;selector&lt;/em&gt;)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements that contains at least one element matching the &lt;em&gt;selector&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;div:has(p)&lt;/code&gt; finds &lt;code&gt;div&lt;/code&gt;s that contain &lt;code&gt;p&lt;/code&gt; elements.&lt;br&gt;&lt;code&gt;div:has(&amp;gt; a)&lt;/code&gt; selects &lt;code&gt;div&lt;/code&gt; elements that have at least one direct child &lt;code&gt;a&lt;/code&gt; element.&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;52</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:not(&lt;em&gt;selector&lt;/em&gt;)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements that do not match the &lt;em&gt;selector&lt;/em&gt;. See also {@link Elements#not(String)}&lt;/td&gt;&lt;td&gt;&lt;code&gt;div:not(.logo)&lt;/code&gt; finds all divs that do not have the "logo" class.&lt;p&gt;&lt;code&gt;div:not(:has(div))&lt;/code&gt; finds divs that do not contain divs.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;53</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:contains(&lt;em&gt;text&lt;/em&gt;)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements that contains the specified text. The search is case insensitive. The text may appear in the found element, or any of its descendants. The text is whitespace normalized. &lt;p&gt;To find content that includes parentheses, escape those with a {@code \}.&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;p:contains(jsoup)&lt;/code&gt; finds p elements containing the text "jsoup".&lt;p&gt;{@code p:contains(hello \(there\) finds p elements containing the text "Hello (There)"}&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;54</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:containsOwn(&lt;em&gt;text&lt;/em&gt;)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements that directly contain the specified text. The search is case insensitive. The text must appear in the found element, not any of its descendants.&lt;/td&gt;&lt;td&gt;&lt;code&gt;p:containsOwn(jsoup)&lt;/code&gt; finds p elements with own text "jsoup".&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;55</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:containsData(&lt;em&gt;data&lt;/em&gt;)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements that contains the specified &lt;em&gt;data&lt;/em&gt;. The contents of {@code script} and {@code style} elements, and {@code comment} nodes (etc) are considered data nodes, not text nodes. The search is case insensitive. The data may appear in the found element, or any of its descendants.&lt;/td&gt;&lt;td&gt;&lt;code&gt;script:contains(jsoup)&lt;/code&gt; finds script elements containing the data "jsoup".&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;56</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:matches(&lt;em&gt;regex&lt;/em&gt;)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements containing &lt;b&gt;whitespace normalized&lt;/b&gt; text that matches the specified regular expression. The text may appear in the found element, or any of its descendants.&lt;/td&gt;&lt;td&gt;&lt;code&gt;td:matches(\\d+)&lt;/code&gt; finds table cells containing digits. &lt;code&gt;div:matches((?i)login)&lt;/code&gt; finds divs containing the text, case insensitively.&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;57</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:matchesOwn(&lt;em&gt;regex&lt;/em&gt;)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements whose own text matches the specified regular expression. The text must appear in the found element, not any of its descendants.&lt;/td&gt;&lt;td&gt;&lt;code&gt;td:matchesOwn(\\d+)&lt;/code&gt; finds table cells directly containing digits. &lt;code&gt;div:matchesOwn((?i)login)&lt;/code&gt; finds divs containing the text, case insensitively.&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;58</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;The above may be combined in any order and with other selectors&lt;/td&gt;&lt;td&gt;&lt;code&gt;.light:contains(name):eq(0)&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;59</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:matchText&lt;/code&gt;&lt;/td&gt;&lt;td&gt;treats text nodes as elements, and so allows you to match against and select text nodes.&lt;p&gt;&lt;b&gt;Note&lt;/b&gt; that using this selector will modify the DOM, so you may want to {@code clone} your document before using.&lt;/td&gt;&lt;td&gt;{@code p:matchText:firstChild} with input {@code &lt;p&gt;One&lt;br /&gt;Two&lt;/p&gt;} will return one {@link org.jsoup.nodes.PseudoTextElement} with text "{@code One}".&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;60</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td colspan="3"&gt;&lt;h3&gt;Structural pseudo selectors&lt;/h3&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;61</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:root&lt;/code&gt;&lt;/td&gt;&lt;td&gt;The element that is the root of the document. In HTML, this is the &lt;code&gt;html&lt;/code&gt; element&lt;/td&gt;&lt;td&gt;&lt;code&gt;:root&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;62</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:nth-child(&lt;em&gt;a&lt;/em&gt;n+&lt;em&gt;b&lt;/em&gt;)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;elements that have &lt;code&gt;&lt;em&gt;a&lt;/em&gt;n+&lt;em&gt;b&lt;/em&gt;-1&lt;/code&gt; siblings &lt;b&gt;before&lt;/b&gt; it in the document tree, for any positive integer or zero value of &lt;code&gt;n&lt;/code&gt;, and has a parent element. For values of &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt; greater than zero, this effectively divides the element's children into groups of a elements (the last group taking the remainder), and selecting the &lt;em&gt;b&lt;/em&gt;th element of each group. For example, this allows the selectors to address every other row in a table, and could be used to alternate the color of paragraph text in a cycle of four. The &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt; values must be integers (positive, negative, or zero). The index of the first child of an element is 1.&lt;/p&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;63</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * In addition to this, &lt;code&gt;:nth-child()&lt;/code&gt; can take &lt;code&gt;odd&lt;/code&gt; and &lt;code&gt;even&lt;/code&gt; as arguments instead. &lt;code&gt;odd&lt;/code&gt; has the same signification as &lt;code&gt;2n+1&lt;/code&gt;, and &lt;code&gt;even&lt;/code&gt; has the same signification as &lt;code&gt;2n&lt;/code&gt;.&lt;/td&gt;&lt;td&gt;&lt;code&gt;tr:nth-child(2n+1)&lt;/code&gt; finds every odd row of a table. &lt;code&gt;:nth-child(10n-1)&lt;/code&gt; the 9th, 19th, 29th, etc, element. &lt;code&gt;li:nth-child(5)&lt;/code&gt; the 5h li&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;64</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:nth-last-child(&lt;em&gt;a&lt;/em&gt;n+&lt;em&gt;b&lt;/em&gt;)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements that have &lt;code&gt;&lt;em&gt;a&lt;/em&gt;n+&lt;em&gt;b&lt;/em&gt;-1&lt;/code&gt; siblings &lt;b&gt;after&lt;/b&gt; it in the document tree. Otherwise like &lt;code&gt;:nth-child()&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;tr:nth-last-child(-n+2)&lt;/code&gt; the last two rows of a table&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;65</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:nth-of-type(&lt;em&gt;a&lt;/em&gt;n+&lt;em&gt;b&lt;/em&gt;)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;pseudo-class notation represents an element that has &lt;code&gt;&lt;em&gt;a&lt;/em&gt;n+&lt;em&gt;b&lt;/em&gt;-1&lt;/code&gt; siblings with the same expanded element name &lt;em&gt;before&lt;/em&gt; it in the document tree, for any zero or positive integer value of n, and has a parent element&lt;/td&gt;&lt;td&gt;&lt;code&gt;img:nth-of-type(2n+1)&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;66</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:nth-last-of-type(&lt;em&gt;a&lt;/em&gt;n+&lt;em&gt;b&lt;/em&gt;)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;pseudo-class notation represents an element that has &lt;code&gt;&lt;em&gt;a&lt;/em&gt;n+&lt;em&gt;b&lt;/em&gt;-1&lt;/code&gt; siblings with the same expanded element name &lt;em&gt;after&lt;/em&gt; it in the document tree, for any zero or positive integer value of n, and has a parent element&lt;/td&gt;&lt;td&gt;&lt;code&gt;img:nth-last-of-type(2n+1)&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;67</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:first-child&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements that are the first child of some other element.&lt;/td&gt;&lt;td&gt;&lt;code&gt;div {@literal &gt;} p:first-child&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;68</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:last-child&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements that are the last child of some other element.&lt;/td&gt;&lt;td&gt;&lt;code&gt;ol {@literal &gt;} li:last-child&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;69</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:first-of-type&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements that are the first sibling of its type in the list of children of its parent element&lt;/td&gt;&lt;td&gt;&lt;code&gt;dl dt:first-of-type&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;70</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:last-of-type&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements that are the last sibling of its type in the list of children of its parent element&lt;/td&gt;&lt;td&gt;&lt;code&gt;tr {@literal &gt;} td:last-of-type&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;71</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:only-child&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements that have a parent element and whose parent element have no other element children&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;72</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:only-of-type&lt;/code&gt;&lt;/td&gt;&lt;td&gt; an element that has a parent element and whose parent element has no other element children with the same expanded element name&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;73</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:empty&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements that have no children at all&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;74</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;/table&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;75</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> *</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;76</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;p&gt;A word on using regular expressions in these selectors: depending on the content of the regex, you will need to quote the pattern using &lt;b&gt;&lt;code&gt;Pattern.quote("regex")&lt;/code&gt;&lt;/b&gt; for it to parse correclty through both the selector parser and the regex parser. E.g. &lt;code&gt;String query = "div:matches(" + Pattern.quote(regex) + ");"&lt;/code&gt;.&lt;/p&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;77</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> *</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;78</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @author Jonathan Hedley, jonathan@hedley.net</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;79</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @see Element#select(String)</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;80</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;81</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">public</span> <span class="keyword">class</span> Selector {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;82</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">// not instantiable</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;83</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    <span class="keyword">private</span> Selector() {}</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;84</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;85</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;86</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Find elements matching selector.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;87</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     *</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;88</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param query CSS selector</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;89</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param root  root element to descend into</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;90</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return matching elements, empty if none</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;91</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @throws Selector.SelectorParseException (unchecked) on an invalid CSS query.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;92</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;93</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">static</span> Elements select(String query, Element root) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;94</td>  <td class="nbHitsCovered">&nbsp;838</td>  <td class="src"><pre class="src">&nbsp;        Validate.notEmpty(query);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;95</td>  <td class="nbHitsCovered">&nbsp;838</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> select(QueryParser.parse(query), root);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;96</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;97</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;98</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;99</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Find elements matching selector.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;100</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     *</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;101</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param evaluator CSS selector</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;102</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param root root element to descend into</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;103</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return matching elements, empty if none</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;104</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;105</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">static</span> Elements select(Evaluator evaluator, Element root) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;106</td>  <td class="nbHitsCovered">&nbsp;851</td>  <td class="src"><pre class="src">&nbsp;        Validate.notNull(evaluator);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;107</td>  <td class="nbHitsCovered">&nbsp;851</td>  <td class="src"><pre class="src">&nbsp;        Validate.notNull(root);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;108</td>  <td class="nbHitsCovered">&nbsp;851</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> Collector.collect(evaluator, root);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;109</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;110</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;111</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;112</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Find elements matching selector.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;113</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     *</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;114</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param query CSS selector</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;115</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param roots root elements to descend into</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;116</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return matching elements, empty if none</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;117</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;118</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">static</span> Elements select(String query, Iterable&lt;Element&gt; roots) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;119</td>  <td class="nbHitsCovered">&nbsp;7</td>  <td class="src"><pre class="src">&nbsp;        Validate.notEmpty(query);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;120</td>  <td class="nbHitsCovered">&nbsp;7</td>  <td class="src"><pre class="src">&nbsp;        Validate.notNull(roots);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;121</td>  <td class="nbHitsCovered">&nbsp;7</td>  <td class="src"><pre class="src">&nbsp;        Evaluator evaluator = QueryParser.parse(query);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;122</td>  <td class="nbHitsCovered">&nbsp;7</td>  <td class="src"><pre class="src">&nbsp;        Elements elements = <span class="keyword">new</span> Elements();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;123</td>  <td class="nbHitsCovered">&nbsp;7</td>  <td class="src"><pre class="src">&nbsp;        IdentityHashMap&lt;Element, Boolean&gt; seenElements = <span class="keyword">new</span> IdentityHashMap&lt;&gt;();</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;124</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// dedupe elements by identity, not equality</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;125</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;126</td>  <td class="nbHitsCovered"><a title="Line 126: Conditional coverage 100% (2/2).">&nbsp;7</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 126: Conditional coverage 100% (2/2).">        <span class="keyword">for</span> (Element root : roots) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;127</td>  <td class="nbHitsCovered">&nbsp;13</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">final</span> Elements found = select(evaluator, root);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;128</td>  <td class="nbHitsCovered"><a title="Line 128: Conditional coverage 100% (2/2).">&nbsp;13</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 128: Conditional coverage 100% (2/2).">            <span class="keyword">for</span> (Element el : found) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;129</td>  <td class="nbHitsUncovered"><a title="Line 129: Conditional coverage 50% (1/2).">&nbsp;11</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 129: Conditional coverage 50% (1/2).">                <span class="keyword">if</span> (seenElements.put(el, Boolean.TRUE) == <span class="keyword">null</span>) {</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;130</td>  <td class="nbHitsCovered">&nbsp;11</td>  <td class="src"><pre class="src">&nbsp;                    elements.add(el);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;131</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;132</td>  <td class="nbHitsCovered">&nbsp;11</td>  <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;133</td>  <td class="nbHitsCovered">&nbsp;13</td>  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;134</td>  <td class="nbHitsCovered">&nbsp;7</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> elements;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;135</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;136</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;137</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">// exclude set. package open so that Elements can implement .not() selector.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;138</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">static</span> Elements filterOut(Collection&lt;Element&gt; elements, Collection&lt;Element&gt; outs) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;139</td>  <td class="nbHitsCovered">&nbsp;2</td>  <td class="src"><pre class="src">&nbsp;        Elements output = <span class="keyword">new</span> Elements();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;140</td>  <td class="nbHitsCovered"><a title="Line 140: Conditional coverage 100% (2/2).">&nbsp;2</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 140: Conditional coverage 100% (2/2).">        <span class="keyword">for</span> (Element el : elements) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;141</td>  <td class="nbHitsCovered">&nbsp;4</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">boolean</span> found = <span class="keyword">false</span>;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;142</td>  <td class="nbHitsCovered"><a title="Line 142: Conditional coverage 100% (2/2).">&nbsp;4</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 142: Conditional coverage 100% (2/2).">            <span class="keyword">for</span> (Element out : outs) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;143</td>  <td class="nbHitsCovered"><a title="Line 143: Conditional coverage 100% (2/2).">&nbsp;5</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 143: Conditional coverage 100% (2/2).">                <span class="keyword">if</span> (el.equals(out)) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;144</td>  <td class="nbHitsCovered">&nbsp;2</td>  <td class="src"><pre class="src">&nbsp;                    found = <span class="keyword">true</span>;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;145</td>  <td class="nbHitsCovered">&nbsp;2</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">break</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;146</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;147</td>  <td class="nbHitsCovered">&nbsp;3</td>  <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;148</td>  <td class="nbHitsCovered"><a title="Line 148: Conditional coverage 100% (2/2).">&nbsp;4</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 148: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (!found)</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;149</td>  <td class="nbHitsCovered">&nbsp;2</td>  <td class="src"><pre class="src">&nbsp;                output.add(el);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;150</td>  <td class="nbHitsCovered">&nbsp;4</td>  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;151</td>  <td class="nbHitsCovered">&nbsp;2</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> output;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;152</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;153</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;154</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;155</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Find the first element that matches the query.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;156</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param cssQuery CSS selector</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;157</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param root root element to descend into</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;158</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return the matching element, or &lt;b&gt;null&lt;/b&gt; if none.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;159</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;160</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">static</span> @Nullable Element selectFirst(String cssQuery, Element root) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;161</td>  <td class="nbHitsCovered">&nbsp;125</td>  <td class="src"><pre class="src">&nbsp;        Validate.notEmpty(cssQuery);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;162</td>  <td class="nbHitsCovered">&nbsp;125</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> Collector.findFirst(QueryParser.parse(cssQuery), root);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;163</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;164</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;165</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> SelectorParseException <span class="keyword">extends</span> IllegalStateException {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;166</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> SelectorParseException(String msg, Object... params) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;167</td>  <td class="nbHitsCovered">&nbsp;5</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">super</span>(String.format(msg, params));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;168</td>  <td class="nbHitsCovered">&nbsp;5</td>  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;169</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;170</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;}</pre></td></tr>
+</table>
+
+<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.1.1 on 9/28/21 6:03 AM.</div>
+</body>
+</html>

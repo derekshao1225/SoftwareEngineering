@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="org.jsoup.integration.FuzzFixesTest" time="5.828" tests="56" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="sun.cpu.isalist" value=""/>
+    <property name="sun.jnu.encoding" value="ANSI_X3.4-1968"/>
+    <property name="java.class.path" value="/home/ubuntu/hw2/jsoup/target/test-classes:/home/ubuntu/hw2/jsoup/target/generated-classes/cobertura:/home/ubuntu/.m2/repository/org/junit/jupiter/junit-jupiter/5.8.1/junit-jupiter-5.8.1.jar:/home/ubuntu/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.8.1/junit-jupiter-api-5.8.1.jar:/home/ubuntu/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/ubuntu/.m2/repository/org/junit/platform/junit-platform-commons/1.8.1/junit-platform-commons-1.8.1.jar:/home/ubuntu/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/ubuntu/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.8.1/junit-jupiter-params-5.8.1.jar:/home/ubuntu/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.8.1/junit-jupiter-engine-5.8.1.jar:/home/ubuntu/.m2/repository/org/junit/platform/junit-platform-engine/1.8.1/junit-platform-engine-1.8.1.jar:/home/ubuntu/.m2/repository/com/google/code/gson/gson/2.8.8/gson-2.8.8.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-server/9.4.43.v20210629/jetty-server-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-http/9.4.43.v20210629/jetty-http-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-util/9.4.43.v20210629/jetty-util-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-io/9.4.43.v20210629/jetty-io-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-servlet/9.4.43.v20210629/jetty-servlet-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-security/9.4.43.v20210629/jetty-security-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-util-ajax/9.4.43.v20210629/jetty-util-ajax-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/home/ubuntu/.m2/repository/net/sourceforge/cobertura/cobertura/2.1.1/cobertura-2.1.1.jar:/home/ubuntu/.m2/repository/jaxen/jaxen/1.1.4/jaxen-1.1.4.jar:/home/ubuntu/.m2/repository/org/apache/ant/ant/1.8.3/ant-1.8.3.jar:/home/ubuntu/.m2/repository/org/apache/ant/ant-launcher/1.8.3/ant-launcher-1.8.3.jar:/home/ubuntu/.m2/repository/org/apache/ant/ant-junit/1.8.3/ant-junit-1.8.3.jar:/home/ubuntu/.m2/repository/org/mortbay/jetty/servlet-api-2.5/6.1.14/servlet-api-2.5-6.1.14.jar:/home/ubuntu/.m2/repository/org/mortbay/jetty/jetty/6.1.14/jetty-6.1.14.jar:/home/ubuntu/.m2/repository/org/mortbay/jetty/jetty-util/6.1.14/jetty-util-6.1.14.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/../lib/tools.jar:/home/ubuntu/.m2/repository/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar:/home/ubuntu/.m2/repository/ch/qos/logback/logback-classic/1.0.13/logback-classic-1.0.13.jar:/home/ubuntu/.m2/repository/ch/qos/logback/logback-core/1.0.13/logback-core-1.0.13.jar:/home/ubuntu/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/ubuntu/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/ubuntu/.m2/repository/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.jar:"/>
+    <property name="java.vm.vendor" value="Private Build"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="user.timezone" value="Etc/UTC"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="os.name" value="Linux"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64"/>
+    <property name="sun.java.command" value="/home/ubuntu/hw2/jsoup/target/surefire/surefirebooter4701075921476652133.jar /home/ubuntu/hw2/jsoup/target/surefire 2021-09-28T06-03-17_693-jvmRun1 surefire1794840511097801536tmp surefire_0704956775821110536tmp"/>
+    <property name="surefire.test.class.path" value="/home/ubuntu/hw2/jsoup/target/test-classes:/home/ubuntu/hw2/jsoup/target/generated-classes/cobertura:/home/ubuntu/.m2/repository/org/junit/jupiter/junit-jupiter/5.8.1/junit-jupiter-5.8.1.jar:/home/ubuntu/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.8.1/junit-jupiter-api-5.8.1.jar:/home/ubuntu/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/ubuntu/.m2/repository/org/junit/platform/junit-platform-commons/1.8.1/junit-platform-commons-1.8.1.jar:/home/ubuntu/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/ubuntu/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.8.1/junit-jupiter-params-5.8.1.jar:/home/ubuntu/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.8.1/junit-jupiter-engine-5.8.1.jar:/home/ubuntu/.m2/repository/org/junit/platform/junit-platform-engine/1.8.1/junit-platform-engine-1.8.1.jar:/home/ubuntu/.m2/repository/com/google/code/gson/gson/2.8.8/gson-2.8.8.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-server/9.4.43.v20210629/jetty-server-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-http/9.4.43.v20210629/jetty-http-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-util/9.4.43.v20210629/jetty-util-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-io/9.4.43.v20210629/jetty-io-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-servlet/9.4.43.v20210629/jetty-servlet-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-security/9.4.43.v20210629/jetty-security-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-util-ajax/9.4.43.v20210629/jetty-util-ajax-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/home/ubuntu/.m2/repository/net/sourceforge/cobertura/cobertura/2.1.1/cobertura-2.1.1.jar:/home/ubuntu/.m2/repository/jaxen/jaxen/1.1.4/jaxen-1.1.4.jar:/home/ubuntu/.m2/repository/org/apache/ant/ant/1.8.3/ant-1.8.3.jar:/home/ubuntu/.m2/repository/org/apache/ant/ant-launcher/1.8.3/ant-launcher-1.8.3.jar:/home/ubuntu/.m2/repository/org/apache/ant/ant-junit/1.8.3/ant-junit-1.8.3.jar:/home/ubuntu/.m2/repository/org/mortbay/jetty/servlet-api-2.5/6.1.14/servlet-api-2.5-6.1.14.jar:/home/ubuntu/.m2/repository/org/mortbay/jetty/jetty/6.1.14/jetty-6.1.14.jar:/home/ubuntu/.m2/repository/org/mortbay/jetty/jetty-util/6.1.14/jetty-util-6.1.14.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/../lib/tools.jar:/home/ubuntu/.m2/repository/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar:/home/ubuntu/.m2/repository/ch/qos/logback/logback-classic/1.0.13/logback-classic-1.0.13.jar:/home/ubuntu/.m2/repository/ch/qos/logback/logback-core/1.0.13/logback-core-1.0.13.jar:/home/ubuntu/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/ubuntu/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/ubuntu/.m2/repository/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/home/ubuntu"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.home" value="/usr/lib/jvm/java-8-openjdk-amd64/jre"/>
+    <property name="basedir" value="/home/ubuntu/hw2/jsoup"/>
+    <property name="file.separator" value="/"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="/home/ubuntu/hw2/jsoup/target/surefire/surefirebooter4701075921476652133.jar"/>
+    <property name="sun.boot.class.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/classes"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="1.8.0_292-8u292-b10-0ubuntu1~16.04.1-b10"/>
+    <property name="user.name" value="ubuntu"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="4.4.0-1128-aws"/>
+    <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/endorsed"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="ANSI_X3.4-1968"/>
+    <property name="sun.net.http.allowRestrictedHeaders" value="true"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="localRepository" value="/home/ubuntu/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="jetty.git.hash" value="526006ecfa3af7f1a27ef3a288e2bef7ea9dd7e8"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="java.version" value="1.8.0_292"/>
+    <property name="user.dir" value="/home/ubuntu/hw2/jsoup"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Private Build"/>
+    <property name="java.vm.version" value="25.292-b10"/>
+    <property name="java.ext.dirs" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext:/usr/java/packages/lib/ext"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="52.0"/>
+  </properties>
+  <testcase name="blankAbsAttr" classname="org.jsoup.integration.FuzzFixesTest" time="0"/>
+  <testcase name="testHtmlParse(File)[1]" classname="org.jsoup.integration.FuzzFixesTest" time="0.36">
+    <system-out><![CDATA[[DEBUG] flushed 1110 SocketChannelEndPoint@61fd9662{l=/127.0.0.1:35372,r=/127.0.0.1:60188,OPEN,fill=-,flush=W,to=19/30000}{io=0/0,kio=0,kro=1}->HttpConnection@2e077e16[p=HttpParser{s=END,0 of -1},g=HttpGenerator@1f63306b{s=COMPLETING}]=>HttpChannelOverHttp@6f3a742d{s=HttpChannelState@6b05fd12{s=HANDLING rs=COMPLETING os=COMMITTED is=READY awp=false se=false i=false al=0},r=11,c=false/false,a=HANDLING,uri=//localhost:35372/EchoServlet,age=19}
+[DEBUG] Flushed=true written=1110 remaining=0 WriteFlusher@d847498{WRITING}->null
+[DEBUG] update WriteFlusher@d847498{IDLE}->null:WRITING-->IDLE
+[DEBUG] generate: DONE for SendCallback@96c627e[PROCESSING][i=HTTP/1.1{s=200,h=4,cl=-1},cb=org.eclipse.jetty.server.HttpChannel$SendCallback@1f641639] ([p=199,l=199,c=8192,r=0],[p=911,l=911,c=32768,r=0],true)@END
+[DEBUG] onWriteComplete(true,null) s=CLOSING,api=BLOCKED,sc=false,e=null->s=CLOSED,api=BLOCKING,sc=false,e=null c=null cb=org.eclipse.jetty.util.Callback$3@16ed3770 w=false
+[DEBUG] completed HttpChannelState@6b05fd12{s=HANDLING rs=COMPLETING os=COMPLETED is=READY awp=false se=false i=false al=0}
+[DEBUG] unhandle HttpChannelState@6b05fd12{s=HANDLING rs=COMPLETED os=COMPLETED is=READY awp=false se=false i=false al=0}
+[DEBUG] nextAction(false) TERMINATED HttpChannelState@6b05fd12{s=IDLE rs=COMPLETED os=COMPLETED is=READY awp=false se=false i=false al=0}
+[DEBUG] action TERMINATED HttpChannelOverHttp@6f3a742d{s=HttpChannelState@6b05fd12{s=IDLE rs=COMPLETED os=COMPLETED is=READY awp=false se=false i=false al=0},r=11,c=true/true,a=IDLE,uri=//localhost:35372/EchoServlet,age=20}
+[DEBUG] onCompleted for /EchoServlet written=911
+[DEBUG] recycle HttpChannelState@6b05fd12{s=IDLE rs=COMPLETED os=COMPLETED is=READY awp=false se=false i=false al=0}
+[DEBUG] reset HttpParser{s=END,0 of -1}
+[DEBUG] END --> START
+[DEBUG] !handle TERMINATED HttpChannelOverHttp@6f3a742d{s=HttpChannelState@6b05fd12{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=11,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] filled 0 HeapByteBuffer@1ef04a69[p=0,l=0,c=8192,r=0]={<<<>>>GET /Echo...\xCe\x1f\xAf\xC2\x8d\xCey}
+[DEBUG] filled 0 HeapByteBuffer@1ef04a69[p=0,l=0,c=8192,r=0]={<<<>>>GET /Echo...\xCe\x1f\xAf\xC2\x8d\xCey}
+[DEBUG] HttpConnection@2e077e16::SocketChannelEndPoint@61fd9662{l=/127.0.0.1:35372,r=/127.0.0.1:60188,OPEN,fill=-,flush=-,to=0/30000}{io=0/0,kio=0,kro=1}->HttpConnection@2e077e16[p=HttpParser{s=START,0 of -1},g=HttpGenerator@1f63306b{s=START}]=>HttpChannelOverHttp@6f3a742d{s=HttpChannelState@6b05fd12{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=11,c=false/false,a=IDLE,uri=null,age=0} filled 0 HeapByteBuffer@1ef04a69[p=0,l=0,c=8192,r=0]={<<<>>>GET /Echo...\xCe\x1f\xAf\xC2\x8d\xCey}
+[DEBUG] HttpConnection@2e077e16::SocketChannelEndPoint@61fd9662{l=/127.0.0.1:35372,r=/127.0.0.1:60188,OPEN,fill=-,flush=-,to=0/30000}{io=0/0,kio=0,kro=1}->HttpConnection@2e077e16[p=HttpParser{s=START,0 of -1},g=HttpGenerator@1f63306b{s=START}]=>HttpChannelOverHttp@6f3a742d{s=HttpChannelState@6b05fd12{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=11,c=false/false,a=IDLE,uri=null,age=0} parse HeapByteBuffer@1ef04a69[p=0,l=0,c=8192,r=0]={<<<>>>GET /Echo...\xCe\x1f\xAf\xC2\x8d\xCey} {}
+[DEBUG] parseNext s=START HeapByteBuffer@1ef04a69[p=0,l=0,c=8192,r=0]={<<<>>>GET /Echo...\xCe\x1f\xAf\xC2\x8d\xCey}
+[DEBUG] HttpConnection@2e077e16::SocketChannelEndPoint@61fd9662{l=/127.0.0.1:35372,r=/127.0.0.1:60188,OPEN,fill=-,flush=-,to=0/30000}{io=0/0,kio=0,kro=1}->HttpConnection@2e077e16[p=HttpParser{s=START,0 of -1},g=HttpGenerator@1f63306b{s=START}]=>HttpChannelOverHttp@6f3a742d{s=HttpChannelState@6b05fd12{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=11,c=false/false,a=IDLE,uri=null,age=0} parsed false HttpParser{s=START,0 of -1}
+[DEBUG] releaseRequestBuffer HttpConnection@2e077e16::SocketChannelEndPoint@61fd9662{l=/127.0.0.1:35372,r=/127.0.0.1:60188,OPEN,fill=-,flush=-,to=0/30000}{io=0/0,kio=0,kro=1}->HttpConnection@2e077e16[p=HttpParser{s=START,0 of -1},g=HttpGenerator@1f63306b{s=START}]=>HttpChannelOverHttp@6f3a742d{s=HttpChannelState@6b05fd12{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=11,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] fillInterested HttpConnection@2e077e16::SocketChannelEndPoint@61fd9662{l=/127.0.0.1:35372,r=/127.0.0.1:60188,OPEN,fill=-,flush=-,to=0/30000}{io=0/0,kio=0,kro=1}->HttpConnection@2e077e16[p=HttpParser{s=START,0 of -1},g=HttpGenerator@1f63306b{s=START}]=>HttpChannelOverHttp@6f3a742d{s=HttpChannelState@6b05fd12{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=11,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] interested FillInterest@5bcaa3f8{AC.ReadCB@2e077e16{HttpConnection@2e077e16::SocketChannelEndPoint@61fd9662{l=/127.0.0.1:35372,r=/127.0.0.1:60188,OPEN,fill=FI,flush=-,to=0/30000}{io=0/0,kio=0,kro=1}->HttpConnection@2e077e16[p=HttpParser{s=START,0 of -1},g=HttpGenerator@1f63306b{s=START}]=>HttpChannelOverHttp@6f3a742d{s=HttpChannelState@6b05fd12{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=11,c=false/false,a=IDLE,uri=null,age=0}}}
+[DEBUG] changeInterests p=false 0->1 for SocketChannelEndPoint@61fd9662{l=/127.0.0.1:35372,r=/127.0.0.1:60188,OPEN,fill=FI,flush=-,to=0/30000}{io=0/1,kio=0,kro=1}->HttpConnection@2e077e16[p=HttpParser{s=START,0 of -1},g=HttpGenerator@1f63306b{s=START}]=>HttpChannelOverHttp@6f3a742d{s=HttpChannelState@6b05fd12{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=11,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] Queued change lazy=false org.eclipse.jetty.io.ChannelEndPoint$$Lambda$475/336675676@4e288159 on ManagedSelector@72cf2de5{STARTED} id=0 keys=2 selected=0 updates=0
+[DEBUG] Wakeup on submit ManagedSelector@72cf2de5{STARTED} id=0 keys=2 selected=0 updates=1
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 woken with none selected
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 woken up from select, 0/0/2 selected
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 processing 0 keys, 1 updates
+[DEBUG] updateable 1
+[DEBUG] update org.eclipse.jetty.io.ChannelEndPoint$$Lambda$475/336675676@4e288159
+[DEBUG] Key interests updated 0 -> 1 on SocketChannelEndPoint@61fd9662{l=/127.0.0.1:35372,r=/127.0.0.1:60188,OPEN,fill=FI,flush=-,to=9/30000}{io=1/1,kio=1,kro=1}->HttpConnection@2e077e16[p=HttpParser{s=START,0 of -1},g=HttpGenerator@1f63306b{s=START}]=>HttpChannelOverHttp@6f3a742d{s=HttpChannelState@6b05fd12{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=11,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] updates 0
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 waiting with 2 keys
+[DEBUG] HttpConnection@2e077e16::SocketChannelEndPoint@61fd9662{l=/127.0.0.1:35372,r=/127.0.0.1:60188,OPEN,fill=FI,flush=-,to=9/30000}{io=1/1,kio=1,kro=1}->HttpConnection@2e077e16[p=HttpParser{s=START,0 of -1},g=HttpGenerator@1f63306b{s=START}]=>HttpChannelOverHttp@6f3a742d{s=HttpChannelState@6b05fd12{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=11,c=false/false,a=IDLE,uri=null,age=0} onFillable exit HttpChannelState@6b05fd12{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0} null
+[DEBUG] ReservedThreadExecutor@278bb07e{s=1/1,p=0}@5af5386a size 1 > capacity
+[DEBUG] ran ReservedThreadExecutor@278bb07e{s=1/1,p=0}@5af5386a in QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=4,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=1/1,p=0}]
+]]></system-out>
+  </testcase>
+  <testcase name="testHtmlParse(File)[2]" classname="org.jsoup.integration.FuzzFixesTest" time="0.012"/>
+  <testcase name="testHtmlParse(File)[3]" classname="org.jsoup.integration.FuzzFixesTest" time="0.021"/>
+  <testcase name="testHtmlParse(File)[4]" classname="org.jsoup.integration.FuzzFixesTest" time="0.014"/>
+  <testcase name="testHtmlParse(File)[5]" classname="org.jsoup.integration.FuzzFixesTest" time="0.011"/>
+  <testcase name="testHtmlParse(File)[6]" classname="org.jsoup.integration.FuzzFixesTest" time="0.164"/>
+  <testcase name="testHtmlParse(File)[7]" classname="org.jsoup.integration.FuzzFixesTest" time="0.024"/>
+  <testcase name="testHtmlParse(File)[8]" classname="org.jsoup.integration.FuzzFixesTest" time="0.258"/>
+  <testcase name="testHtmlParse(File)[9]" classname="org.jsoup.integration.FuzzFixesTest" time="0.005"/>
+  <testcase name="testHtmlParse(File)[10]" classname="org.jsoup.integration.FuzzFixesTest" time="0.015"/>
+  <testcase name="testHtmlParse(File)[11]" classname="org.jsoup.integration.FuzzFixesTest" time="0.788"/>
+  <testcase name="testHtmlParse(File)[12]" classname="org.jsoup.integration.FuzzFixesTest" time="0.014"/>
+  <testcase name="testHtmlParse(File)[13]" classname="org.jsoup.integration.FuzzFixesTest" time="0.145"/>
+  <testcase name="testHtmlParse(File)[14]" classname="org.jsoup.integration.FuzzFixesTest" time="0.018"/>
+  <testcase name="testHtmlParse(File)[15]" classname="org.jsoup.integration.FuzzFixesTest" time="0.185"/>
+  <testcase name="testHtmlParse(File)[16]" classname="org.jsoup.integration.FuzzFixesTest" time="0.005"/>
+  <testcase name="testHtmlParse(File)[17]" classname="org.jsoup.integration.FuzzFixesTest" time="0.003"/>
+  <testcase name="testHtmlParse(File)[18]" classname="org.jsoup.integration.FuzzFixesTest" time="0.21"/>
+  <testcase name="testHtmlParse(File)[19]" classname="org.jsoup.integration.FuzzFixesTest" time="0.013"/>
+  <testcase name="testHtmlParse(File)[20]" classname="org.jsoup.integration.FuzzFixesTest" time="0.004"/>
+  <testcase name="testHtmlParse(File)[21]" classname="org.jsoup.integration.FuzzFixesTest" time="0.062"/>
+  <testcase name="testHtmlParse(File)[22]" classname="org.jsoup.integration.FuzzFixesTest" time="0.355"/>
+  <testcase name="testHtmlParse(File)[23]" classname="org.jsoup.integration.FuzzFixesTest" time="0.283"/>
+  <testcase name="testHtmlParse(File)[24]" classname="org.jsoup.integration.FuzzFixesTest" time="0.003"/>
+  <testcase name="testHtmlParse(File)[25]" classname="org.jsoup.integration.FuzzFixesTest" time="0.001"/>
+  <testcase name="testHtmlParse(File)[26]" classname="org.jsoup.integration.FuzzFixesTest" time="0.339"/>
+  <testcase name="testHtmlParse(File)[27]" classname="org.jsoup.integration.FuzzFixesTest" time="0.015"/>
+  <testcase name="testXmlParse(File)[1]" classname="org.jsoup.integration.FuzzFixesTest" time="0.084"/>
+  <testcase name="testXmlParse(File)[2]" classname="org.jsoup.integration.FuzzFixesTest" time="0.008"/>
+  <testcase name="testXmlParse(File)[3]" classname="org.jsoup.integration.FuzzFixesTest" time="0.008"/>
+  <testcase name="testXmlParse(File)[4]" classname="org.jsoup.integration.FuzzFixesTest" time="0.001"/>
+  <testcase name="testXmlParse(File)[5]" classname="org.jsoup.integration.FuzzFixesTest" time="0.002"/>
+  <testcase name="testXmlParse(File)[6]" classname="org.jsoup.integration.FuzzFixesTest" time="0.013"/>
+  <testcase name="testXmlParse(File)[7]" classname="org.jsoup.integration.FuzzFixesTest" time="0.026"/>
+  <testcase name="testXmlParse(File)[8]" classname="org.jsoup.integration.FuzzFixesTest" time="0.196"/>
+  <testcase name="testXmlParse(File)[9]" classname="org.jsoup.integration.FuzzFixesTest" time="0.222"/>
+  <testcase name="testXmlParse(File)[10]" classname="org.jsoup.integration.FuzzFixesTest" time="0.233"/>
+  <testcase name="testXmlParse(File)[11]" classname="org.jsoup.integration.FuzzFixesTest" time="0.013"/>
+  <testcase name="testXmlParse(File)[12]" classname="org.jsoup.integration.FuzzFixesTest" time="0.021"/>
+  <testcase name="testXmlParse(File)[13]" classname="org.jsoup.integration.FuzzFixesTest" time="0.029"/>
+  <testcase name="testXmlParse(File)[14]" classname="org.jsoup.integration.FuzzFixesTest" time="0.01"/>
+  <testcase name="testXmlParse(File)[15]" classname="org.jsoup.integration.FuzzFixesTest" time="0.085"/>
+  <testcase name="testXmlParse(File)[16]" classname="org.jsoup.integration.FuzzFixesTest" time="0.001"/>
+  <testcase name="testXmlParse(File)[17]" classname="org.jsoup.integration.FuzzFixesTest" time="0.004"/>
+  <testcase name="testXmlParse(File)[18]" classname="org.jsoup.integration.FuzzFixesTest" time="0.073"/>
+  <testcase name="testXmlParse(File)[19]" classname="org.jsoup.integration.FuzzFixesTest" time="0.002"/>
+  <testcase name="testXmlParse(File)[20]" classname="org.jsoup.integration.FuzzFixesTest" time="0.001"/>
+  <testcase name="testXmlParse(File)[21]" classname="org.jsoup.integration.FuzzFixesTest" time="0.073"/>
+  <testcase name="testXmlParse(File)[22]" classname="org.jsoup.integration.FuzzFixesTest" time="0.128"/>
+  <testcase name="testXmlParse(File)[23]" classname="org.jsoup.integration.FuzzFixesTest" time="0.205"/>
+  <testcase name="testXmlParse(File)[24]" classname="org.jsoup.integration.FuzzFixesTest" time="0.001"/>
+  <testcase name="testXmlParse(File)[25]" classname="org.jsoup.integration.FuzzFixesTest" time="0.002"/>
+  <testcase name="testXmlParse(File)[26]" classname="org.jsoup.integration.FuzzFixesTest" time="0.061"/>
+  <testcase name="testXmlParse(File)[27]" classname="org.jsoup.integration.FuzzFixesTest" time="0.881">
+    <system-out><![CDATA[[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 woken up from select, 1/1/2 selected
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 processing 1 keys, 0 updates
+[DEBUG] selected 1 sun.nio.ch.SelectionKeyImpl@4654c5b9 SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=FI,flush=-,to=7488/30000}{io=1/1,kio=1,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=7,c=false/false,a=IDLE,uri=null,age=0} 
+[DEBUG] onSelected 1->0 r=true w=false for SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=FI,flush=-,to=7488/30000}{io=1/0,kio=1,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=7,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] task CEP:SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=FI,flush=-,to=7488/30000}{io=1/0,kio=1,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=7,c=false/false,a=IDLE,uri=null,age=0}:runFillable:BLOCKING
+[DEBUG] ReservedThreadExecutor@278bb07e{s=1/1,p=0} tryExecute EatWhatYouKill@63b1d4fa/SelectorProducer@4c4d27c8/PRODUCING/p=false/QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=5,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=1/1,p=0}][pc=0,pic=0,pec=1,epc=13]@2021-09-28T06:03:37.956Z
+[DEBUG] ReservedThreadExecutor@278bb07e{s=0/1,p=0}@84550b offer EatWhatYouKill@63b1d4fa/SelectorProducer@4c4d27c8/PRODUCING/p=false/QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=5,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=0}][pc=0,pic=0,pec=1,epc=13]@2021-09-28T06:03:37.956Z
+[DEBUG] ReservedThreadExecutor@278bb07e{s=0/1,p=1} startReservedThread p=1
+[DEBUG] queue ReservedThreadExecutor@278bb07e{s=0/1,p=1}@6a730571 startThread=0
+[DEBUG] EatWhatYouKill@63b1d4fa/SelectorProducer@4c4d27c8/IDLE/p=true/QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=4,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=1}][pc=0,pic=0,pec=1,epc=13]@2021-09-28T06:03:37.957Z m=EXECUTE_PRODUCE_CONSUME t=CEP:SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=FI,flush=-,to=7489/30000}{io=1/0,kio=1,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=7,c=false/false,a=IDLE,uri=null,age=0}:runFillable:BLOCKING/BLOCKING
+[DEBUG] fillable FillInterest@6258fb58{AC.ReadCB@60cb21a2{HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=FI,flush=-,to=7489/30000}{io=1/0,kio=1,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=7,c=false/false,a=IDLE,uri=null,age=0}}}
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=7489/30000}{io=1/0,kio=1,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=7,c=false/false,a=IDLE,uri=null,age=0} onFillable enter HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0} null
+[DEBUG] shutdownInput SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=7489/30000}{io=1/0,kio=1,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=7,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] filled -1 HeapByteBuffer@2a66826a[p=0,l=0,c=8192,r=0]={<<<>>>HTTP/1.1 ...\x86&h\xA0{\xC1\xC2}
+[DEBUG] atEOF HttpParser{s=START,0 of -1}
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,ISHUT,fill=-,flush=-,to=7489/30000}{io=1/0,kio=1,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=7,c=false/false,a=IDLE,uri=null,age=0} filled -1 HeapByteBuffer@2a66826a[p=0,l=0,c=8192,r=0]={<<<>>>HTTP/1.1 ...\x86&h\xA0{\xC1\xC2}
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,ISHUT,fill=-,flush=-,to=7490/30000}{io=1/0,kio=1,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=7,c=false/false,a=IDLE,uri=null,age=0} parse HeapByteBuffer@2a66826a[p=0,l=0,c=8192,r=0]={<<<>>>HTTP/1.1 ...\x86&h\xA0{\xC1\xC2} {}
+[DEBUG] parseNext s=START HeapByteBuffer@2a66826a[p=0,l=0,c=8192,r=0]={<<<>>>HTTP/1.1 ...\x86&h\xA0{\xC1\xC2}
+[DEBUG] START --> CLOSED
+[DEBUG] close SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,ISHUT,fill=-,flush=-,to=7490/30000}{io=1/0,kio=1,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=CLOSED,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=7,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] close(null) SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,ISHUT,fill=-,flush=-,to=7490/30000}{io=1/0,kio=1,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=CLOSED,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=7,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] doClose SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,CLOSED,fill=-,flush=-,to=7490/30000}{io=1/0,kio=1,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=CLOSED,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=7,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] ReservedThreadExecutor@278bb07e{s=0/1,p=1}@84550b task=EatWhatYouKill@63b1d4fa/SelectorProducer@4c4d27c8/IDLE/p=true/QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=4,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=1}][pc=0,pic=0,pec=1,epc=14]@2021-09-28T06:03:37.958Z
+[DEBUG] EatWhatYouKill@63b1d4fa/SelectorProducer@4c4d27c8/IDLE/p=true/QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=4,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=1}][pc=0,pic=0,pec=1,epc=14]@2021-09-28T06:03:37.958Z tryProduce true
+[DEBUG] updateable 0
+[DEBUG] updates 0
+[DEBUG] run ReservedThreadExecutor@278bb07e{s=0/1,p=1}@6a730571 in QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=4,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=1}]
+[DEBUG] ReservedThreadExecutor@278bb07e{s=1/1,p=1}@6a730571 started
+[DEBUG] ReservedThreadExecutor@278bb07e{s=1/1,p=0}@6a730571 waiting
+[DEBUG] Key interests updated 1 -> 0 on SocketChannelEndPoint@7c84d6a0{l=0.0.0.0/0.0.0.0:35372,r=/127.0.0.1:60186,CLOSED,fill=-,flush=-,to=7491/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=CLOSED,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=7,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 waiting with 2 keys
+[DEBUG] onClose FillInterest@6258fb58{null}
+[DEBUG] Wakeup ManagedSelector@72cf2de5{STARTED} id=0 keys=2 selected=0 updates=0
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 woken with none selected
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 woken up from select, 0/0/1 selected
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 processing 0 keys, 0 updates
+[DEBUG] updateable 0
+[DEBUG] updates 0
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 waiting with 1 keys
+[DEBUG] run org.eclipse.jetty.io.ManagedSelector$DestroyEndPoint@1dacc4af in QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=3,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=1/1,p=0}]
+[DEBUG] Destroyed SocketChannelEndPoint@7c84d6a0{l=0.0.0.0/0.0.0.0:35372,r=null,CLOSED,fill=-,flush=-,to=7492/30000}{io=0/0,kio=-1,kro=-1}->HttpConnection@60cb21a2[p=HttpParser{s=CLOSED,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=7,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] onClose HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=0.0.0.0/0.0.0.0:35372,r=null,CLOSED,fill=-,flush=-,to=7492/30000}{io=0/0,kio=-1,kro=-1}->HttpConnection@60cb21a2[p=HttpParser{s=CLOSED,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=7,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] ran org.eclipse.jetty.io.ManagedSelector$DestroyEndPoint@1dacc4af in QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=3,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=1/1,p=0}]
+[DEBUG] queue org.eclipse.jetty.io.ManagedSelector$DestroyEndPoint@1dacc4af startThread=0
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=0.0.0.0/0.0.0.0:35372,r=null,CLOSED,fill=-,flush=-,to=7492/30000}{io=0/0,kio=-1,kro=-1}->HttpConnection@60cb21a2[p=HttpParser{s=CLOSED,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=7,c=false/false,a=IDLE,uri=null,age=0} parsed false HttpParser{s=CLOSED,0 of -1}
+[DEBUG] releaseRequestBuffer HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=0.0.0.0/0.0.0.0:35372,r=null,CLOSED,fill=-,flush=-,to=7492/30000}{io=0/0,kio=-1,kro=-1}->HttpConnection@60cb21a2[p=HttpParser{s=CLOSED,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=7,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] shutdownOutput SocketChannelEndPoint@7c84d6a0{l=0.0.0.0/0.0.0.0:35372,r=null,CLOSED,fill=-,flush=-,to=7494/30000}{io=0/0,kio=-1,kro=-1}->HttpConnection@60cb21a2[p=HttpParser{s=CLOSED,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=7,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=0.0.0.0/0.0.0.0:35372,r=null,CLOSED,fill=-,flush=-,to=7494/30000}{io=0/0,kio=-1,kro=-1}->HttpConnection@60cb21a2[p=HttpParser{s=CLOSED,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=7,c=false/false,a=IDLE,uri=null,age=0} onFillable exit HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0} null
+[DEBUG] ReservedThreadExecutor@278bb07e{s=1/1,p=0}@ec17b69 size 1 > capacity
+[DEBUG] ran ReservedThreadExecutor@278bb07e{s=1/1,p=0}@ec17b69 in QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=4,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=1/1,p=0}]
+]]></system-out>
+  </testcase>
+  <testcase name="bookmark" classname="org.jsoup.integration.FuzzFixesTest" time="0.001"/>
+</testsuite>

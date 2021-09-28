@@ -1,0 +1,1363 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Coverage Report</title>
+<link title="Style" type="text/css" rel="stylesheet" href="css/main.css"/>
+<script type="text/javascript" src="js/popup.js"></script>
+</head>
+<body>
+<h5>Coverage Report - org.jsoup.parser.HtmlTreeBuilder</h5>
+<div class="separator">&nbsp;</div>
+<table class="report">
+<thead><tr>  <td class="heading">Classes in this File</td>  <td class="heading"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Line Coverage</a></td>  <td class="heading"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Branch Coverage</a></td>  <td class="heading"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Complexity</a></td></tr></thead>
+  <tr><td><a href="org.jsoup.parser.HtmlTreeBuilder.html">HtmlTreeBuilder</a></td><td><table cellpadding="0px" cellspacing="0px" class="percentgraph"><tr class="percentgraph"><td align="right" class="percentgraph" width="40">91%</td><td class="percentgraph"><div class="percentgraph"><div class="greenbar" style="width:91px"><span class="text">399/435</span></div></div></td></tr></table></td><td><table cellpadding="0px" cellspacing="0px" class="percentgraph"><tr class="percentgraph"><td align="right" class="percentgraph" width="40">72%</td><td class="percentgraph"><div class="percentgraph"><div class="greenbar" style="width:72px"><span class="text">229/318</span></div></div></td></tr></table></td><td class="value"><span class="hidden">2.6931818181818183;</span>2.693</td></tr>
+
+</table>
+<div class="separator">&nbsp;</div>
+<table cellspacing="0" cellpadding="0" class="src">
+<tr>  <td class="numLine">&nbsp;1</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">package</span> org.jsoup.parser;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;2</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;3</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.jsoup.helper.Validate;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;4</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.jsoup.internal.StringUtil;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;5</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.jsoup.nodes.CDataNode;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;6</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.jsoup.nodes.Comment;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;7</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.jsoup.nodes.DataNode;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;8</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.jsoup.nodes.Document;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;9</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.jsoup.nodes.Element;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;10</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.jsoup.nodes.FormElement;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;11</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.jsoup.nodes.Node;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;12</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.jsoup.nodes.TextNode;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;13</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;14</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> javax.annotation.Nullable;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;15</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> javax.annotation.ParametersAreNonnullByDefault;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;16</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.io.Reader;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;17</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.io.StringReader;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;18</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.ArrayList;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;19</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.List;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;20</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;21</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> <span class="keyword">static</span> org.jsoup.internal.StringUtil.inSorted;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;22</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> <span class="keyword">static</span> org.jsoup.parser.HtmlTreeBuilderState.Constants.InTableFoster;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;23</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;24</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">/**</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;25</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * HTML Tree Builder; creates a DOM from Tokens.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;26</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> */</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;27</td>  <td class="nbHitsCovered">&nbsp;4179</td>  <td class="src"><pre class="src">&nbsp;<span class="keyword">public</span> <span class="keyword">class</span> HtmlTreeBuilder <span class="keyword">extends</span> TreeBuilder {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;28</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">// tag searches. must be sorted, used in inSorted. HtmlTreeBuilderTest validates they're sorted.</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;29</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">static</span> <span class="keyword">final</span> String[] TagsSearchInScope = <span class="keyword">new</span> String[]{<span class="string">"applet"</span>, <span class="string">"caption"</span>, <span class="string">"html"</span>, <span class="string">"marquee"</span>, <span class="string">"object"</span>, <span class="string">"table"</span>, <span class="string">"td"</span>, <span class="string">"th"</span>};</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;30</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">static</span> <span class="keyword">final</span> String[] TagSearchList = <span class="keyword">new</span> String[]{<span class="string">"ol"</span>, <span class="string">"ul"</span>};</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;31</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">static</span> <span class="keyword">final</span> String[] TagSearchButton = <span class="keyword">new</span> String[]{<span class="string">"button"</span>};</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;32</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">static</span> <span class="keyword">final</span> String[] TagSearchTableScope = <span class="keyword">new</span> String[]{<span class="string">"html"</span>, <span class="string">"table"</span>};</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;33</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">static</span> <span class="keyword">final</span> String[] TagSearchSelectScope = <span class="keyword">new</span> String[]{<span class="string">"optgroup"</span>, <span class="string">"option"</span>};</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;34</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">static</span> <span class="keyword">final</span> String[] TagSearchEndTags = <span class="keyword">new</span> String[]{<span class="string">"dd"</span>, <span class="string">"dt"</span>, <span class="string">"li"</span>, <span class="string">"optgroup"</span>, <span class="string">"option"</span>, <span class="string">"p"</span>, <span class="string">"rb"</span>, <span class="string">"rp"</span>, <span class="string">"rt"</span>, <span class="string">"rtc"</span>};</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;35</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">static</span> <span class="keyword">final</span> String[] TagThoroughSearchEndTags = <span class="keyword">new</span> String[]{<span class="string">"caption"</span>, <span class="string">"colgroup"</span>, <span class="string">"dd"</span>, <span class="string">"dt"</span>, <span class="string">"li"</span>, <span class="string">"optgroup"</span>, <span class="string">"option"</span>, <span class="string">"p"</span>, <span class="string">"rb"</span>, <span class="string">"rp"</span>, <span class="string">"rt"</span>, <span class="string">"rtc"</span>, <span class="string">"tbody"</span>, <span class="string">"td"</span>, <span class="string">"tfoot"</span>, <span class="string">"th"</span>, <span class="string">"thead"</span>, <span class="string">"tr"</span>};</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;36</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">static</span> <span class="keyword">final</span> String[] TagSearchSpecial = <span class="keyword">new</span> String[]{<span class="string">"address"</span>, <span class="string">"applet"</span>, <span class="string">"area"</span>, <span class="string">"article"</span>, <span class="string">"aside"</span>, <span class="string">"base"</span>, <span class="string">"basefont"</span>, <span class="string">"bgsound"</span>,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;37</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"blockquote"</span>, <span class="string">"body"</span>, <span class="string">"br"</span>, <span class="string">"button"</span>, <span class="string">"caption"</span>, <span class="string">"center"</span>, <span class="string">"col"</span>, <span class="string">"colgroup"</span>, <span class="string">"command"</span>, <span class="string">"dd"</span>,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;38</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"details"</span>, <span class="string">"dir"</span>, <span class="string">"div"</span>, <span class="string">"dl"</span>, <span class="string">"dt"</span>, <span class="string">"embed"</span>, <span class="string">"fieldset"</span>, <span class="string">"figcaption"</span>, <span class="string">"figure"</span>, <span class="string">"footer"</span>, <span class="string">"form"</span>,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;39</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"frame"</span>, <span class="string">"frameset"</span>, <span class="string">"h1"</span>, <span class="string">"h2"</span>, <span class="string">"h3"</span>, <span class="string">"h4"</span>, <span class="string">"h5"</span>, <span class="string">"h6"</span>, <span class="string">"head"</span>, <span class="string">"header"</span>, <span class="string">"hgroup"</span>, <span class="string">"hr"</span>, <span class="string">"html"</span>,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;40</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"iframe"</span>, <span class="string">"img"</span>, <span class="string">"input"</span>, <span class="string">"isindex"</span>, <span class="string">"li"</span>, <span class="string">"link"</span>, <span class="string">"listing"</span>, <span class="string">"marquee"</span>, <span class="string">"menu"</span>, <span class="string">"meta"</span>, <span class="string">"nav"</span>,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;41</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"noembed"</span>, <span class="string">"noframes"</span>, <span class="string">"noscript"</span>, <span class="string">"object"</span>, <span class="string">"ol"</span>, <span class="string">"p"</span>, <span class="string">"param"</span>, <span class="string">"plaintext"</span>, <span class="string">"pre"</span>, <span class="string">"script"</span>,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;42</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"section"</span>, <span class="string">"select"</span>, <span class="string">"style"</span>, <span class="string">"summary"</span>, <span class="string">"table"</span>, <span class="string">"tbody"</span>, <span class="string">"td"</span>, <span class="string">"textarea"</span>, <span class="string">"tfoot"</span>, <span class="string">"th"</span>, <span class="string">"thead"</span>,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;43</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"title"</span>, <span class="string">"tr"</span>, <span class="string">"ul"</span>, <span class="string">"wbr"</span>, <span class="string">"xmp"</span>};</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;44</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;45</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MaxScopeSearchDepth = 100; <span class="comment">// prevents the parser bogging down in exceptionally broken pages</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;46</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;47</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> HtmlTreeBuilderState state; <span class="comment">// the current state</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;48</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> HtmlTreeBuilderState originalState; <span class="comment">// original / marked state</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;49</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;50</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">boolean</span> baseUriSetFromDoc;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;51</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> @Nullable Element headElement; <span class="comment">// the current head element</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;52</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> @Nullable FormElement formElement; <span class="comment">// the current form element</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;53</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> @Nullable Element contextElement; <span class="comment">// fragment parse context -- could be null even if fragment parsing</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;54</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> ArrayList&lt;Element&gt; formattingElements; <span class="comment">// active (open) formatting elements</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;55</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> ArrayList&lt;HtmlTreeBuilderState&gt; tmplInsertMode; <span class="comment">// stack of Template Insertion modes</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;56</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> List&lt;String&gt; pendingTableCharacters; <span class="comment">// chars in table to be shifted out</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;57</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> Token.EndTag emptyEnd; <span class="comment">// reused empty end tag</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;58</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;59</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">boolean</span> framesetOk; <span class="comment">// if ok to go into frameset</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;60</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">boolean</span> fosterInserts; <span class="comment">// if next inserts should be fostered</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;61</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">boolean</span> fragmentParsing; <span class="comment">// if parsing a fragment of html</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;62</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;63</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    ParseSettings defaultSettings() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;64</td>  <td class="nbHitsCovered">&nbsp;4119</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> ParseSettings.htmlDefault;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;65</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;66</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;67</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    @Override</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;68</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    HtmlTreeBuilder newInstance() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;69</td>  <td class="nbHitsCovered">&nbsp;14</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> <span class="keyword">new</span> HtmlTreeBuilder();</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;70</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;71</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;72</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    @Override @ParametersAreNonnullByDefault</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;73</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">protected</span> <span class="keyword">void</span> initialiseParse(Reader input, String baseUri, Parser parser) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;74</td>  <td class="nbHitsCovered">&nbsp;1249</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">super</span>.initialiseParse(input, baseUri, parser);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;75</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;76</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// this is a bit mucky. todo - probably just create new parser objects to ensure all reset.</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;77</td>  <td class="nbHitsCovered">&nbsp;1248</td>  <td class="src"><pre class="src">&nbsp;        state = HtmlTreeBuilderState.Initial;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;78</td>  <td class="nbHitsCovered">&nbsp;1248</td>  <td class="src"><pre class="src">&nbsp;        originalState = <span class="keyword">null</span>;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;79</td>  <td class="nbHitsCovered">&nbsp;1248</td>  <td class="src"><pre class="src">&nbsp;        baseUriSetFromDoc = <span class="keyword">false</span>;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;80</td>  <td class="nbHitsCovered">&nbsp;1248</td>  <td class="src"><pre class="src">&nbsp;        headElement = <span class="keyword">null</span>;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;81</td>  <td class="nbHitsCovered">&nbsp;1248</td>  <td class="src"><pre class="src">&nbsp;        formElement = <span class="keyword">null</span>;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;82</td>  <td class="nbHitsCovered">&nbsp;1248</td>  <td class="src"><pre class="src">&nbsp;        contextElement = <span class="keyword">null</span>;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;83</td>  <td class="nbHitsCovered">&nbsp;1248</td>  <td class="src"><pre class="src">&nbsp;        formattingElements = <span class="keyword">new</span> ArrayList&lt;&gt;();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;84</td>  <td class="nbHitsCovered">&nbsp;1248</td>  <td class="src"><pre class="src">&nbsp;        tmplInsertMode = <span class="keyword">new</span> ArrayList&lt;&gt;();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;85</td>  <td class="nbHitsCovered">&nbsp;1248</td>  <td class="src"><pre class="src">&nbsp;        pendingTableCharacters = <span class="keyword">new</span> ArrayList&lt;&gt;();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;86</td>  <td class="nbHitsCovered">&nbsp;1248</td>  <td class="src"><pre class="src">&nbsp;        emptyEnd = <span class="keyword">new</span> Token.EndTag();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;87</td>  <td class="nbHitsCovered">&nbsp;1248</td>  <td class="src"><pre class="src">&nbsp;        framesetOk = <span class="keyword">true</span>;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;88</td>  <td class="nbHitsCovered">&nbsp;1248</td>  <td class="src"><pre class="src">&nbsp;        fosterInserts = <span class="keyword">false</span>;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;89</td>  <td class="nbHitsCovered">&nbsp;1248</td>  <td class="src"><pre class="src">&nbsp;        fragmentParsing = <span class="keyword">false</span>;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;90</td>  <td class="nbHitsCovered">&nbsp;1248</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;91</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;92</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    List&lt;Node&gt; parseFragment(String inputFragment, @Nullable Element context, String baseUri, Parser parser) {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;93</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// context may be null</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;94</td>  <td class="nbHitsCovered">&nbsp;148</td>  <td class="src"><pre class="src">&nbsp;        state = HtmlTreeBuilderState.Initial;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;95</td>  <td class="nbHitsCovered">&nbsp;148</td>  <td class="src"><pre class="src">&nbsp;        initialiseParse(<span class="keyword">new</span> StringReader(inputFragment), baseUri, parser);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;96</td>  <td class="nbHitsCovered">&nbsp;148</td>  <td class="src"><pre class="src">&nbsp;        contextElement = context;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;97</td>  <td class="nbHitsCovered">&nbsp;148</td>  <td class="src"><pre class="src">&nbsp;        fragmentParsing = <span class="keyword">true</span>;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;98</td>  <td class="nbHitsCovered">&nbsp;148</td>  <td class="src"><pre class="src">&nbsp;        Element root = <span class="keyword">null</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;99</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;100</td>  <td class="nbHitsCovered"><a title="Line 100: Conditional coverage 100% (2/2).">&nbsp;148</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 100: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> (context != <span class="keyword">null</span>) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;101</td>  <td class="nbHitsCovered"><a title="Line 101: Conditional coverage 100% (2/2).">&nbsp;142</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 101: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (context.ownerDocument() != <span class="keyword">null</span>) <span class="comment">// quirks setup:</span></a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;102</td>  <td class="nbHitsCovered">&nbsp;135</td>  <td class="src"><pre class="src">&nbsp;                doc.quirksMode(context.ownerDocument().quirksMode());</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;103</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;104</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="comment">// initialise the tokeniser state:</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;105</td>  <td class="nbHitsCovered">&nbsp;142</td>  <td class="src"><pre class="src">&nbsp;            String contextTag = context.normalName();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;106</td>  <td class="nbHitsUncovered"><a title="Line 106: Conditional coverage 34% (14/41) [each condition: 50%, 0%, 0%, 0%, 0%, 50%, 0%, 50%, 0%, 0%, 50%, 41%, 71%].">&nbsp;142</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 106: Conditional coverage 34% (14/41) [each condition: 50%, 0%, 0%, 0%, 0%, 50%, 0%, 50%, 0%, 0%, 50%, 41%, 71%].">            <span class="keyword">switch</span> (contextTag) {</a></span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;107</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">case</span> <span class="string">"title"</span>:</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;108</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">case</span> <span class="string">"textarea"</span>:</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;109</td>  <td class="nbHitsCovered">&nbsp;2</td>  <td class="src"><pre class="src">&nbsp;                    tokeniser.transition(TokeniserState.Rcdata);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;110</td>  <td class="nbHitsCovered">&nbsp;2</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">break</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;111</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">case</span> <span class="string">"iframe"</span>:</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;112</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">case</span> <span class="string">"noembed"</span>:</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;113</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">case</span> <span class="string">"noframes"</span>:</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;114</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">case</span> <span class="string">"style"</span>:</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;115</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">case</span> <span class="string">"xml"</span>:</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;116</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;                    tokeniser.transition(TokeniserState.Rawtext);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;117</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">break</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;118</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">case</span> <span class="string">"script"</span>:</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;119</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;                    tokeniser.transition(TokeniserState.ScriptData);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;120</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">break</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;121</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">case</span> <span class="string">"noscript"</span>:</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;122</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                    tokeniser.transition(TokeniserState.Data); <span class="comment">// if scripting enabled, rawtext</span></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;123</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                    <span class="keyword">break</span>;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;124</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">case</span> <span class="string">"plaintext"</span>:</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;125</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                    tokeniser.transition(TokeniserState.PLAINTEXT);</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;126</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                    <span class="keyword">break</span>;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;127</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">case</span> <span class="string">"template"</span>:</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;128</td>  <td class="nbHitsCovered">&nbsp;2</td>  <td class="src"><pre class="src">&nbsp;                    tokeniser.transition(TokeniserState.Data);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;129</td>  <td class="nbHitsCovered">&nbsp;2</td>  <td class="src"><pre class="src">&nbsp;                    pushTemplateMode(HtmlTreeBuilderState.InTemplate);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;130</td>  <td class="nbHitsCovered">&nbsp;2</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">break</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;131</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">default</span>:</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;132</td>  <td class="nbHitsCovered">&nbsp;136</td>  <td class="src"><pre class="src">&nbsp;                    tokeniser.transition(TokeniserState.Data);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;133</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;134</td>  <td class="nbHitsCovered">&nbsp;142</td>  <td class="src"><pre class="src">&nbsp;            root = <span class="keyword">new</span> Element(tagFor(contextTag, settings), baseUri);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;135</td>  <td class="nbHitsCovered">&nbsp;142</td>  <td class="src"><pre class="src">&nbsp;            doc.appendChild(root);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;136</td>  <td class="nbHitsCovered">&nbsp;142</td>  <td class="src"><pre class="src">&nbsp;            stack.add(root);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;137</td>  <td class="nbHitsCovered">&nbsp;142</td>  <td class="src"><pre class="src">&nbsp;            resetInsertionMode();</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;138</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;139</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="comment">// setup form element to nearest form on context (up ancestor chain). ensures form controls are associated</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;140</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="comment">// with form correctly</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;141</td>  <td class="nbHitsCovered">&nbsp;142</td>  <td class="src"><pre class="src">&nbsp;            Element formSearch = context;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;142</td>  <td class="nbHitsCovered"><a title="Line 142: Conditional coverage 100% (2/2).">&nbsp;603</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 142: Conditional coverage 100% (2/2).">            <span class="keyword">while</span> (formSearch != <span class="keyword">null</span>) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;143</td>  <td class="nbHitsCovered"><a title="Line 143: Conditional coverage 100% (2/2).">&nbsp;462</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 143: Conditional coverage 100% (2/2).">                <span class="keyword">if</span> (formSearch <span class="keyword">instanceof</span> FormElement) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;144</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;                    formElement = (FormElement) formSearch;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;145</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">break</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;146</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;147</td>  <td class="nbHitsCovered">&nbsp;461</td>  <td class="src"><pre class="src">&nbsp;                formSearch = formSearch.parent();</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;148</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;149</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;150</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;151</td>  <td class="nbHitsCovered">&nbsp;148</td>  <td class="src"><pre class="src">&nbsp;        runParser();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;152</td>  <td class="nbHitsCovered"><a title="Line 152: Conditional coverage 100% (2/2).">&nbsp;148</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 152: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> (context != <span class="keyword">null</span>) {</a></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;153</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="comment">// depending on context and the input html, content may have been added outside of the root el</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;154</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="comment">// e.g. context=p, input=div, the div will have been pushed out.</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;155</td>  <td class="nbHitsCovered">&nbsp;142</td>  <td class="src"><pre class="src">&nbsp;            List&lt;Node&gt; nodes = root.siblingNodes();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;156</td>  <td class="nbHitsCovered"><a title="Line 156: Conditional coverage 100% (2/2).">&nbsp;142</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 156: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (!nodes.isEmpty())</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;157</td>  <td class="nbHitsCovered">&nbsp;4</td>  <td class="src"><pre class="src">&nbsp;                root.insertChildren(-1, nodes);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;158</td>  <td class="nbHitsCovered">&nbsp;142</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> root.childNodes();</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;159</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;160</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">else</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;161</td>  <td class="nbHitsCovered">&nbsp;6</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> doc.childNodes();</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;162</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;163</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;164</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    @Override</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;165</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">protected</span> <span class="keyword">boolean</span> process(Token token) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;166</td>  <td class="nbHitsCovered">&nbsp;1459590</td>  <td class="src"><pre class="src">&nbsp;        currentToken = token;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;167</td>  <td class="nbHitsCovered">&nbsp;1459590</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> <span class="keyword">this</span>.state.process(token, <span class="keyword">this</span>);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;168</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;169</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;170</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">boolean</span> process(Token token, HtmlTreeBuilderState state) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;171</td>  <td class="nbHitsCovered">&nbsp;546559</td>  <td class="src"><pre class="src">&nbsp;        currentToken = token;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;172</td>  <td class="nbHitsCovered">&nbsp;546559</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> state.process(token, <span class="keyword">this</span>);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;173</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;174</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;175</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> transition(HtmlTreeBuilderState state) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;176</td>  <td class="nbHitsCovered">&nbsp;37961</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.state = state;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;177</td>  <td class="nbHitsCovered">&nbsp;37961</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;178</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;179</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    HtmlTreeBuilderState state() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;180</td>  <td class="nbHitsCovered">&nbsp;3978</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> state;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;181</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;182</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;183</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> markInsertionMode() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;184</td>  <td class="nbHitsCovered">&nbsp;3253</td>  <td class="src"><pre class="src">&nbsp;        originalState = state;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;185</td>  <td class="nbHitsCovered">&nbsp;3253</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;186</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;187</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    HtmlTreeBuilderState originalState() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;188</td>  <td class="nbHitsCovered">&nbsp;3253</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> originalState;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;189</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;190</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;191</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> framesetOk(<span class="keyword">boolean</span> framesetOk) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;192</td>  <td class="nbHitsCovered">&nbsp;188198</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.framesetOk = framesetOk;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;193</td>  <td class="nbHitsCovered">&nbsp;188198</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;194</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;195</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">boolean</span> framesetOk() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;196</td>  <td class="nbHitsCovered">&nbsp;143052</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> framesetOk;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;197</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;198</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;199</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    Document getDocument() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;200</td>  <td class="nbHitsCovered">&nbsp;4288</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> doc;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;201</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;202</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;203</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    String getBaseUri() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;204</td>  <td class="nbHitsCovered">&nbsp;55</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> baseUri;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;205</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;206</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;207</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> maybeSetBaseUri(Element base) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;208</td>  <td class="nbHitsCovered"><a title="Line 208: Conditional coverage 100% (2/2).">&nbsp;6</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 208: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> (baseUriSetFromDoc) <span class="comment">// only listen to the first &lt;base href&gt; in parse</span></a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;209</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;210</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;211</td>  <td class="nbHitsCovered">&nbsp;5</td>  <td class="src"><pre class="src">&nbsp;        String href = base.absUrl(<span class="string">"href"</span>);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;212</td>  <td class="nbHitsUncovered"><a title="Line 212: Conditional coverage 50% (1/2).">&nbsp;5</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 212: Conditional coverage 50% (1/2).">        <span class="keyword">if</span> (href.length() != 0) { <span class="comment">// ignore &lt;base target&gt; etc</span></a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;213</td>  <td class="nbHitsCovered">&nbsp;5</td>  <td class="src"><pre class="src">&nbsp;            baseUri = href;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;214</td>  <td class="nbHitsCovered">&nbsp;5</td>  <td class="src"><pre class="src">&nbsp;            baseUriSetFromDoc = <span class="keyword">true</span>;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;215</td>  <td class="nbHitsCovered">&nbsp;5</td>  <td class="src"><pre class="src">&nbsp;            doc.setBaseUri(href); <span class="comment">// set on the doc so doc.createElement(Tag) will get updated base, and to update all descendants</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;216</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;217</td>  <td class="nbHitsCovered">&nbsp;5</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;218</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;219</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">boolean</span> isFragmentParsing() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;220</td>  <td class="nbHitsCovered">&nbsp;134</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> fragmentParsing;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;221</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;222</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;223</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> error(HtmlTreeBuilderState state) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;224</td>  <td class="nbHitsCovered"><a title="Line 224: Conditional coverage 100% (2/2).">&nbsp;701760</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 224: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> (parser.getErrors().canAddError())</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;225</td>  <td class="nbHitsCovered">&nbsp;12</td>  <td class="src"><pre class="src">&nbsp;            parser.getErrors().add(<span class="keyword">new</span> ParseError(reader, <span class="string">"Unexpected %s token [%s] when in state [%s]"</span>,</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;226</td>  <td class="nbHitsCovered">&nbsp;6</td>  <td class="src"><pre class="src">&nbsp;                currentToken.tokenType(), currentToken, state));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;227</td>  <td class="nbHitsCovered">&nbsp;701760</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;228</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;229</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    Element insert(<span class="keyword">final</span> Token.StartTag startTag) {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;230</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// cleanup duplicate attributes:</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;231</td>  <td class="nbHitsCovered"><a title="Line 231: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">&nbsp;1073932</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 231: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">        <span class="keyword">if</span> (startTag.hasAttributes() &amp;&amp; !startTag.attributes.isEmpty()) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;232</td>  <td class="nbHitsCovered">&nbsp;14347</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">int</span> dupes = startTag.attributes.deduplicate(settings);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;233</td>  <td class="nbHitsCovered"><a title="Line 233: Conditional coverage 100% (2/2).">&nbsp;14347</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 233: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (dupes &gt; 0) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;234</td>  <td class="nbHitsCovered">&nbsp;24</td>  <td class="src"><pre class="src">&nbsp;                error(<span class="string">"Dropped duplicate attribute(s) in tag [%s]"</span>, startTag.normalName);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;235</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;236</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;237</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;238</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// handle empty unknown tags</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;239</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// when the spec expects an empty tag, will directly hit insertEmpty, so won't generate this fake end tag.</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;240</td>  <td class="nbHitsCovered"><a title="Line 240: Conditional coverage 100% (2/2).">&nbsp;1073932</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 240: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> (startTag.isSelfClosing()) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;241</td>  <td class="nbHitsCovered">&nbsp;3953</td>  <td class="src"><pre class="src">&nbsp;            Element el = insertEmpty(startTag);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;242</td>  <td class="nbHitsCovered">&nbsp;3953</td>  <td class="src"><pre class="src">&nbsp;            stack.add(el);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;243</td>  <td class="nbHitsCovered">&nbsp;3953</td>  <td class="src"><pre class="src">&nbsp;            tokeniser.transition(TokeniserState.Data); <span class="comment">// handles &lt;script /&gt;, otherwise needs breakout steps from script data</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;244</td>  <td class="nbHitsCovered">&nbsp;3953</td>  <td class="src"><pre class="src">&nbsp;            tokeniser.emit(emptyEnd.reset().name(el.tagName()));  <span class="comment">// ensure we get out of whatever state we are in. emitted for yielded processing</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;245</td>  <td class="nbHitsCovered">&nbsp;3953</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> el;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;246</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;247</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;248</td>  <td class="nbHitsCovered">&nbsp;1069979</td>  <td class="src"><pre class="src">&nbsp;        Element el = <span class="keyword">new</span> Element(tagFor(startTag.name(), settings), <span class="keyword">null</span>, settings.normalizeAttributes(startTag.attributes));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;249</td>  <td class="nbHitsCovered">&nbsp;1069979</td>  <td class="src"><pre class="src">&nbsp;        insert(el);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;250</td>  <td class="nbHitsCovered">&nbsp;1069979</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> el;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;251</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;252</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;253</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    Element insertStartTag(String startTagName) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;254</td>  <td class="nbHitsCovered">&nbsp;13789</td>  <td class="src"><pre class="src">&nbsp;        Element el = <span class="keyword">new</span> Element(tagFor(startTagName, settings), <span class="keyword">null</span>);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;255</td>  <td class="nbHitsCovered">&nbsp;13789</td>  <td class="src"><pre class="src">&nbsp;        insert(el);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;256</td>  <td class="nbHitsCovered">&nbsp;13789</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> el;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;257</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;258</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;259</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> insert(Element el) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;260</td>  <td class="nbHitsCovered">&nbsp;1083768</td>  <td class="src"><pre class="src">&nbsp;        insertNode(el);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;261</td>  <td class="nbHitsCovered">&nbsp;1083768</td>  <td class="src"><pre class="src">&nbsp;        stack.add(el);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;262</td>  <td class="nbHitsCovered">&nbsp;1083768</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;263</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;264</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    Element insertEmpty(Token.StartTag startTag) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;265</td>  <td class="nbHitsCovered">&nbsp;32141</td>  <td class="src"><pre class="src">&nbsp;        Tag tag = tagFor(startTag.name(), settings);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;266</td>  <td class="nbHitsCovered">&nbsp;32141</td>  <td class="src"><pre class="src">&nbsp;        Element el = <span class="keyword">new</span> Element(tag, <span class="keyword">null</span>, settings.normalizeAttributes(startTag.attributes));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;267</td>  <td class="nbHitsCovered">&nbsp;32141</td>  <td class="src"><pre class="src">&nbsp;        insertNode(el);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;268</td>  <td class="nbHitsCovered"><a title="Line 268: Conditional coverage 100% (2/2).">&nbsp;32141</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 268: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> (startTag.isSelfClosing()) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;269</td>  <td class="nbHitsCovered"><a title="Line 269: Conditional coverage 100% (2/2).">&nbsp;4707</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 269: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (tag.isKnownTag()) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;270</td>  <td class="nbHitsCovered"><a title="Line 270: Conditional coverage 100% (2/2).">&nbsp;4626</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 270: Conditional coverage 100% (2/2).">                <span class="keyword">if</span> (!tag.isEmpty())</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;271</td>  <td class="nbHitsCovered">&nbsp;3872</td>  <td class="src"><pre class="src">&nbsp;                    tokeniser.error(<span class="string">"Tag [%s] cannot be self closing; not a void tag"</span>, tag.normalName());</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;272</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;273</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">else</span> <span class="comment">// unknown tag, remember this is self closing for output</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;274</td>  <td class="nbHitsCovered">&nbsp;81</td>  <td class="src"><pre class="src">&nbsp;                tag.setSelfClosing();</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;275</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;276</td>  <td class="nbHitsCovered">&nbsp;32141</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> el;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;277</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;278</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;279</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    FormElement insertForm(Token.StartTag startTag, <span class="keyword">boolean</span> onStack, <span class="keyword">boolean</span> checkTemplateStack) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;280</td>  <td class="nbHitsCovered">&nbsp;89</td>  <td class="src"><pre class="src">&nbsp;        Tag tag = tagFor(startTag.name(), settings);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;281</td>  <td class="nbHitsCovered">&nbsp;89</td>  <td class="src"><pre class="src">&nbsp;        FormElement el = <span class="keyword">new</span> FormElement(tag, <span class="keyword">null</span>, settings.normalizeAttributes(startTag.attributes));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;282</td>  <td class="nbHitsCovered"><a title="Line 282: Conditional coverage 100% (2/2).">&nbsp;89</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 282: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> (checkTemplateStack) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;283</td>  <td class="nbHitsCovered"><a title="Line 283: Conditional coverage 100% (2/2).">&nbsp;80</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 283: Conditional coverage 100% (2/2).">            <span class="keyword">if</span>(!onStack(<span class="string">"template"</span>))</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;284</td>  <td class="nbHitsCovered">&nbsp;79</td>  <td class="src"><pre class="src">&nbsp;                setFormElement(el);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;285</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        } <span class="keyword">else</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;286</td>  <td class="nbHitsCovered">&nbsp;9</td>  <td class="src"><pre class="src">&nbsp;            setFormElement(el);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;287</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;288</td>  <td class="nbHitsCovered">&nbsp;89</td>  <td class="src"><pre class="src">&nbsp;        insertNode(el);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;289</td>  <td class="nbHitsCovered"><a title="Line 289: Conditional coverage 100% (2/2).">&nbsp;89</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 289: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> (onStack)</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;290</td>  <td class="nbHitsCovered">&nbsp;80</td>  <td class="src"><pre class="src">&nbsp;            stack.add(el);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;291</td>  <td class="nbHitsCovered">&nbsp;89</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> el;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;292</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;293</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;294</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> insert(Token.Comment commentToken) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;295</td>  <td class="nbHitsCovered">&nbsp;3117</td>  <td class="src"><pre class="src">&nbsp;        Comment comment = <span class="keyword">new</span> Comment(commentToken.getData());</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;296</td>  <td class="nbHitsCovered">&nbsp;3117</td>  <td class="src"><pre class="src">&nbsp;        insertNode(comment);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;297</td>  <td class="nbHitsCovered">&nbsp;3117</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;298</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;299</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> insert(Token.Character characterToken) {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;300</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">final</span> Node node;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;301</td>  <td class="nbHitsCovered">&nbsp;148914</td>  <td class="src"><pre class="src">&nbsp;        Element el = currentElement(); <span class="comment">// will be doc if no current element; allows for whitespace to be inserted into the doc root object (not on the stack)</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;302</td>  <td class="nbHitsCovered">&nbsp;148914</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">final</span> String tagName = el.normalName();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;303</td>  <td class="nbHitsCovered">&nbsp;148914</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">final</span> String data = characterToken.getData();</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;304</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;305</td>  <td class="nbHitsCovered"><a title="Line 305: Conditional coverage 100% (2/2).">&nbsp;148914</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 305: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> (characterToken.isCData())</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;306</td>  <td class="nbHitsCovered">&nbsp;9</td>  <td class="src"><pre class="src">&nbsp;            node = <span class="keyword">new</span> CDataNode(data);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;307</td>  <td class="nbHitsCovered"><a title="Line 307: Conditional coverage 100% (2/2).">&nbsp;148905</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 307: Conditional coverage 100% (2/2).">        <span class="keyword">else</span> <span class="keyword">if</span> (isContentForTagData(tagName))</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;308</td>  <td class="nbHitsCovered">&nbsp;268</td>  <td class="src"><pre class="src">&nbsp;            node = <span class="keyword">new</span> DataNode(data);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;309</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">else</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;310</td>  <td class="nbHitsCovered">&nbsp;148637</td>  <td class="src"><pre class="src">&nbsp;            node = <span class="keyword">new</span> TextNode(data);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;311</td>  <td class="nbHitsCovered">&nbsp;148914</td>  <td class="src"><pre class="src">&nbsp;        el.appendChild(node); <span class="comment">// doesn't use insertNode, because we don't foster these; and will always have a stack.</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;312</td>  <td class="nbHitsCovered">&nbsp;148914</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;313</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;314</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">void</span> insertNode(Node node) {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;315</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// if the stack hasn't been set up yet, elements (doctype, comments) go into the doc</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;316</td>  <td class="nbHitsCovered"><a title="Line 316: Conditional coverage 100% (2/2).">&nbsp;1119115</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 316: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> (stack.isEmpty())</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;317</td>  <td class="nbHitsCovered">&nbsp;1130</td>  <td class="src"><pre class="src">&nbsp;            doc.appendChild(node);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;318</td>  <td class="nbHitsCovered"><a title="Line 318: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">&nbsp;1117985</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 318: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">        <span class="keyword">else</span> <span class="keyword">if</span> (isFosterInserts() &amp;&amp; StringUtil.inSorted(currentElement().normalName(), InTableFoster))</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;319</td>  <td class="nbHitsCovered">&nbsp;107</td>  <td class="src"><pre class="src">&nbsp;            insertInFosterParent(node);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;320</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">else</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;321</td>  <td class="nbHitsCovered">&nbsp;1117878</td>  <td class="src"><pre class="src">&nbsp;            currentElement().appendChild(node);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;322</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;323</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// connect form controls to their form element</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;324</td>  <td class="nbHitsCovered"><a title="Line 324: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">&nbsp;1119115</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 324: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">        <span class="keyword">if</span> (node <span class="keyword">instanceof</span> Element &amp;&amp; ((Element) node).tag().isFormListed()) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;325</td>  <td class="nbHitsCovered"><a title="Line 325: Conditional coverage 100% (2/2).">&nbsp;5794</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 325: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (formElement != <span class="keyword">null</span>)</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;326</td>  <td class="nbHitsCovered">&nbsp;266</td>  <td class="src"><pre class="src">&nbsp;                formElement.addElement((Element) node);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;327</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;328</td>  <td class="nbHitsCovered">&nbsp;1119115</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;329</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;330</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    Element pop() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;331</td>  <td class="nbHitsCovered">&nbsp;4404</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> size = stack.size();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;332</td>  <td class="nbHitsCovered">&nbsp;4404</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> stack.remove(size-1);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;333</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;334</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;335</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> push(Element element) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;336</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        stack.add(element);</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;337</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    }</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;338</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;339</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    ArrayList&lt;Element&gt; getStack() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;340</td>  <td class="nbHitsCovered">&nbsp;116920</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> stack;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;341</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;342</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;343</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">boolean</span> onStack(Element el) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;344</td>  <td class="nbHitsCovered">&nbsp;303295</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> onStack(stack, el);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;345</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;346</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;347</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">boolean</span> onStack(String elName) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;348</td>  <td class="nbHitsCovered"><a title="Line 348: Conditional coverage 100% (2/2).">&nbsp;3290</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 348: Conditional coverage 100% (2/2).">        <span class="keyword">return</span> getFromStack(elName) != <span class="keyword">null</span>;</a></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;349</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;350</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;351</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> maxQueueDepth = 256; <span class="comment">// an arbitrary tension point between real HTML and crafted pain</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;352</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> onStack(ArrayList&lt;Element&gt; queue, Element element) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;353</td>  <td class="nbHitsCovered">&nbsp;303362</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">final</span> <span class="keyword">int</span> bottom = queue.size() - 1;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;354</td>  <td class="nbHitsCovered"><a title="Line 354: Conditional coverage 100% (2/2).">&nbsp;303362</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 354: Conditional coverage 100% (2/2).">        <span class="keyword">final</span> <span class="keyword">int</span> upper = bottom &gt;= maxQueueDepth ? bottom - maxQueueDepth : 0;</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;355</td>  <td class="nbHitsCovered"><a title="Line 355: Conditional coverage 100% (2/2).">&nbsp;8328608</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 355: Conditional coverage 100% (2/2).">        <span class="keyword">for</span> (<span class="keyword">int</span> pos = bottom; pos &gt;= upper; pos--) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;356</td>  <td class="nbHitsCovered">&nbsp;8315645</td>  <td class="src"><pre class="src">&nbsp;            Element next = queue.get(pos);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;357</td>  <td class="nbHitsCovered"><a title="Line 357: Conditional coverage 100% (2/2).">&nbsp;8315645</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 357: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (next == element) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;358</td>  <td class="nbHitsCovered">&nbsp;290399</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> <span class="keyword">true</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;359</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;360</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;361</td>  <td class="nbHitsCovered">&nbsp;12963</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> <span class="keyword">false</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;362</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;363</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;364</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    @Nullable</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;365</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    Element getFromStack(String elName) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;366</td>  <td class="nbHitsCovered">&nbsp;103820</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">final</span> <span class="keyword">int</span> bottom = stack.size() - 1;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;367</td>  <td class="nbHitsCovered"><a title="Line 367: Conditional coverage 100% (2/2).">&nbsp;103820</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 367: Conditional coverage 100% (2/2).">        <span class="keyword">final</span> <span class="keyword">int</span> upper = bottom &gt;= maxQueueDepth ? bottom - maxQueueDepth : 0;</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;368</td>  <td class="nbHitsCovered"><a title="Line 368: Conditional coverage 100% (2/2).">&nbsp;5076309</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 368: Conditional coverage 100% (2/2).">        <span class="keyword">for</span> (<span class="keyword">int</span> pos = bottom; pos &gt;= upper; pos--) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;369</td>  <td class="nbHitsCovered">&nbsp;4989007</td>  <td class="src"><pre class="src">&nbsp;            Element next = stack.get(pos);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;370</td>  <td class="nbHitsCovered"><a title="Line 370: Conditional coverage 100% (2/2).">&nbsp;4989007</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 370: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (next.normalName().equals(elName)) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;371</td>  <td class="nbHitsCovered">&nbsp;16518</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> next;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;372</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;373</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;374</td>  <td class="nbHitsCovered">&nbsp;87302</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> <span class="keyword">null</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;375</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;376</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;377</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">boolean</span> removeFromStack(Element el) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;378</td>  <td class="nbHitsCovered"><a title="Line 378: Conditional coverage 100% (2/2).">&nbsp;33002</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 378: Conditional coverage 100% (2/2).">        <span class="keyword">for</span> (<span class="keyword">int</span> pos = stack.size() -1; pos &gt;= 0; pos--) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;379</td>  <td class="nbHitsCovered">&nbsp;32990</td>  <td class="src"><pre class="src">&nbsp;            Element next = stack.get(pos);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;380</td>  <td class="nbHitsCovered"><a title="Line 380: Conditional coverage 100% (2/2).">&nbsp;32990</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 380: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (next == el) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;381</td>  <td class="nbHitsCovered">&nbsp;304</td>  <td class="src"><pre class="src">&nbsp;                stack.remove(pos);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;382</td>  <td class="nbHitsCovered">&nbsp;304</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> <span class="keyword">true</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;383</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;384</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;385</td>  <td class="nbHitsCovered">&nbsp;12</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> <span class="keyword">false</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;386</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;387</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;388</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    @Nullable</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;389</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    Element popStackToClose(String elName) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;390</td>  <td class="nbHitsUncovered"><a title="Line 390: Conditional coverage 50% (1/2).">&nbsp;144241</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 390: Conditional coverage 50% (1/2).">        <span class="keyword">for</span> (<span class="keyword">int</span> pos = stack.size() -1; pos &gt;= 0; pos--) {</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;391</td>  <td class="nbHitsCovered">&nbsp;144241</td>  <td class="src"><pre class="src">&nbsp;            Element el = stack.get(pos);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;392</td>  <td class="nbHitsCovered">&nbsp;144241</td>  <td class="src"><pre class="src">&nbsp;            stack.remove(pos);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;393</td>  <td class="nbHitsCovered"><a title="Line 393: Conditional coverage 100% (2/2).">&nbsp;144241</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 393: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (el.normalName().equals(elName))</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;394</td>  <td class="nbHitsCovered">&nbsp;109645</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> el;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;395</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;396</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">return</span> <span class="keyword">null</span>;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;397</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;398</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;399</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">// elnames is sorted, comes from Constants</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;400</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> popStackToClose(String... elNames) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;401</td>  <td class="nbHitsUncovered"><a title="Line 401: Conditional coverage 50% (1/2).">&nbsp;444</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 401: Conditional coverage 50% (1/2).">        <span class="keyword">for</span> (<span class="keyword">int</span> pos = stack.size() -1; pos &gt;= 0; pos--) {</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;402</td>  <td class="nbHitsCovered">&nbsp;444</td>  <td class="src"><pre class="src">&nbsp;            Element next = stack.get(pos);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;403</td>  <td class="nbHitsCovered">&nbsp;444</td>  <td class="src"><pre class="src">&nbsp;            stack.remove(pos);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;404</td>  <td class="nbHitsUncovered"><a title="Line 404: Conditional coverage 50% (1/2).">&nbsp;444</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 404: Conditional coverage 50% (1/2).">            <span class="keyword">if</span> (inSorted(next.normalName(), elNames))</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;405</td>  <td class="nbHitsCovered">&nbsp;444</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">break</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;406</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;407</td>  <td class="nbHitsCovered">&nbsp;444</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;408</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;409</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> popStackToBefore(String elName) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;410</td>  <td class="nbHitsUncovered"><a title="Line 410: Conditional coverage 0% (0/2).">&nbsp;0</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 410: Conditional coverage 0% (0/2).">        <span class="keyword">for</span> (<span class="keyword">int</span> pos = stack.size() -1; pos &gt;= 0; pos--) {</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;411</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            Element next = stack.get(pos);</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;412</td>  <td class="nbHitsUncovered"><a title="Line 412: Conditional coverage 0% (0/2).">&nbsp;0</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 412: Conditional coverage 0% (0/2).">            <span class="keyword">if</span> (next.normalName().equals(elName)) {</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;413</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">break</span>;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;414</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            } <span class="keyword">else</span> {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;415</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                stack.remove(pos);</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;416</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;417</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;418</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    }</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;419</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;420</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> clearStackToTableContext() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;421</td>  <td class="nbHitsCovered">&nbsp;355</td>  <td class="src"><pre class="src">&nbsp;        clearStackToContext(<span class="string">"table"</span>, <span class="string">"template"</span>);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;422</td>  <td class="nbHitsCovered">&nbsp;355</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;423</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;424</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> clearStackToTableBodyContext() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;425</td>  <td class="nbHitsCovered">&nbsp;771</td>  <td class="src"><pre class="src">&nbsp;        clearStackToContext(<span class="string">"tbody"</span>, <span class="string">"tfoot"</span>, <span class="string">"thead"</span>, <span class="string">"template"</span>);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;426</td>  <td class="nbHitsCovered">&nbsp;771</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;427</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;428</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> clearStackToTableRowContext() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;429</td>  <td class="nbHitsCovered">&nbsp;2349</td>  <td class="src"><pre class="src">&nbsp;        clearStackToContext(<span class="string">"tr"</span>, <span class="string">"template"</span>);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;430</td>  <td class="nbHitsCovered">&nbsp;2349</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;431</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;432</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">void</span> clearStackToContext(String... nodeNames) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;433</td>  <td class="nbHitsCovered"><a title="Line 433: Conditional coverage 100% (2/2).">&nbsp;518728</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 433: Conditional coverage 100% (2/2).">        <span class="keyword">for</span> (<span class="keyword">int</span> pos = stack.size() -1; pos &gt;= 0; pos--) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;434</td>  <td class="nbHitsCovered">&nbsp;518727</td>  <td class="src"><pre class="src">&nbsp;            Element next = stack.get(pos);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;435</td>  <td class="nbHitsUncovered"><a title="Line 435: Conditional coverage 75% (3/4) [each condition: 100%, 50%].">&nbsp;518727</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 435: Conditional coverage 75% (3/4) [each condition: 100%, 50%].">            <span class="keyword">if</span> (StringUtil.in(next.normalName(), nodeNames) || next.normalName().equals(<span class="string">"html"</span>))</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;436</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">break</span>;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;437</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">else</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;438</td>  <td class="nbHitsCovered">&nbsp;515253</td>  <td class="src"><pre class="src">&nbsp;                stack.remove(pos);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;439</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;440</td>  <td class="nbHitsCovered">&nbsp;3475</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;441</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;442</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    @Nullable Element aboveOnStack(Element el) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;443</td>  <td class="nbHitsUncovered"><a title="Line 443: Conditional coverage 50% (2/4) [each condition: 50%, 50%].">&nbsp;55</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 443: Conditional coverage 50% (2/4) [each condition: 50%, 50%].">        <span class="keyword">assert</span> onStack(el);</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;444</td>  <td class="nbHitsUncovered"><a title="Line 444: Conditional coverage 50% (1/2).">&nbsp;359</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 444: Conditional coverage 50% (1/2).">        <span class="keyword">for</span> (<span class="keyword">int</span> pos = stack.size() -1; pos &gt;= 0; pos--) {</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;445</td>  <td class="nbHitsCovered">&nbsp;359</td>  <td class="src"><pre class="src">&nbsp;            Element next = stack.get(pos);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;446</td>  <td class="nbHitsCovered"><a title="Line 446: Conditional coverage 100% (2/2).">&nbsp;359</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 446: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (next == el) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;447</td>  <td class="nbHitsCovered">&nbsp;55</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> stack.get(pos-1);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;448</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;449</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;450</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">return</span> <span class="keyword">null</span>;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;451</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;452</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;453</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> insertOnStackAfter(Element after, Element in) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;454</td>  <td class="nbHitsCovered">&nbsp;39</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> i = stack.lastIndexOf(after);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;455</td>  <td class="nbHitsUncovered"><a title="Line 455: Conditional coverage 50% (1/2).">&nbsp;39</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 455: Conditional coverage 50% (1/2).">        Validate.isTrue(i != -1);</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;456</td>  <td class="nbHitsCovered">&nbsp;39</td>  <td class="src"><pre class="src">&nbsp;        stack.add(i+1, in);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;457</td>  <td class="nbHitsCovered">&nbsp;39</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;458</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;459</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> replaceOnStack(Element out, Element in) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;460</td>  <td class="nbHitsCovered">&nbsp;16</td>  <td class="src"><pre class="src">&nbsp;        replaceInQueue(stack, out, in);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;461</td>  <td class="nbHitsCovered">&nbsp;16</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;462</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;463</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">void</span> replaceInQueue(ArrayList&lt;Element&gt; queue, Element out, Element in) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;464</td>  <td class="nbHitsCovered">&nbsp;32</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> i = queue.lastIndexOf(out);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;465</td>  <td class="nbHitsUncovered"><a title="Line 465: Conditional coverage 50% (1/2).">&nbsp;32</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 465: Conditional coverage 50% (1/2).">        Validate.isTrue(i != -1);</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;466</td>  <td class="nbHitsCovered">&nbsp;32</td>  <td class="src"><pre class="src">&nbsp;        queue.set(i, in);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;467</td>  <td class="nbHitsCovered">&nbsp;32</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;468</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;469</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> resetInsertionMode() {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;470</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// https://html.spec.whatwg.org/multipage/parsing.html#the-insertion-mode</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;471</td>  <td class="nbHitsCovered">&nbsp;7957</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">boolean</span> last = <span class="keyword">false</span>;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;472</td>  <td class="nbHitsCovered">&nbsp;7957</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">final</span> <span class="keyword">int</span> bottom = stack.size() - 1;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;473</td>  <td class="nbHitsCovered"><a title="Line 473: Conditional coverage 100% (2/2).">&nbsp;7957</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 473: Conditional coverage 100% (2/2).">        <span class="keyword">final</span> <span class="keyword">int</span> upper = bottom &gt;= maxQueueDepth ? bottom - maxQueueDepth : 0;</a></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;474</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;475</td>  <td class="nbHitsUncovered"><a title="Line 475: Conditional coverage 50% (1/2).">&nbsp;7957</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 475: Conditional coverage 50% (1/2).">        <span class="keyword">if</span> (stack.size() == 0) { <span class="comment">// nothing left of stack, just get to body</span></a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;476</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            transition(HtmlTreeBuilderState.InBody);</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;477</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;478</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;479</td>  <td class="nbHitsUncovered"><a title="Line 479: Conditional coverage 50% (1/2).">&nbsp;1895613</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 479: Conditional coverage 50% (1/2).">        LOOP: <span class="keyword">for</span> (<span class="keyword">int</span> pos = bottom; pos &gt;= upper; pos--) {</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;480</td>  <td class="nbHitsCovered">&nbsp;1895613</td>  <td class="src"><pre class="src">&nbsp;            Element node = stack.get(pos);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;481</td>  <td class="nbHitsCovered"><a title="Line 481: Conditional coverage 100% (2/2).">&nbsp;1895613</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 481: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (pos == upper) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;482</td>  <td class="nbHitsCovered">&nbsp;7343</td>  <td class="src"><pre class="src">&nbsp;                last = <span class="keyword">true</span>;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;483</td>  <td class="nbHitsCovered"><a title="Line 483: Conditional coverage 100% (2/2).">&nbsp;7343</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 483: Conditional coverage 100% (2/2).">                <span class="keyword">if</span> (fragmentParsing)</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;484</td>  <td class="nbHitsCovered">&nbsp;146</td>  <td class="src"><pre class="src">&nbsp;                    node = contextElement;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;485</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;486</td>  <td class="nbHitsUncovered"><a title="Line 486: Conditional coverage 50% (1/2).">&nbsp;1895613</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 486: Conditional coverage 50% (1/2).">            String name = node != <span class="keyword">null</span> ? node.normalName() : <span class="string">""</span>;</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;487</td>  <td class="nbHitsUncovered"><a title="Line 487: Conditional coverage 50% (30/59) [each condition: 0%, 50%, 50%, 50%, 50%, 50%, 0%, 50%, 0%, 50%, 50%, 50%, 50%, 0%, 0%, 68%, 69%].">&nbsp;1895613</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 487: Conditional coverage 50% (30/59) [each condition: 0%, 50%, 50%, 50%, 50%, 50%, 0%, 50%, 0%, 50%, 50%, 50%, 50%, 0%, 0%, 68%, 69%].">            <span class="keyword">switch</span> (name) {</a></span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;488</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">case</span> <span class="string">"select"</span>:</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;489</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                    transition(HtmlTreeBuilderState.InSelect);</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;490</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                    <span class="comment">// todo - should loop up (with some limit) and check for table or template hits</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;491</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                    <span class="keyword">break</span> LOOP;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;492</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">case</span> <span class="string">"td"</span>:</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;493</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">case</span> <span class="string">"th"</span>:</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;494</td>  <td class="nbHitsUncovered"><a title="Line 494: Conditional coverage 50% (1/2).">&nbsp;111</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 494: Conditional coverage 50% (1/2).">                    <span class="keyword">if</span> (!last) {</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;495</td>  <td class="nbHitsCovered">&nbsp;111</td>  <td class="src"><pre class="src">&nbsp;                        transition(HtmlTreeBuilderState.InCell);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;496</td>  <td class="nbHitsCovered">&nbsp;111</td>  <td class="src"><pre class="src">&nbsp;                        <span class="keyword">break</span> LOOP;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;497</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;498</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">break</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;499</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">case</span> <span class="string">"tr"</span>:</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;500</td>  <td class="nbHitsCovered">&nbsp;6</td>  <td class="src"><pre class="src">&nbsp;                    transition(HtmlTreeBuilderState.InRow);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;501</td>  <td class="nbHitsCovered">&nbsp;6</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">break</span> LOOP;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;502</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">case</span> <span class="string">"tbody"</span>:</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;503</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">case</span> <span class="string">"thead"</span>:</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;504</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">case</span> <span class="string">"tfoot"</span>:</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;505</td>  <td class="nbHitsCovered">&nbsp;11</td>  <td class="src"><pre class="src">&nbsp;                    transition(HtmlTreeBuilderState.InTableBody);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;506</td>  <td class="nbHitsCovered">&nbsp;11</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">break</span> LOOP;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;507</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">case</span> <span class="string">"caption"</span>:</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;508</td>  <td class="nbHitsCovered">&nbsp;245</td>  <td class="src"><pre class="src">&nbsp;                    transition(HtmlTreeBuilderState.InCaption);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;509</td>  <td class="nbHitsCovered">&nbsp;245</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">break</span> LOOP;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;510</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">case</span> <span class="string">"colgroup"</span>:</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;511</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                    transition(HtmlTreeBuilderState.InColumnGroup);</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;512</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                    <span class="keyword">break</span> LOOP;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;513</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">case</span> <span class="string">"table"</span>:</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;514</td>  <td class="nbHitsCovered">&nbsp;3</td>  <td class="src"><pre class="src">&nbsp;                    transition(HtmlTreeBuilderState.InTable);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;515</td>  <td class="nbHitsCovered">&nbsp;3</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">break</span> LOOP;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;516</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">case</span> <span class="string">"template"</span>:</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;517</td>  <td class="nbHitsCovered">&nbsp;5</td>  <td class="src"><pre class="src">&nbsp;                    HtmlTreeBuilderState tmplState = currentTemplateMode();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;518</td>  <td class="nbHitsCovered">&nbsp;5</td>  <td class="src"><pre class="src">&nbsp;                    Validate.notNull(tmplState, <span class="string">"Bug: no template insertion mode on stack!"</span>);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;519</td>  <td class="nbHitsCovered">&nbsp;5</td>  <td class="src"><pre class="src">&nbsp;                    transition(tmplState);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;520</td>  <td class="nbHitsCovered">&nbsp;5</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">break</span> LOOP;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;521</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">case</span> <span class="string">"head"</span>:</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;522</td>  <td class="nbHitsCovered"><a title="Line 522: Conditional coverage 100% (2/2).">&nbsp;4</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 522: Conditional coverage 100% (2/2).">                    <span class="keyword">if</span> (!last) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;523</td>  <td class="nbHitsCovered">&nbsp;3</td>  <td class="src"><pre class="src">&nbsp;                        transition(HtmlTreeBuilderState.InHead);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;524</td>  <td class="nbHitsCovered">&nbsp;3</td>  <td class="src"><pre class="src">&nbsp;                        <span class="keyword">break</span> LOOP;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;525</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;526</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">break</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;527</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">case</span> <span class="string">"body"</span>:</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;528</td>  <td class="nbHitsCovered">&nbsp;329</td>  <td class="src"><pre class="src">&nbsp;                    transition(HtmlTreeBuilderState.InBody);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;529</td>  <td class="nbHitsCovered">&nbsp;329</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">break</span> LOOP;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;530</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">case</span> <span class="string">"frameset"</span>:</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;531</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                    transition(HtmlTreeBuilderState.InFrameset);</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;532</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                    <span class="keyword">break</span> LOOP;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;533</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">case</span> <span class="string">"html"</span>:</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;534</td>  <td class="nbHitsUncovered"><a title="Line 534: Conditional coverage 0% (0/2).">&nbsp;0</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 534: Conditional coverage 0% (0/2).">                    transition(headElement == <span class="keyword">null</span> ? HtmlTreeBuilderState.BeforeHead : HtmlTreeBuilderState.AfterHead);</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;535</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                    <span class="keyword">break</span> LOOP;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;536</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;537</td>  <td class="nbHitsCovered"><a title="Line 537: Conditional coverage 100% (2/2).">&nbsp;1894900</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 537: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (last) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;538</td>  <td class="nbHitsCovered">&nbsp;7244</td>  <td class="src"><pre class="src">&nbsp;                transition(HtmlTreeBuilderState.InBody);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;539</td>  <td class="nbHitsCovered">&nbsp;7244</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">break</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;540</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;541</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;542</td>  <td class="nbHitsCovered">&nbsp;7957</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;543</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;544</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">// todo: tidy up in specific scope methods</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;545</td>  <td class="nbHitsCovered">&nbsp;4134</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> String[] specificScopeTarget = {<span class="keyword">null</span>};</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;546</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;547</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">boolean</span> inSpecificScope(String targetName, String[] baseTypes, String[] extraTypes) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;548</td>  <td class="nbHitsCovered">&nbsp;205827</td>  <td class="src"><pre class="src">&nbsp;        specificScopeTarget[0] = targetName;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;549</td>  <td class="nbHitsCovered">&nbsp;205827</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> inSpecificScope(specificScopeTarget, baseTypes, extraTypes);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;550</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;551</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;552</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">boolean</span> inSpecificScope(String[] targetNames, String[] baseTypes, String[] extraTypes) {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;553</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// https://html.spec.whatwg.org/multipage/parsing.html#has-an-element-in-the-specific-scope</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;554</td>  <td class="nbHitsCovered">&nbsp;206275</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">final</span> <span class="keyword">int</span> bottom = stack.size() -1;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;555</td>  <td class="nbHitsCovered"><a title="Line 555: Conditional coverage 100% (2/2).">&nbsp;206275</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 555: Conditional coverage 100% (2/2).">        <span class="keyword">final</span> <span class="keyword">int</span> top = bottom &gt; MaxScopeSearchDepth ? bottom - MaxScopeSearchDepth : 0;</a></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;556</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// don't walk too far up the tree</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;557</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;558</td>  <td class="nbHitsCovered"><a title="Line 558: Conditional coverage 100% (2/2).">&nbsp;10888268</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 558: Conditional coverage 100% (2/2).">        <span class="keyword">for</span> (<span class="keyword">int</span> pos = bottom; pos &gt;= top; pos--) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;559</td>  <td class="nbHitsCovered">&nbsp;10783072</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">final</span> String elName = stack.get(pos).normalName();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;560</td>  <td class="nbHitsCovered"><a title="Line 560: Conditional coverage 100% (2/2).">&nbsp;10783072</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 560: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (inSorted(elName, targetNames))</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;561</td>  <td class="nbHitsCovered">&nbsp;91719</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> <span class="keyword">true</span>;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;562</td>  <td class="nbHitsCovered"><a title="Line 562: Conditional coverage 100% (2/2).">&nbsp;10691353</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 562: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (inSorted(elName, baseTypes))</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;563</td>  <td class="nbHitsCovered">&nbsp;9359</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> <span class="keyword">false</span>;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;564</td>  <td class="nbHitsCovered"><a title="Line 564: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">&nbsp;10681994</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 564: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">            <span class="keyword">if</span> (extraTypes != <span class="keyword">null</span> &amp;&amp; inSorted(elName, extraTypes))</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;565</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> <span class="keyword">false</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;566</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;567</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">//Validate.fail("Should not be reachable"); // would end up false because hitting 'html' at root (basetypes)</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;568</td>  <td class="nbHitsCovered">&nbsp;105196</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> <span class="keyword">false</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;569</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;570</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;571</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">boolean</span> inScope(String[] targetNames) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;572</td>  <td class="nbHitsCovered">&nbsp;448</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> inSpecificScope(targetNames, TagsSearchInScope, <span class="keyword">null</span>);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;573</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;574</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;575</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">boolean</span> inScope(String targetName) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;576</td>  <td class="nbHitsCovered">&nbsp;80176</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> inScope(targetName, <span class="keyword">null</span>);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;577</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;578</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;579</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">boolean</span> inScope(String targetName, String[] extras) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;580</td>  <td class="nbHitsCovered">&nbsp;198626</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> inSpecificScope(targetName, TagsSearchInScope, extras);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;581</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// todo: in mathml namespace: mi, mo, mn, ms, mtext annotation-xml</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;582</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// todo: in svg namespace: forignOjbect, desc, title</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;583</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;584</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;585</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">boolean</span> inListItemScope(String targetName) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;586</td>  <td class="nbHitsCovered">&nbsp;1453</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> inScope(targetName, TagSearchList);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;587</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;588</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;589</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">boolean</span> inButtonScope(String targetName) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;590</td>  <td class="nbHitsCovered">&nbsp;116997</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> inScope(targetName, TagSearchButton);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;591</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;592</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;593</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">boolean</span> inTableScope(String targetName) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;594</td>  <td class="nbHitsCovered">&nbsp;7201</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> inSpecificScope(targetName, TagSearchTableScope, <span class="keyword">null</span>);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;595</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;596</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;597</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">boolean</span> inSelectScope(String targetName) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;598</td>  <td class="nbHitsUncovered"><a title="Line 598: Conditional coverage 50% (1/2).">&nbsp;3749</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 598: Conditional coverage 50% (1/2).">        <span class="keyword">for</span> (<span class="keyword">int</span> pos = stack.size() -1; pos &gt;= 0; pos--) {</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;599</td>  <td class="nbHitsCovered">&nbsp;3749</td>  <td class="src"><pre class="src">&nbsp;            Element el = stack.get(pos);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;600</td>  <td class="nbHitsCovered">&nbsp;3749</td>  <td class="src"><pre class="src">&nbsp;            String elName = el.normalName();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;601</td>  <td class="nbHitsCovered"><a title="Line 601: Conditional coverage 100% (2/2).">&nbsp;3749</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 601: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (elName.equals(targetName))</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;602</td>  <td class="nbHitsCovered">&nbsp;3744</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> <span class="keyword">true</span>;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;603</td>  <td class="nbHitsUncovered"><a title="Line 603: Conditional coverage 50% (1/2).">&nbsp;5</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 603: Conditional coverage 50% (1/2).">            <span class="keyword">if</span> (!inSorted(elName, TagSearchSelectScope)) <span class="comment">// all elements except</span></a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;604</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">return</span> <span class="keyword">false</span>;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;605</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;606</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        Validate.fail(<span class="string">"Should not be reachable"</span>);</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;607</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">return</span> <span class="keyword">false</span>;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;608</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;609</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;610</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> setHeadElement(Element headElement) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;611</td>  <td class="nbHitsCovered">&nbsp;1106</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.headElement = headElement;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;612</td>  <td class="nbHitsCovered">&nbsp;1106</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;613</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;614</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    Element getHeadElement() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;615</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">return</span> headElement;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;616</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;617</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;618</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">boolean</span> isFosterInserts() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;619</td>  <td class="nbHitsCovered">&nbsp;1117985</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> fosterInserts;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;620</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;621</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;622</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> setFosterInserts(<span class="keyword">boolean</span> fosterInserts) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;623</td>  <td class="nbHitsCovered">&nbsp;1066388</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.fosterInserts = fosterInserts;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;624</td>  <td class="nbHitsCovered">&nbsp;1066388</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;625</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;626</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    @Nullable FormElement getFormElement() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;627</td>  <td class="nbHitsCovered">&nbsp;208</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> formElement;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;628</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;629</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;630</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> setFormElement(FormElement formElement) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;631</td>  <td class="nbHitsCovered">&nbsp;174</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.formElement = formElement;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;632</td>  <td class="nbHitsCovered">&nbsp;174</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;633</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;634</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> newPendingTableCharacters() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;635</td>  <td class="nbHitsCovered">&nbsp;1660</td>  <td class="src"><pre class="src">&nbsp;        pendingTableCharacters = <span class="keyword">new</span> ArrayList&lt;&gt;();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;636</td>  <td class="nbHitsCovered">&nbsp;1660</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;637</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;638</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    List&lt;String&gt; getPendingTableCharacters() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;639</td>  <td class="nbHitsCovered">&nbsp;2490</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> pendingTableCharacters;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;640</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;641</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;642</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;643</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     13.2.6.3 Closing elements that have implied end tags</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;644</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     When the steps below require the UA to generate implied end tags, then, while the current node is a dd element, a dt element, an li element, an optgroup element, an option element, a p element, an rb element, an rp element, an rt element, or an rtc element, the UA must pop the current node off the stack of open elements.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;645</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;646</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     If a step requires the UA to generate implied end tags but lists an element to exclude from the process, then the UA must perform the above steps as if that element was not in the above list.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;647</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;648</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     When the steps below require the UA to generate all implied end tags thoroughly, then, while the current node is a caption element, a colgroup element, a dd element, a dt element, an li element, an optgroup element, an option element, a p element, an rb element, an rp element, an rt element, an rtc element, a tbody element, a td element, a tfoot element, a th element, a thead element, or a tr element, the UA must pop the current node off the stack of open elements.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;649</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;650</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     @param excludeTag If a step requires the UA to generate implied end tags but lists an element to exclude from the</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;651</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     process, then the UA must perform the above steps as if that element was not in the above list.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;652</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;653</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> generateImpliedEndTags(String excludeTag) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;654</td>  <td class="nbHitsCovered"><a title="Line 654: Conditional coverage 100% (2/2).">&nbsp;21462</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 654: Conditional coverage 100% (2/2).">        <span class="keyword">while</span> (inSorted(currentElement().normalName(), TagSearchEndTags)) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;655</td>  <td class="nbHitsUncovered"><a title="Line 655: Conditional coverage 75% (3/4) [each condition: 50%, 100%].">&nbsp;4767</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 655: Conditional coverage 75% (3/4) [each condition: 50%, 100%].">            <span class="keyword">if</span> (excludeTag != <span class="keyword">null</span> &amp;&amp; currentElementIs(excludeTag))</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;656</td>  <td class="nbHitsCovered">&nbsp;4760</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">break</span>;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;657</td>  <td class="nbHitsCovered">&nbsp;7</td>  <td class="src"><pre class="src">&nbsp;            pop();</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;658</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;659</td>  <td class="nbHitsCovered">&nbsp;21455</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;660</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;661</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> generateImpliedEndTags() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;662</td>  <td class="nbHitsCovered">&nbsp;4010</td>  <td class="src"><pre class="src">&nbsp;        generateImpliedEndTags(<span class="keyword">false</span>);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;663</td>  <td class="nbHitsCovered">&nbsp;4010</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;664</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;665</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;666</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     Pops elements off the stack according to the implied end tag rules</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;667</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     @param thorough if we are thorough (includes table elements etc) or not</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;668</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;669</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> generateImpliedEndTags(<span class="keyword">boolean</span> thorough) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;670</td>  <td class="nbHitsCovered"><a title="Line 670: Conditional coverage 100% (2/2).">&nbsp;4020</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 670: Conditional coverage 100% (2/2).">        <span class="keyword">final</span> String[] search = thorough ? TagThoroughSearchEndTags : TagSearchEndTags;</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;671</td>  <td class="nbHitsCovered"><a title="Line 671: Conditional coverage 100% (2/2).">&nbsp;4120</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 671: Conditional coverage 100% (2/2).">        <span class="keyword">while</span> (inSorted(currentElement().normalName(), search)) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;672</td>  <td class="nbHitsCovered">&nbsp;100</td>  <td class="src"><pre class="src">&nbsp;            pop();</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;673</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;674</td>  <td class="nbHitsCovered">&nbsp;4020</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;675</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;676</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> closeElement(String name) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;677</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        generateImpliedEndTags(name);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;678</td>  <td class="nbHitsUncovered"><a title="Line 678: Conditional coverage 50% (1/2).">&nbsp;1</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 678: Conditional coverage 50% (1/2).">        <span class="keyword">if</span> (!name.equals(currentElement().normalName())) error(state());</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;679</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        popStackToClose(name);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;680</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;681</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;682</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">boolean</span> isSpecial(Element el) {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;683</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// todo: mathml's mi, mo, mn</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;684</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// todo: svg's foreigObject, desc, title</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;685</td>  <td class="nbHitsCovered">&nbsp;26241</td>  <td class="src"><pre class="src">&nbsp;        String name = el.normalName();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;686</td>  <td class="nbHitsCovered">&nbsp;26241</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> inSorted(name, TagSearchSpecial);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;687</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;688</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;689</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    Element lastFormattingElement() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;690</td>  <td class="nbHitsCovered"><a title="Line 690: Conditional coverage 100% (2/2).">&nbsp;295230</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 690: Conditional coverage 100% (2/2).">        <span class="keyword">return</span> formattingElements.size() &gt; 0 ? formattingElements.get(formattingElements.size()-1) : <span class="keyword">null</span>;</a></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;691</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;692</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;693</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">int</span> positionOfElement(Element el){</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;694</td>  <td class="nbHitsUncovered"><a title="Line 694: Conditional coverage 50% (1/2).">&nbsp;145648</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 694: Conditional coverage 50% (1/2).">        <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; formattingElements.size(); i++){</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;695</td>  <td class="nbHitsCovered"><a title="Line 695: Conditional coverage 100% (2/2).">&nbsp;145648</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 695: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (el == formattingElements.get(i))</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;696</td>  <td class="nbHitsCovered">&nbsp;75825</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> i;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;697</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;698</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">return</span> -1;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;699</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;700</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;701</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    Element removeLastFormattingElement() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;702</td>  <td class="nbHitsCovered">&nbsp;1285</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> size = formattingElements.size();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;703</td>  <td class="nbHitsUncovered"><a title="Line 703: Conditional coverage 50% (1/2).">&nbsp;1285</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 703: Conditional coverage 50% (1/2).">        <span class="keyword">if</span> (size &gt; 0)</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;704</td>  <td class="nbHitsCovered">&nbsp;1285</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> formattingElements.remove(size-1);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;705</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">else</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;706</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">return</span> <span class="keyword">null</span>;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;707</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;708</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;709</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">// active formatting elements</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;710</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> pushActiveFormattingElements(Element in) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;711</td>  <td class="nbHitsCovered">&nbsp;119406</td>  <td class="src"><pre class="src">&nbsp;        checkActiveFormattingElements(in);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;712</td>  <td class="nbHitsCovered">&nbsp;119406</td>  <td class="src"><pre class="src">&nbsp;        formattingElements.add(in);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;713</td>  <td class="nbHitsCovered">&nbsp;119406</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;714</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;715</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> pushWithBookmark(Element in, <span class="keyword">int</span> bookmark){</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;716</td>  <td class="nbHitsCovered">&nbsp;39</td>  <td class="src"><pre class="src">&nbsp;        checkActiveFormattingElements(in);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;717</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// catch any range errors and assume bookmark is incorrect - saves a redundant range check.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;718</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">try</span> {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;719</td>  <td class="nbHitsCovered">&nbsp;39</td>  <td class="src"><pre class="src">&nbsp;            formattingElements.add(bookmark, in);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;720</td>  <td class="nbHitsCovered">&nbsp;6</td>  <td class="src"><pre class="src">&nbsp;        } <span class="keyword">catch</span> (IndexOutOfBoundsException e) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;721</td>  <td class="nbHitsCovered">&nbsp;6</td>  <td class="src"><pre class="src">&nbsp;            formattingElements.add(in);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;722</td>  <td class="nbHitsCovered">&nbsp;33</td>  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;723</td>  <td class="nbHitsCovered">&nbsp;39</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;724</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;725</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> checkActiveFormattingElements(Element in){</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;726</td>  <td class="nbHitsCovered">&nbsp;119445</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> numSeen = 0;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;727</td>  <td class="nbHitsCovered"><a title="Line 727: Conditional coverage 100% (2/2).">&nbsp;363081</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 727: Conditional coverage 100% (2/2).">        <span class="keyword">for</span> (<span class="keyword">int</span> pos = formattingElements.size() -1; pos &gt;= 0; pos--) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;728</td>  <td class="nbHitsCovered">&nbsp;286214</td>  <td class="src"><pre class="src">&nbsp;            Element el = formattingElements.get(pos);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;729</td>  <td class="nbHitsCovered"><a title="Line 729: Conditional coverage 100% (2/2).">&nbsp;286214</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 729: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (el == <span class="keyword">null</span>) <span class="comment">// marker</span></a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;730</td>  <td class="nbHitsCovered">&nbsp;662</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">break</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;731</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;732</td>  <td class="nbHitsCovered"><a title="Line 732: Conditional coverage 100% (2/2).">&nbsp;285552</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 732: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (isSameFormattingElement(in, el))</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;733</td>  <td class="nbHitsCovered">&nbsp;126168</td>  <td class="src"><pre class="src">&nbsp;                numSeen++;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;734</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;735</td>  <td class="nbHitsCovered"><a title="Line 735: Conditional coverage 100% (2/2).">&nbsp;285552</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 735: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (numSeen == 3) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;736</td>  <td class="nbHitsCovered">&nbsp;41916</td>  <td class="src"><pre class="src">&nbsp;                formattingElements.remove(pos);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;737</td>  <td class="nbHitsCovered">&nbsp;41916</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">break</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;738</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;739</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;740</td>  <td class="nbHitsCovered">&nbsp;119445</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;741</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;742</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">boolean</span> isSameFormattingElement(Element a, Element b) {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;743</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// same if: same namespace, tag, and attributes. Element.equals only checks tag, might in future check children</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;744</td>  <td class="nbHitsCovered"><a title="Line 744: Conditional coverage 100% (2/2).">&nbsp;571104</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 744: Conditional coverage 100% (2/2).">        <span class="keyword">return</span> a.normalName().equals(b.normalName()) &amp;&amp;</a></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;745</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="comment">// a.namespace().equals(b.namespace()) &amp;&amp;</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;746</td>  <td class="nbHitsCovered"><a title="Line 746: Conditional coverage 100% (2/2).">&nbsp;134411</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 746: Conditional coverage 100% (2/2).">                a.attributes().equals(b.attributes());</a></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;747</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// todo: namespaces</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;748</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;749</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;750</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> reconstructFormattingElements() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;751</td>  <td class="nbHitsCovered">&nbsp;295230</td>  <td class="src"><pre class="src">&nbsp;        Element last = lastFormattingElement();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;752</td>  <td class="nbHitsCovered"><a title="Line 752: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">&nbsp;295230</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 752: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">        <span class="keyword">if</span> (last == <span class="keyword">null</span> || onStack(last))</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;753</td>  <td class="nbHitsCovered">&nbsp;293008</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;754</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;755</td>  <td class="nbHitsCovered">&nbsp;2222</td>  <td class="src"><pre class="src">&nbsp;        Element entry = last;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;756</td>  <td class="nbHitsCovered">&nbsp;2222</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> size = formattingElements.size();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;757</td>  <td class="nbHitsCovered"><a title="Line 757: Conditional coverage 100% (2/2).">&nbsp;2222</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 757: Conditional coverage 100% (2/2).">        <span class="keyword">int</span> ceil = size - maxUsedFormattingElements; <span class="keyword">if</span> (ceil &lt;0) ceil = 0;</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;758</td>  <td class="nbHitsCovered">&nbsp;2222</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> pos = size - 1;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;759</td>  <td class="nbHitsCovered">&nbsp;2222</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">boolean</span> skip = <span class="keyword">false</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;760</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">while</span> (<span class="keyword">true</span>) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;761</td>  <td class="nbHitsCovered"><a title="Line 761: Conditional coverage 100% (2/2).">&nbsp;12820</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 761: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (pos == ceil) { <span class="comment">// step 4. if none before, skip to 8</span></a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;762</td>  <td class="nbHitsCovered">&nbsp;1325</td>  <td class="src"><pre class="src">&nbsp;                skip = <span class="keyword">true</span>;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;763</td>  <td class="nbHitsCovered">&nbsp;1325</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">break</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;764</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;765</td>  <td class="nbHitsCovered">&nbsp;11495</td>  <td class="src"><pre class="src">&nbsp;            entry = formattingElements.get(--pos); <span class="comment">// step 5. one earlier than entry</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;766</td>  <td class="nbHitsCovered"><a title="Line 766: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">&nbsp;11495</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 766: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">            <span class="keyword">if</span> (entry == <span class="keyword">null</span> || onStack(entry)) <span class="comment">// step 6 - neither marker nor on stack</span></a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;767</td>  <td class="nbHitsCovered">&nbsp;870</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">break</span>; <span class="comment">// jump to 8, else continue back to 4</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;768</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;769</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">while</span>(<span class="keyword">true</span>) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;770</td>  <td class="nbHitsCovered"><a title="Line 770: Conditional coverage 100% (2/2).">&nbsp;12820</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 770: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (!skip) <span class="comment">// step 7: on later than entry</span></a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;771</td>  <td class="nbHitsCovered">&nbsp;11495</td>  <td class="src"><pre class="src">&nbsp;                entry = formattingElements.get(++pos);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;772</td>  <td class="nbHitsCovered">&nbsp;12820</td>  <td class="src"><pre class="src">&nbsp;            Validate.notNull(entry); <span class="comment">// should not occur, as we break at last element</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;773</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;774</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="comment">// 8. create new element from element, 9 insert into current node, onto stack</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;775</td>  <td class="nbHitsCovered">&nbsp;12820</td>  <td class="src"><pre class="src">&nbsp;            skip = <span class="keyword">false</span>; <span class="comment">// can only skip increment from 4.</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;776</td>  <td class="nbHitsCovered">&nbsp;12820</td>  <td class="src"><pre class="src">&nbsp;            Element newEl = insertStartTag(entry.normalName()); <span class="comment">// todo: avoid fostering here?</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;777</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="comment">// newEl.namespace(entry.namespace()); // todo: namespaces</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;778</td>  <td class="nbHitsCovered"><a title="Line 778: Conditional coverage 100% (2/2).">&nbsp;12820</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 778: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (entry.attributesSize() &gt; 0)</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;779</td>  <td class="nbHitsCovered">&nbsp;1869</td>  <td class="src"><pre class="src">&nbsp;                newEl.attributes().addAll(entry.attributes());</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;780</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;781</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="comment">// 10. replace entry with new entry</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;782</td>  <td class="nbHitsCovered">&nbsp;12820</td>  <td class="src"><pre class="src">&nbsp;            formattingElements.set(pos, newEl);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;783</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;784</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="comment">// 11</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;785</td>  <td class="nbHitsCovered"><a title="Line 785: Conditional coverage 100% (2/2).">&nbsp;12820</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 785: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (pos == size-1) <span class="comment">// if not last entry in list, jump to 7</span></a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;786</td>  <td class="nbHitsCovered">&nbsp;2222</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">break</span>;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;787</td>  <td class="nbHitsCovered">&nbsp;10598</td>  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;788</td>  <td class="nbHitsCovered">&nbsp;2222</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;789</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> maxUsedFormattingElements = 12; <span class="comment">// limit how many elements get recreated</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;790</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;791</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> clearFormattingElementsToLastMarker() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;792</td>  <td class="nbHitsUncovered"><a title="Line 792: Conditional coverage 50% (1/2).">&nbsp;1285</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 792: Conditional coverage 50% (1/2).">        <span class="keyword">while</span> (!formattingElements.isEmpty()) {</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;793</td>  <td class="nbHitsCovered">&nbsp;1285</td>  <td class="src"><pre class="src">&nbsp;            Element el = removeLastFormattingElement();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;794</td>  <td class="nbHitsCovered"><a title="Line 794: Conditional coverage 100% (2/2).">&nbsp;1285</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 794: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (el == <span class="keyword">null</span>)</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;795</td>  <td class="nbHitsCovered">&nbsp;1274</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">break</span>;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;796</td>  <td class="nbHitsCovered">&nbsp;11</td>  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;797</td>  <td class="nbHitsCovered">&nbsp;1274</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;798</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;799</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> removeFromActiveFormattingElements(Element el) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;800</td>  <td class="nbHitsUncovered"><a title="Line 800: Conditional coverage 50% (1/2).">&nbsp;80332</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 800: Conditional coverage 50% (1/2).">        <span class="keyword">for</span> (<span class="keyword">int</span> pos = formattingElements.size() -1; pos &gt;= 0; pos--) {</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;801</td>  <td class="nbHitsCovered">&nbsp;80332</td>  <td class="src"><pre class="src">&nbsp;            Element next = formattingElements.get(pos);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;802</td>  <td class="nbHitsCovered"><a title="Line 802: Conditional coverage 100% (2/2).">&nbsp;80332</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 802: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (next == el) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;803</td>  <td class="nbHitsCovered">&nbsp;77182</td>  <td class="src"><pre class="src">&nbsp;                formattingElements.remove(pos);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;804</td>  <td class="nbHitsCovered">&nbsp;77182</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">break</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;805</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;806</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;807</td>  <td class="nbHitsCovered">&nbsp;77182</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;808</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;809</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">boolean</span> isInActiveFormattingElements(Element el) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;810</td>  <td class="nbHitsCovered">&nbsp;67</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> onStack(formattingElements, el);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;811</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;812</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;813</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    Element getActiveFormattingElement(String nodeName) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;814</td>  <td class="nbHitsCovered"><a title="Line 814: Conditional coverage 100% (2/2).">&nbsp;183231</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 814: Conditional coverage 100% (2/2).">        <span class="keyword">for</span> (<span class="keyword">int</span> pos = formattingElements.size() -1; pos &gt;= 0; pos--) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;815</td>  <td class="nbHitsCovered">&nbsp;180419</td>  <td class="src"><pre class="src">&nbsp;            Element next = formattingElements.get(pos);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;816</td>  <td class="nbHitsCovered"><a title="Line 816: Conditional coverage 100% (2/2).">&nbsp;180419</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 816: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (next == <span class="keyword">null</span>) <span class="comment">// scope marker</span></a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;817</td>  <td class="nbHitsCovered">&nbsp;3966</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">break</span>;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;818</td>  <td class="nbHitsCovered"><a title="Line 818: Conditional coverage 100% (2/2).">&nbsp;176453</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 818: Conditional coverage 100% (2/2).">            <span class="keyword">else</span> <span class="keyword">if</span> (next.normalName().equals(nodeName))</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;819</td>  <td class="nbHitsCovered">&nbsp;146962</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> next;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;820</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;821</td>  <td class="nbHitsCovered">&nbsp;6778</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> <span class="keyword">null</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;822</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;823</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;824</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> replaceActiveFormattingElement(Element out, Element in) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;825</td>  <td class="nbHitsCovered">&nbsp;16</td>  <td class="src"><pre class="src">&nbsp;        replaceInQueue(formattingElements, out, in);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;826</td>  <td class="nbHitsCovered">&nbsp;16</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;827</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;828</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> insertMarkerToFormattingElements() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;829</td>  <td class="nbHitsCovered">&nbsp;5269</td>  <td class="src"><pre class="src">&nbsp;        formattingElements.add(<span class="keyword">null</span>);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;830</td>  <td class="nbHitsCovered">&nbsp;5269</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;831</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;832</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> insertInFosterParent(Node in) {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;833</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        Element fosterParent;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;834</td>  <td class="nbHitsCovered">&nbsp;109</td>  <td class="src"><pre class="src">&nbsp;        Element lastTable = getFromStack(<span class="string">"table"</span>);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;835</td>  <td class="nbHitsCovered">&nbsp;109</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">boolean</span> isLastTableParent = <span class="keyword">false</span>;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;836</td>  <td class="nbHitsUncovered"><a title="Line 836: Conditional coverage 50% (1/2).">&nbsp;109</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 836: Conditional coverage 50% (1/2).">        <span class="keyword">if</span> (lastTable != <span class="keyword">null</span>) {</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;837</td>  <td class="nbHitsUncovered"><a title="Line 837: Conditional coverage 50% (1/2).">&nbsp;109</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 837: Conditional coverage 50% (1/2).">            <span class="keyword">if</span> (lastTable.parent() != <span class="keyword">null</span>) {</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;838</td>  <td class="nbHitsCovered">&nbsp;109</td>  <td class="src"><pre class="src">&nbsp;                fosterParent = lastTable.parent();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;839</td>  <td class="nbHitsCovered">&nbsp;109</td>  <td class="src"><pre class="src">&nbsp;                isLastTableParent = <span class="keyword">true</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;840</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            } <span class="keyword">else</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;841</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                fosterParent = aboveOnStack(lastTable);</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;842</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        } <span class="keyword">else</span> { <span class="comment">// no table == frag</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;843</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            fosterParent = stack.get(0);</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;844</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;845</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;846</td>  <td class="nbHitsUncovered"><a title="Line 846: Conditional coverage 50% (1/2).">&nbsp;109</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 846: Conditional coverage 50% (1/2).">        <span class="keyword">if</span> (isLastTableParent) {</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;847</td>  <td class="nbHitsCovered">&nbsp;109</td>  <td class="src"><pre class="src">&nbsp;            Validate.notNull(lastTable); <span class="comment">// last table cannot be null by this point.</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;848</td>  <td class="nbHitsCovered">&nbsp;109</td>  <td class="src"><pre class="src">&nbsp;            lastTable.before(in);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;849</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;850</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">else</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;851</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            fosterParent.appendChild(in);</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;852</td>  <td class="nbHitsCovered">&nbsp;109</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;853</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;854</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">// Template Insertion Mode stack</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;855</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> pushTemplateMode(HtmlTreeBuilderState state) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;856</td>  <td class="nbHitsCovered">&nbsp;4688</td>  <td class="src"><pre class="src">&nbsp;        tmplInsertMode.add(state);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;857</td>  <td class="nbHitsCovered">&nbsp;4688</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;858</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;859</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    @Nullable HtmlTreeBuilderState popTemplateMode() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;860</td>  <td class="nbHitsUncovered"><a title="Line 860: Conditional coverage 50% (1/2).">&nbsp;1312</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 860: Conditional coverage 50% (1/2).">        <span class="keyword">if</span> (tmplInsertMode.size() &gt; 0) {</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;861</td>  <td class="nbHitsCovered">&nbsp;1312</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> tmplInsertMode.remove(tmplInsertMode.size() -1);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;862</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        } <span class="keyword">else</span> {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;863</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">return</span> <span class="keyword">null</span>;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;864</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;865</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;866</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;867</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">int</span> templateModeSize() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;868</td>  <td class="nbHitsCovered">&nbsp;1089</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> tmplInsertMode.size();</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;869</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;870</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;871</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    @Nullable HtmlTreeBuilderState currentTemplateMode() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;872</td>  <td class="nbHitsUncovered"><a title="Line 872: Conditional coverage 50% (1/2).">&nbsp;5</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 872: Conditional coverage 50% (1/2).">        <span class="keyword">return</span> (tmplInsertMode.size() &gt; 0) ? tmplInsertMode.get(tmplInsertMode.size() -1)  : <span class="keyword">null</span>;</a></span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;873</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;874</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;875</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    @Override</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;876</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> String toString() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;877</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">return</span> <span class="string">"TreeBuilder{"</span> +</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;878</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"currentToken="</span> + currentToken +</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;879</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">", state="</span> + state +</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;880</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="string">", currentElement="</span> + currentElement() +</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;881</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">'}'</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;882</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;883</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;884</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">protected</span> <span class="keyword">boolean</span> isContentForTagData(<span class="keyword">final</span> String normalName) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;885</td>  <td class="nbHitsCovered"><a title="Line 885: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">&nbsp;148924</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 885: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">        <span class="keyword">return</span> (normalName.equals(<span class="string">"script"</span>) || normalName.equals(<span class="string">"style"</span>));</a></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;886</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;887</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;}</pre></td></tr>
+</table>
+
+<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.1.1 on 9/28/21 6:03 AM.</div>
+</body>
+</html>

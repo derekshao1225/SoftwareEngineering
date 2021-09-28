@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="org.jsoup.select.SelectorTest" time="0.363" tests="86" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="sun.cpu.isalist" value=""/>
+    <property name="sun.jnu.encoding" value="ANSI_X3.4-1968"/>
+    <property name="java.class.path" value="/home/ubuntu/hw2/jsoup/target/test-classes:/home/ubuntu/hw2/jsoup/target/generated-classes/cobertura:/home/ubuntu/.m2/repository/org/junit/jupiter/junit-jupiter/5.8.1/junit-jupiter-5.8.1.jar:/home/ubuntu/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.8.1/junit-jupiter-api-5.8.1.jar:/home/ubuntu/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/ubuntu/.m2/repository/org/junit/platform/junit-platform-commons/1.8.1/junit-platform-commons-1.8.1.jar:/home/ubuntu/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/ubuntu/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.8.1/junit-jupiter-params-5.8.1.jar:/home/ubuntu/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.8.1/junit-jupiter-engine-5.8.1.jar:/home/ubuntu/.m2/repository/org/junit/platform/junit-platform-engine/1.8.1/junit-platform-engine-1.8.1.jar:/home/ubuntu/.m2/repository/com/google/code/gson/gson/2.8.8/gson-2.8.8.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-server/9.4.43.v20210629/jetty-server-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-http/9.4.43.v20210629/jetty-http-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-util/9.4.43.v20210629/jetty-util-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-io/9.4.43.v20210629/jetty-io-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-servlet/9.4.43.v20210629/jetty-servlet-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-security/9.4.43.v20210629/jetty-security-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-util-ajax/9.4.43.v20210629/jetty-util-ajax-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/home/ubuntu/.m2/repository/net/sourceforge/cobertura/cobertura/2.1.1/cobertura-2.1.1.jar:/home/ubuntu/.m2/repository/jaxen/jaxen/1.1.4/jaxen-1.1.4.jar:/home/ubuntu/.m2/repository/org/apache/ant/ant/1.8.3/ant-1.8.3.jar:/home/ubuntu/.m2/repository/org/apache/ant/ant-launcher/1.8.3/ant-launcher-1.8.3.jar:/home/ubuntu/.m2/repository/org/apache/ant/ant-junit/1.8.3/ant-junit-1.8.3.jar:/home/ubuntu/.m2/repository/org/mortbay/jetty/servlet-api-2.5/6.1.14/servlet-api-2.5-6.1.14.jar:/home/ubuntu/.m2/repository/org/mortbay/jetty/jetty/6.1.14/jetty-6.1.14.jar:/home/ubuntu/.m2/repository/org/mortbay/jetty/jetty-util/6.1.14/jetty-util-6.1.14.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/../lib/tools.jar:/home/ubuntu/.m2/repository/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar:/home/ubuntu/.m2/repository/ch/qos/logback/logback-classic/1.0.13/logback-classic-1.0.13.jar:/home/ubuntu/.m2/repository/ch/qos/logback/logback-core/1.0.13/logback-core-1.0.13.jar:/home/ubuntu/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/ubuntu/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/ubuntu/.m2/repository/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.jar:"/>
+    <property name="java.vm.vendor" value="Private Build"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="user.timezone" value="Etc/UTC"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="os.name" value="Linux"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64"/>
+    <property name="sun.java.command" value="/home/ubuntu/hw2/jsoup/target/surefire/surefirebooter4701075921476652133.jar /home/ubuntu/hw2/jsoup/target/surefire 2021-09-28T06-03-17_693-jvmRun1 surefire1794840511097801536tmp surefire_0704956775821110536tmp"/>
+    <property name="surefire.test.class.path" value="/home/ubuntu/hw2/jsoup/target/test-classes:/home/ubuntu/hw2/jsoup/target/generated-classes/cobertura:/home/ubuntu/.m2/repository/org/junit/jupiter/junit-jupiter/5.8.1/junit-jupiter-5.8.1.jar:/home/ubuntu/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.8.1/junit-jupiter-api-5.8.1.jar:/home/ubuntu/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/ubuntu/.m2/repository/org/junit/platform/junit-platform-commons/1.8.1/junit-platform-commons-1.8.1.jar:/home/ubuntu/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/ubuntu/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.8.1/junit-jupiter-params-5.8.1.jar:/home/ubuntu/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.8.1/junit-jupiter-engine-5.8.1.jar:/home/ubuntu/.m2/repository/org/junit/platform/junit-platform-engine/1.8.1/junit-platform-engine-1.8.1.jar:/home/ubuntu/.m2/repository/com/google/code/gson/gson/2.8.8/gson-2.8.8.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-server/9.4.43.v20210629/jetty-server-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-http/9.4.43.v20210629/jetty-http-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-util/9.4.43.v20210629/jetty-util-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-io/9.4.43.v20210629/jetty-io-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-servlet/9.4.43.v20210629/jetty-servlet-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-security/9.4.43.v20210629/jetty-security-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-util-ajax/9.4.43.v20210629/jetty-util-ajax-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/home/ubuntu/.m2/repository/net/sourceforge/cobertura/cobertura/2.1.1/cobertura-2.1.1.jar:/home/ubuntu/.m2/repository/jaxen/jaxen/1.1.4/jaxen-1.1.4.jar:/home/ubuntu/.m2/repository/org/apache/ant/ant/1.8.3/ant-1.8.3.jar:/home/ubuntu/.m2/repository/org/apache/ant/ant-launcher/1.8.3/ant-launcher-1.8.3.jar:/home/ubuntu/.m2/repository/org/apache/ant/ant-junit/1.8.3/ant-junit-1.8.3.jar:/home/ubuntu/.m2/repository/org/mortbay/jetty/servlet-api-2.5/6.1.14/servlet-api-2.5-6.1.14.jar:/home/ubuntu/.m2/repository/org/mortbay/jetty/jetty/6.1.14/jetty-6.1.14.jar:/home/ubuntu/.m2/repository/org/mortbay/jetty/jetty-util/6.1.14/jetty-util-6.1.14.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/../lib/tools.jar:/home/ubuntu/.m2/repository/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar:/home/ubuntu/.m2/repository/ch/qos/logback/logback-classic/1.0.13/logback-classic-1.0.13.jar:/home/ubuntu/.m2/repository/ch/qos/logback/logback-core/1.0.13/logback-core-1.0.13.jar:/home/ubuntu/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/ubuntu/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/ubuntu/.m2/repository/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/home/ubuntu"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.home" value="/usr/lib/jvm/java-8-openjdk-amd64/jre"/>
+    <property name="basedir" value="/home/ubuntu/hw2/jsoup"/>
+    <property name="file.separator" value="/"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="/home/ubuntu/hw2/jsoup/target/surefire/surefirebooter4701075921476652133.jar"/>
+    <property name="sun.boot.class.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/classes"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="1.8.0_292-8u292-b10-0ubuntu1~16.04.1-b10"/>
+    <property name="user.name" value="ubuntu"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="4.4.0-1128-aws"/>
+    <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/endorsed"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="ANSI_X3.4-1968"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="localRepository" value="/home/ubuntu/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="java.version" value="1.8.0_292"/>
+    <property name="user.dir" value="/home/ubuntu/hw2/jsoup"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Private Build"/>
+    <property name="java.vm.version" value="25.292-b10"/>
+    <property name="java.ext.dirs" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext:/usr/java/packages/lib/ext"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="52.0"/>
+  </properties>
+  <testcase name="containsData(Locale)[1]" classname="org.jsoup.select.SelectorTest" time="0.004"/>
+  <testcase name="containsData(Locale)[2]" classname="org.jsoup.select.SelectorTest" time="0.005"/>
+  <testcase name="html_mixed_case_simple_name" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="wildcardNamespaceMatchesNoNamespace" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="selectFirstLevelChildrenOnly" classname="org.jsoup.select.SelectorTest" time="0.004"/>
+  <testcase name="testWildcardNamespacedXmlTag" classname="org.jsoup.select.SelectorTest" time="0.002"/>
+  <testcase name="testByAttributeStarting(Locale)[1]" classname="org.jsoup.select.SelectorTest" time="0.002"/>
+  <testcase name="testByAttributeStarting(Locale)[2]" classname="org.jsoup.select.SelectorTest" time="0.008"/>
+  <testcase name="deeperDescendant" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="selectSameElements" classname="org.jsoup.select.SelectorTest" time="0"/>
+  <testcase name="testPseudoEquals" classname="org.jsoup.select.SelectorTest" time="0.007"/>
+  <testcase name="xml_lowercase_simple_name" classname="org.jsoup.select.SelectorTest" time="0.002"/>
+  <testcase name="testByClassCaseInsensitive" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="testByAttributeRegexCharacterClass" classname="org.jsoup.select.SelectorTest" time="0.002"/>
+  <testcase name="testAllWithClass" classname="org.jsoup.select.SelectorTest" time="0"/>
+  <testcase name="testByTag" classname="org.jsoup.select.SelectorTest" time="0.003"/>
+  <testcase name="testWildCardNamespacedCaseVariations" classname="org.jsoup.select.SelectorTest" time="0"/>
+  <testcase name="html_lowercase_wildcard_name" classname="org.jsoup.select.SelectorTest" time="0"/>
+  <testcase name="testById" classname="org.jsoup.select.SelectorTest" time="0"/>
+  <testcase name="findBetweenSpan" classname="org.jsoup.select.SelectorTest" time="0.002"/>
+  <testcase name="descendant" classname="org.jsoup.select.SelectorTest" time="0.005"/>
+  <testcase name="handlesCommasInSelector" classname="org.jsoup.select.SelectorTest" time="0.005"/>
+  <testcase name="notAll" classname="org.jsoup.select.SelectorTest" time="0.004"/>
+  <testcase name="testByAttribute(Locale)[1]" classname="org.jsoup.select.SelectorTest" time="0.008"/>
+  <testcase name="testByAttribute(Locale)[2]" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="xml_lowercase_wildcard_name" classname="org.jsoup.select.SelectorTest" time="0.003"/>
+  <testcase name="startsWithBeginsWithSpace" classname="org.jsoup.select.SelectorTest" time="0.002"/>
+  <testcase name="selectClassWithSpace" classname="org.jsoup.select.SelectorTest" time="0.004"/>
+  <testcase name="notAdjacent" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="testCombinedWithContains" classname="org.jsoup.select.SelectorTest" time="0.009"/>
+  <testcase name="containsWithQuote" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="testPseudoGreaterThan" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="testAllElements" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="testByAttributeRegex" classname="org.jsoup.select.SelectorTest" time="0.002"/>
+  <testcase name="mixCombinator" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="testRelaxedTags" classname="org.jsoup.select.SelectorTest" time="0"/>
+  <testcase name="testPseudoBetween" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="testPseudoLessThan" classname="org.jsoup.select.SelectorTest" time="0.002"/>
+  <testcase name="testGroupOr" classname="org.jsoup.select.SelectorTest" time="0.003"/>
+  <testcase name="testByClass" classname="org.jsoup.select.SelectorTest" time="0.006"/>
+  <testcase name="and" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="attributeWithBrackets" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="testPsuedoContainsWithParentheses" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="testGroupOrAttribute" classname="org.jsoup.select.SelectorTest" time="0.002"/>
+  <testcase name="caseInsensitive" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="selectFirst" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="containsOwn(Locale)[1]" classname="org.jsoup.select.SelectorTest" time="0.002"/>
+  <testcase name="containsOwn(Locale)[2]" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="xml_mixed_case_wildcard_name" classname="org.jsoup.select.SelectorTest" time="0"/>
+  <testcase name="html_mixed_case_wildcard_name" classname="org.jsoup.select.SelectorTest" time="0.003"/>
+  <testcase name="testCharactersInIdAndClass" classname="org.jsoup.select.SelectorTest" time="0"/>
+  <testcase name="splitOnBr" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="multiChildDescent" classname="org.jsoup.select.SelectorTest" time="0.003"/>
+  <testcase name="adjacentSiblingsWithId" classname="org.jsoup.select.SelectorTest" time="0.003"/>
+  <testcase name="testMatches" classname="org.jsoup.select.SelectorTest" time="0.003"/>
+  <testcase name="matchText" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="selectFirstWithOr" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="matchTextAttributes" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="endsWithEndsWithSpaces" classname="org.jsoup.select.SelectorTest" time="0.003"/>
+  <testcase name="parentWithClassChild" classname="org.jsoup.select.SelectorTest" time="0"/>
+  <testcase name="containsTextQueryIsNormalized" classname="org.jsoup.select.SelectorTest" time="0.004"/>
+  <testcase name="xml_mixed_case_simple_name" classname="org.jsoup.select.SelectorTest" time="0.002"/>
+  <testcase name="generalSiblings" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="parentChildStar" classname="org.jsoup.select.SelectorTest" time="0"/>
+  <testcase name="nthLastChildWithNoParent" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="testPseudoCombined" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="testPseudoContains(Locale)[1]" classname="org.jsoup.select.SelectorTest" time="0.007"/>
+  <testcase name="testPseudoContains(Locale)[2]" classname="org.jsoup.select.SelectorTest" time="0.01"/>
+  <testcase name="xmlWildcardNamespaceTest" classname="org.jsoup.select.SelectorTest" time="0"/>
+  <testcase name="testPseudoHas" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="notClass" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="html_lowercase_simple_name" classname="org.jsoup.select.SelectorTest" time="0.004"/>
+  <testcase name="notParas" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="selectSupplementaryCharacter" classname="org.jsoup.select.SelectorTest" time="0.002"/>
+  <testcase name="adjacentSiblings" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="testNamespacedTag" classname="org.jsoup.select.SelectorTest" time="0.003"/>
+  <testcase name="testNestedHas" classname="org.jsoup.select.SelectorTest" time="0.002"/>
+  <testcase name="trimSelector" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="parentChildElement" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="childElements" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="testByAttributeRegexCombined" classname="org.jsoup.select.SelectorTest" time="0.005"/>
+  <testcase name="matchesOwn" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="testSupportsLeadingCombinator" classname="org.jsoup.select.SelectorTest" time="0.001"/>
+  <testcase name="mixCombinatorGroup" classname="org.jsoup.select.SelectorTest" time="0"/>
+  <testcase name="testWildcardNamespacedTag" classname="org.jsoup.select.SelectorTest" time="0"/>
+  <testcase name="selectFirstWithAnd" classname="org.jsoup.select.SelectorTest" time="0"/>
+</testsuite>

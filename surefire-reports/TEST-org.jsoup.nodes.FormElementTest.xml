@@ -1,0 +1,749 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="org.jsoup.nodes.FormElementTest" time="0.805" tests="12" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="sun.cpu.isalist" value=""/>
+    <property name="sun.jnu.encoding" value="ANSI_X3.4-1968"/>
+    <property name="java.class.path" value="/home/ubuntu/hw2/jsoup/target/test-classes:/home/ubuntu/hw2/jsoup/target/generated-classes/cobertura:/home/ubuntu/.m2/repository/org/junit/jupiter/junit-jupiter/5.8.1/junit-jupiter-5.8.1.jar:/home/ubuntu/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.8.1/junit-jupiter-api-5.8.1.jar:/home/ubuntu/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/ubuntu/.m2/repository/org/junit/platform/junit-platform-commons/1.8.1/junit-platform-commons-1.8.1.jar:/home/ubuntu/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/ubuntu/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.8.1/junit-jupiter-params-5.8.1.jar:/home/ubuntu/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.8.1/junit-jupiter-engine-5.8.1.jar:/home/ubuntu/.m2/repository/org/junit/platform/junit-platform-engine/1.8.1/junit-platform-engine-1.8.1.jar:/home/ubuntu/.m2/repository/com/google/code/gson/gson/2.8.8/gson-2.8.8.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-server/9.4.43.v20210629/jetty-server-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-http/9.4.43.v20210629/jetty-http-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-util/9.4.43.v20210629/jetty-util-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-io/9.4.43.v20210629/jetty-io-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-servlet/9.4.43.v20210629/jetty-servlet-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-security/9.4.43.v20210629/jetty-security-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-util-ajax/9.4.43.v20210629/jetty-util-ajax-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/home/ubuntu/.m2/repository/net/sourceforge/cobertura/cobertura/2.1.1/cobertura-2.1.1.jar:/home/ubuntu/.m2/repository/jaxen/jaxen/1.1.4/jaxen-1.1.4.jar:/home/ubuntu/.m2/repository/org/apache/ant/ant/1.8.3/ant-1.8.3.jar:/home/ubuntu/.m2/repository/org/apache/ant/ant-launcher/1.8.3/ant-launcher-1.8.3.jar:/home/ubuntu/.m2/repository/org/apache/ant/ant-junit/1.8.3/ant-junit-1.8.3.jar:/home/ubuntu/.m2/repository/org/mortbay/jetty/servlet-api-2.5/6.1.14/servlet-api-2.5-6.1.14.jar:/home/ubuntu/.m2/repository/org/mortbay/jetty/jetty/6.1.14/jetty-6.1.14.jar:/home/ubuntu/.m2/repository/org/mortbay/jetty/jetty-util/6.1.14/jetty-util-6.1.14.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/../lib/tools.jar:/home/ubuntu/.m2/repository/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar:/home/ubuntu/.m2/repository/ch/qos/logback/logback-classic/1.0.13/logback-classic-1.0.13.jar:/home/ubuntu/.m2/repository/ch/qos/logback/logback-core/1.0.13/logback-core-1.0.13.jar:/home/ubuntu/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/ubuntu/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/ubuntu/.m2/repository/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.jar:"/>
+    <property name="java.vm.vendor" value="Private Build"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="user.timezone" value="Etc/UTC"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="os.name" value="Linux"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64"/>
+    <property name="sun.java.command" value="/home/ubuntu/hw2/jsoup/target/surefire/surefirebooter4701075921476652133.jar /home/ubuntu/hw2/jsoup/target/surefire 2021-09-28T06-03-17_693-jvmRun1 surefire1794840511097801536tmp surefire_0704956775821110536tmp"/>
+    <property name="surefire.test.class.path" value="/home/ubuntu/hw2/jsoup/target/test-classes:/home/ubuntu/hw2/jsoup/target/generated-classes/cobertura:/home/ubuntu/.m2/repository/org/junit/jupiter/junit-jupiter/5.8.1/junit-jupiter-5.8.1.jar:/home/ubuntu/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.8.1/junit-jupiter-api-5.8.1.jar:/home/ubuntu/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/ubuntu/.m2/repository/org/junit/platform/junit-platform-commons/1.8.1/junit-platform-commons-1.8.1.jar:/home/ubuntu/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/ubuntu/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.8.1/junit-jupiter-params-5.8.1.jar:/home/ubuntu/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.8.1/junit-jupiter-engine-5.8.1.jar:/home/ubuntu/.m2/repository/org/junit/platform/junit-platform-engine/1.8.1/junit-platform-engine-1.8.1.jar:/home/ubuntu/.m2/repository/com/google/code/gson/gson/2.8.8/gson-2.8.8.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-server/9.4.43.v20210629/jetty-server-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-http/9.4.43.v20210629/jetty-http-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-util/9.4.43.v20210629/jetty-util-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-io/9.4.43.v20210629/jetty-io-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-servlet/9.4.43.v20210629/jetty-servlet-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-security/9.4.43.v20210629/jetty-security-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/org/eclipse/jetty/jetty-util-ajax/9.4.43.v20210629/jetty-util-ajax-9.4.43.v20210629.jar:/home/ubuntu/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/home/ubuntu/.m2/repository/net/sourceforge/cobertura/cobertura/2.1.1/cobertura-2.1.1.jar:/home/ubuntu/.m2/repository/jaxen/jaxen/1.1.4/jaxen-1.1.4.jar:/home/ubuntu/.m2/repository/org/apache/ant/ant/1.8.3/ant-1.8.3.jar:/home/ubuntu/.m2/repository/org/apache/ant/ant-launcher/1.8.3/ant-launcher-1.8.3.jar:/home/ubuntu/.m2/repository/org/apache/ant/ant-junit/1.8.3/ant-junit-1.8.3.jar:/home/ubuntu/.m2/repository/org/mortbay/jetty/servlet-api-2.5/6.1.14/servlet-api-2.5-6.1.14.jar:/home/ubuntu/.m2/repository/org/mortbay/jetty/jetty/6.1.14/jetty-6.1.14.jar:/home/ubuntu/.m2/repository/org/mortbay/jetty/jetty-util/6.1.14/jetty-util-6.1.14.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/../lib/tools.jar:/home/ubuntu/.m2/repository/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar:/home/ubuntu/.m2/repository/ch/qos/logback/logback-classic/1.0.13/logback-classic-1.0.13.jar:/home/ubuntu/.m2/repository/ch/qos/logback/logback-core/1.0.13/logback-core-1.0.13.jar:/home/ubuntu/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/ubuntu/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/ubuntu/.m2/repository/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/home/ubuntu"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.home" value="/usr/lib/jvm/java-8-openjdk-amd64/jre"/>
+    <property name="basedir" value="/home/ubuntu/hw2/jsoup"/>
+    <property name="file.separator" value="/"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="/home/ubuntu/hw2/jsoup/target/surefire/surefirebooter4701075921476652133.jar"/>
+    <property name="sun.boot.class.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/classes"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="1.8.0_292-8u292-b10-0ubuntu1~16.04.1-b10"/>
+    <property name="user.name" value="ubuntu"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="4.4.0-1128-aws"/>
+    <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/endorsed"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="ANSI_X3.4-1968"/>
+    <property name="sun.net.http.allowRestrictedHeaders" value="true"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="localRepository" value="/home/ubuntu/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="jetty.git.hash" value="526006ecfa3af7f1a27ef3a288e2bef7ea9dd7e8"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="java.version" value="1.8.0_292"/>
+    <property name="user.dir" value="/home/ubuntu/hw2/jsoup"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Private Build"/>
+    <property name="java.vm.version" value="25.292-b10"/>
+    <property name="java.ext.dirs" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext:/usr/java/packages/lib/ext"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="52.0"/>
+  </properties>
+  <testcase name="formSubmissionCarriesCookiesFromSession" classname="org.jsoup.nodes.FormElementTest" time="0.424">
+    <system-out><![CDATA[[DEBUG] Logging to Logger[org.eclipse.jetty.util.log] via org.eclipse.jetty.util.log.Slf4jLog
+[INFO] Logging initialized @7348ms to org.eclipse.jetty.util.log.Slf4jLog
+[DEBUG] QueuedThreadPool[qtp638486177]@260e86a1{STOPPED,8<=0<=200,i=0,r=-1,q=0}[NO_TRY] added {org.eclipse.jetty.util.thread.ThreadPoolBudget@4c550889,POJO}
+[DEBUG] Server@6b53bcc2{STOPPED}[9.4.43.v20210629] added {QueuedThreadPool[qtp638486177]@260e86a1{STOPPED,8<=0<=200,i=0,r=-1,q=0}[NO_TRY],AUTO}
+[DEBUG] HttpConnectionFactory@395b56bb[HTTP/1.1] added {HttpConfiguration@256f8274{32768/8192,8192/8192,https://:0,[]},POJO}
+[DEBUG] ServerConnector@736d6a5c{null, ()}{0.0.0.0:0} added {Server@6b53bcc2{STOPPED}[9.4.43.v20210629],UNMANAGED}
+[DEBUG] ServerConnector@736d6a5c{null, ()}{0.0.0.0:0} added {QueuedThreadPool[qtp638486177]@260e86a1{STOPPED,8<=0<=200,i=0,r=-1,q=0}[NO_TRY],AUTO}
+[DEBUG] ServerConnector@736d6a5c{null, ()}{0.0.0.0:0} added {ScheduledExecutorScheduler@2374d36a{STOPPED},AUTO}
+[DEBUG] ServerConnector@736d6a5c{null, ()}{0.0.0.0:0} added {org.eclipse.jetty.io.ArrayByteBufferPool@54d18072,POJO}
+[DEBUG] ServerConnector@736d6a5c{null, (http/1.1)}{0.0.0.0:0} added {HttpConnectionFactory@395b56bb[HTTP/1.1],AUTO}
+[DEBUG] ServerConnector@736d6a5c{HTTP/1.1, (http/1.1)}{0.0.0.0:0} added HttpConnectionFactory@395b56bb[HTTP/1.1]
+[DEBUG] ServerConnector@736d6a5c{HTTP/1.1, (http/1.1)}{0.0.0.0:0} added {SelectorManager@ServerConnector@736d6a5c{HTTP/1.1, (http/1.1)}{0.0.0.0:0},MANAGED}
+[DEBUG] Server@6b53bcc2{STOPPED}[9.4.43.v20210629] added {ServerConnector@736d6a5c{HTTP/1.1, (http/1.1)}{0.0.0.0:0},AUTO}
+[DEBUG] Server@6b53bcc2{STOPPED}[9.4.43.v20210629] added {AttributeContainerMap@bf1ec20{size=0},AUTO}
+[DEBUG] Server@6b53bcc2{STOPPED}[9.4.43.v20210629] added {ServletHandler@2eced48b{STOPPED},MANAGED}
+[DEBUG] starting Server@6b53bcc2{STOPPED}[9.4.43.v20210629]
+[DEBUG] Server@6b53bcc2{STARTING}[9.4.43.v20210629] added {ErrorHandler@3e14c16d{STOPPED},AUTO}
+[INFO] jetty-9.4.43.v20210629; built: 2021-06-30T11:07:22.254Z; git: 526006ecfa3af7f1a27ef3a288e2bef7ea9dd7e8; jvm 1.8.0_292-8u292-b10-0ubuntu1~16.04.1-b10
+[DEBUG] starting Server@6b53bcc2{STARTING}[9.4.43.v20210629]
+[DEBUG] starting QueuedThreadPool[qtp638486177]@260e86a1{STOPPED,8<=0<=200,i=0,r=-1,q=0}[NO_TRY]
+[DEBUG] ReservedThreadExecutor@278bb07e{s=0/1,p=0}
+[DEBUG] QueuedThreadPool[qtp638486177]@260e86a1{STARTING,8<=0<=200,i=0,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=0}] added {ReservedThreadExecutor@278bb07e{s=0/1,p=0},AUTO}
+[DEBUG] starting ReservedThreadExecutor@278bb07e{s=0/1,p=0}
+[DEBUG] STARTED @7516ms ReservedThreadExecutor@278bb07e{s=0/1,p=0}
+[DEBUG] Starting Thread[qtp638486177-13,5,main]
+[DEBUG] Starting Thread[qtp638486177-14,5,main]
+[DEBUG] Runner started for QueuedThreadPool[qtp638486177]@260e86a1{STARTING,8<=2<=200,i=2,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=0}]
+[DEBUG] Starting Thread[qtp638486177-15,5,main]
+[DEBUG] Runner started for QueuedThreadPool[qtp638486177]@260e86a1{STARTING,8<=3<=200,i=3,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=0}]
+[DEBUG] Starting Thread[qtp638486177-16,5,main]
+[DEBUG] Runner started for QueuedThreadPool[qtp638486177]@260e86a1{STARTING,8<=4<=200,i=4,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=0}]
+[DEBUG] Starting Thread[qtp638486177-17,5,main]
+[DEBUG] Runner started for QueuedThreadPool[qtp638486177]@260e86a1{STARTING,8<=5<=200,i=5,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=0}]
+[DEBUG] Starting Thread[qtp638486177-18,5,main]
+[DEBUG] Runner started for QueuedThreadPool[qtp638486177]@260e86a1{STARTING,8<=6<=200,i=6,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=0}]
+[DEBUG] Starting Thread[qtp638486177-19,5,main]
+[DEBUG] Runner started for QueuedThreadPool[qtp638486177]@260e86a1{STARTING,8<=7<=200,i=7,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=0}]
+[DEBUG] Starting Thread[qtp638486177-20,5,main]
+[DEBUG] Runner started for QueuedThreadPool[qtp638486177]@260e86a1{STARTING,8<=8<=200,i=8,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=0}]
+[DEBUG] STARTED @7525ms QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=8,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=0}]
+[DEBUG] starting AttributeContainerMap@bf1ec20{size=0}
+[DEBUG] STARTED @7525ms AttributeContainerMap@bf1ec20{size=0}
+[DEBUG] starting ServletHandler@2eced48b{STOPPED}
+[DEBUG] Runner started for QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=8,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=0}]
+[DEBUG] filterNameMap={}
+[DEBUG] pathFilters=null
+[DEBUG] servletFilterMap=null
+[DEBUG] servletPathMap=null
+[DEBUG] servletNameMap={}
+[DEBUG] Adding Default404Servlet to ServletHandler@2eced48b{STARTING}
+[DEBUG] ServletHandler@2eced48b{STARTING} added {org.eclipse.jetty.servlet.ServletHandler$Default404Servlet-2974f221==org.eclipse.jetty.servlet.ServletHandler$Default404Servlet@cf4d2ec3{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STOPPED},AUTO}
+[DEBUG] ServletHandler@2eced48b{STARTING} added {[/]=>org.eclipse.jetty.servlet.ServletHandler$Default404Servlet-2974f221,POJO}
+[DEBUG] Path=/[EMBEDDED:null] mapped to servlet=org.eclipse.jetty.servlet.ServletHandler$Default404Servlet-2974f221[EMBEDDED:null]
+[DEBUG] Added MappedResource[pathSpec=ServletPathSpec@4e{/},resource=org.eclipse.jetty.servlet.ServletHandler$Default404Servlet-2974f221==org.eclipse.jetty.servlet.ServletHandler$Default404Servlet@cf4d2ec3{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STOPPED}] to PathMappings[size=1]
+[DEBUG] filterNameMap={}
+[DEBUG] pathFilters=null
+[DEBUG] servletFilterMap=null
+[DEBUG] servletPathMap=PathMappings[size=1]
+[DEBUG] servletNameMap={org.eclipse.jetty.servlet.ServletHandler$Default404Servlet-2974f221=org.eclipse.jetty.servlet.ServletHandler$Default404Servlet-2974f221==org.eclipse.jetty.servlet.ServletHandler$Default404Servlet@cf4d2ec3{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STOPPED}}
+[DEBUG] Path=/[EMBEDDED:null] mapped to servlet=org.eclipse.jetty.servlet.ServletHandler$Default404Servlet-2974f221[EMBEDDED:null]
+[DEBUG] Added MappedResource[pathSpec=ServletPathSpec@4e{/},resource=org.eclipse.jetty.servlet.ServletHandler$Default404Servlet-2974f221==org.eclipse.jetty.servlet.ServletHandler$Default404Servlet@cf4d2ec3{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STOPPED}] to PathMappings[size=1]
+[DEBUG] filterNameMap={}
+[DEBUG] pathFilters=null
+[DEBUG] servletFilterMap=null
+[DEBUG] servletPathMap=PathMappings[size=1]
+[DEBUG] servletNameMap={org.eclipse.jetty.servlet.ServletHandler$Default404Servlet-2974f221=org.eclipse.jetty.servlet.ServletHandler$Default404Servlet-2974f221==org.eclipse.jetty.servlet.ServletHandler$Default404Servlet@cf4d2ec3{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STOPPED}}
+[DEBUG] starting org.eclipse.jetty.servlet.ServletHandler$Default404Servlet-2974f221==org.eclipse.jetty.servlet.ServletHandler$Default404Servlet@cf4d2ec3{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STOPPED}
+[DEBUG] STARTED @7577ms org.eclipse.jetty.servlet.ServletHandler$Default404Servlet-2974f221==org.eclipse.jetty.servlet.ServletHandler$Default404Servlet@cf4d2ec3{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STARTED}
+[DEBUG] starting ServletHandler@2eced48b{STARTING}
+[DEBUG] STARTED @7577ms ServletHandler@2eced48b{STARTED}
+[DEBUG] starting ErrorHandler@3e14c16d{STOPPED}
+[DEBUG] starting ErrorHandler@3e14c16d{STARTING}
+[DEBUG] STARTED @7578ms ErrorHandler@3e14c16d{STARTED}
+[DEBUG] starting ServerConnector@736d6a5c{HTTP/1.1, (http/1.1)}{0.0.0.0:0}
+[DEBUG] ServerConnector@736d6a5c{HTTP/1.1, (http/1.1)}{0.0.0.0:35372} added {sun.nio.ch.ServerSocketChannelImpl[/0:0:0:0:0:0:0:0:35372],POJO}
+[DEBUG] starting ScheduledExecutorScheduler@2374d36a{STOPPED}
+[DEBUG] STARTED @7597ms ScheduledExecutorScheduler@2374d36a{STARTED}
+[DEBUG] starting HttpConnectionFactory@395b56bb[HTTP/1.1]
+[DEBUG] STARTED @7597ms HttpConnectionFactory@395b56bb[HTTP/1.1]
+[DEBUG] starting SelectorManager@ServerConnector@736d6a5c{HTTP/1.1, (http/1.1)}{0.0.0.0:35372}
+[DEBUG] EatWhatYouKill@63b1d4fa/SelectorProducer@4c4d27c8/IDLE/p=false/QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=8,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-09-28T06:03:27.09Z added {SelectorProducer@4c4d27c8,POJO}
+[DEBUG] EatWhatYouKill@63b1d4fa/SelectorProducer@4c4d27c8/IDLE/p=false/QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=8,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-09-28T06:03:27.092Z added {QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=8,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=0}],UNMANAGED}
+[DEBUG] EatWhatYouKill@63b1d4fa/SelectorProducer@4c4d27c8/IDLE/p=false/QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=8,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-09-28T06:03:27.101Z created
+[DEBUG] ManagedSelector@72cf2de5{STOPPED} id=0 keys=-1 selected=-1 updates=0 added {EatWhatYouKill@63b1d4fa/SelectorProducer@4c4d27c8/IDLE/p=false/QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=8,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-09-28T06:03:27.101Z,MANAGED}
+[DEBUG] SelectorManager@ServerConnector@736d6a5c{HTTP/1.1, (http/1.1)}{0.0.0.0:35372} added {ManagedSelector@72cf2de5{STOPPED} id=0 keys=-1 selected=-1 updates=0,AUTO}
+[DEBUG] starting ManagedSelector@72cf2de5{STOPPED} id=0 keys=-1 selected=-1 updates=0
+[DEBUG] starting EatWhatYouKill@63b1d4fa/SelectorProducer@4c4d27c8/IDLE/p=false/QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=8,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-09-28T06:03:27.101Z
+[DEBUG] STARTED @7632ms EatWhatYouKill@63b1d4fa/SelectorProducer@4c4d27c8/IDLE/p=false/QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=8,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-09-28T06:03:27.102Z
+[DEBUG] run org.eclipse.jetty.io.ManagedSelector$$Lambda$473/1594039997@197ee339 in QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=7,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=0}]
+[DEBUG] EatWhatYouKill@63b1d4fa/SelectorProducer@4c4d27c8/IDLE/p=false/QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=7,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-09-28T06:03:27.106Z tryProduce false
+[DEBUG] updateable 0
+[DEBUG] updates 0
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 waiting with 0 keys
+[DEBUG] queue org.eclipse.jetty.io.ManagedSelector$$Lambda$473/1594039997@197ee339 startThread=0
+[DEBUG] Queued change lazy=false org.eclipse.jetty.io.ManagedSelector$Start@4ee37ca3 on ManagedSelector@72cf2de5{STARTING} id=0 keys=0 selected=0 updates=0
+[DEBUG] Wakeup on submit ManagedSelector@72cf2de5{STARTING} id=0 keys=0 selected=0 updates=1
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 woken with none selected
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 woken up from select, 0/0/0 selected
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 processing 0 keys, 1 updates
+[DEBUG] updateable 1
+[DEBUG] update org.eclipse.jetty.io.ManagedSelector$Start@4ee37ca3
+[DEBUG] updates 0
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 waiting with 0 keys
+[DEBUG] STARTED @7641ms ManagedSelector@72cf2de5{STARTED} id=0 keys=0 selected=0 updates=0
+[DEBUG] STARTED @7641ms SelectorManager@ServerConnector@736d6a5c{HTTP/1.1, (http/1.1)}{0.0.0.0:35372}
+[DEBUG] ServerConnector@736d6a5c{HTTP/1.1, (http/1.1)}{0.0.0.0:35372} added {acceptor-0@14b030a0,POJO}
+[DEBUG] run acceptor-0@14b030a0 in QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=6,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=0}]
+[DEBUG] queue qtp638486177-14-acceptor-0@14b030a0-ServerConnector@736d6a5c{HTTP/1.1, (http/1.1)}{0.0.0.0:35372} startThread=0
+[INFO] Started ServerConnector@736d6a5c{HTTP/1.1, (http/1.1)}{0.0.0.0:35372}
+[DEBUG] STARTED @7650ms ServerConnector@736d6a5c{HTTP/1.1, (http/1.1)}{0.0.0.0:35372}
+[INFO] Started @7650ms
+[DEBUG] STARTED @7650ms Server@6b53bcc2{STARTED}[9.4.43.v20210629]
+[DEBUG] starting org.jsoup.integration.servlets.EchoServlet-60d1a32f==org.jsoup.integration.servlets.EchoServlet@1f7ecb09{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STOPPED}
+[DEBUG] STARTED @7673ms org.jsoup.integration.servlets.EchoServlet-60d1a32f==org.jsoup.integration.servlets.EchoServlet@1f7ecb09{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STARTED}
+[DEBUG] ServletHandler@2eced48b{STARTED} added {org.jsoup.integration.servlets.EchoServlet-60d1a32f==org.jsoup.integration.servlets.EchoServlet@1f7ecb09{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STARTED},UNMANAGED}
+[DEBUG] ServletHandler@2eced48b{STARTED} added {[/EchoServlet/*]=>org.jsoup.integration.servlets.EchoServlet-60d1a32f,POJO}
+[DEBUG] Path=/EchoServlet/*[EMBEDDED:null] mapped to servlet=org.jsoup.integration.servlets.EchoServlet-60d1a32f[EMBEDDED:null]
+[DEBUG] Added MappedResource[pathSpec=ServletPathSpec@8f86de6b{/EchoServlet/*},resource=org.jsoup.integration.servlets.EchoServlet-60d1a32f==org.jsoup.integration.servlets.EchoServlet@1f7ecb09{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STARTED}] to PathMappings[size=1]
+[DEBUG] Path=/[EMBEDDED:null] mapped to servlet=org.eclipse.jetty.servlet.ServletHandler$Default404Servlet-2974f221[EMBEDDED:null]
+[DEBUG] Added MappedResource[pathSpec=ServletPathSpec@4e{/},resource=org.eclipse.jetty.servlet.ServletHandler$Default404Servlet-2974f221==org.eclipse.jetty.servlet.ServletHandler$Default404Servlet@cf4d2ec3{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STARTED}] to PathMappings[size=2]
+[DEBUG] filterNameMap={}
+[DEBUG] pathFilters=null
+[DEBUG] servletFilterMap=null
+[DEBUG] servletPathMap=PathMappings[size=2]
+[DEBUG] servletNameMap={org.jsoup.integration.servlets.EchoServlet-60d1a32f=org.jsoup.integration.servlets.EchoServlet-60d1a32f==org.jsoup.integration.servlets.EchoServlet@1f7ecb09{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STARTED}, org.eclipse.jetty.servlet.ServletHandler$Default404Servlet-2974f221=org.eclipse.jetty.servlet.ServletHandler$Default404Servlet-2974f221==org.eclipse.jetty.servlet.ServletHandler$Default404Servlet@cf4d2ec3{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STARTED}}
+[DEBUG] starting org.jsoup.integration.servlets.CookieServlet-22b53226==org.jsoup.integration.servlets.CookieServlet@50417851{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STOPPED}
+[DEBUG] STARTED @7677ms org.jsoup.integration.servlets.CookieServlet-22b53226==org.jsoup.integration.servlets.CookieServlet@50417851{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STARTED}
+[DEBUG] ServletHandler@2eced48b{STARTED} added {org.jsoup.integration.servlets.CookieServlet-22b53226==org.jsoup.integration.servlets.CookieServlet@50417851{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STARTED},UNMANAGED}
+[DEBUG] ServletHandler@2eced48b{STARTED} added {[/CookieServlet/*]=>org.jsoup.integration.servlets.CookieServlet-22b53226,POJO}
+[DEBUG] Path=/EchoServlet/*[EMBEDDED:null] mapped to servlet=org.jsoup.integration.servlets.EchoServlet-60d1a32f[EMBEDDED:null]
+[DEBUG] Added MappedResource[pathSpec=ServletPathSpec@8f86de6b{/EchoServlet/*},resource=org.jsoup.integration.servlets.EchoServlet-60d1a32f==org.jsoup.integration.servlets.EchoServlet@1f7ecb09{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STARTED}] to PathMappings[size=1]
+[DEBUG] Path=/CookieServlet/*[EMBEDDED:null] mapped to servlet=org.jsoup.integration.servlets.CookieServlet-22b53226[EMBEDDED:null]
+[DEBUG] Added MappedResource[pathSpec=ServletPathSpec@5e4054cc{/CookieServlet/*},resource=org.jsoup.integration.servlets.CookieServlet-22b53226==org.jsoup.integration.servlets.CookieServlet@50417851{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STARTED}] to PathMappings[size=2]
+[DEBUG] Path=/[EMBEDDED:null] mapped to servlet=org.eclipse.jetty.servlet.ServletHandler$Default404Servlet-2974f221[EMBEDDED:null]
+[DEBUG] Added MappedResource[pathSpec=ServletPathSpec@4e{/},resource=org.eclipse.jetty.servlet.ServletHandler$Default404Servlet-2974f221==org.eclipse.jetty.servlet.ServletHandler$Default404Servlet@cf4d2ec3{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STARTED}] to PathMappings[size=3]
+[DEBUG] filterNameMap={}
+[DEBUG] pathFilters=null
+[DEBUG] servletFilterMap=null
+[DEBUG] servletPathMap=PathMappings[size=3]
+[DEBUG] servletNameMap={org.jsoup.integration.servlets.CookieServlet-22b53226=org.jsoup.integration.servlets.CookieServlet-22b53226==org.jsoup.integration.servlets.CookieServlet@50417851{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STARTED}, org.jsoup.integration.servlets.EchoServlet-60d1a32f=org.jsoup.integration.servlets.EchoServlet-60d1a32f==org.jsoup.integration.servlets.EchoServlet@1f7ecb09{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STARTED}, org.eclipse.jetty.servlet.ServletHandler$Default404Servlet-2974f221=org.eclipse.jetty.servlet.ServletHandler$Default404Servlet-2974f221==org.eclipse.jetty.servlet.ServletHandler$Default404Servlet@cf4d2ec3{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STARTED}}
+[DEBUG] Queued change lazy=false Accept@77f5fa3c[java.nio.channels.SocketChannel[connected local=/127.0.0.1:35372 remote=/127.0.0.1:60186]] on ManagedSelector@72cf2de5{STARTED} id=0 keys=0 selected=0 updates=0
+[DEBUG] Wakeup on submit ManagedSelector@72cf2de5{STARTED} id=0 keys=0 selected=0 updates=1
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 woken with none selected
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 woken up from select, 0/0/0 selected
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 processing 0 keys, 1 updates
+[DEBUG] updateable 1
+[DEBUG] update Accept@77f5fa3c[java.nio.channels.SocketChannel[connected local=/127.0.0.1:35372 remote=/127.0.0.1:60186]]
+[DEBUG] queue Accept@77f5fa3c[java.nio.channels.SocketChannel[connected local=/127.0.0.1:35372 remote=/127.0.0.1:60186]] startThread=0
+[DEBUG] updates 0
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 waiting with 1 keys
+[DEBUG] run Accept@77f5fa3c[java.nio.channels.SocketChannel[connected local=/127.0.0.1:35372 remote=/127.0.0.1:60186]] in QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=5,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=0}]
+[DEBUG] SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=9/30000}{io=0/0,kio=0,kro=0}-><null> idle timeout check, elapsed: 8 ms, remaining: 29992 ms
+[DEBUG] HttpField encoders loaded: [org.eclipse.jetty.http.Http1FieldPreEncoder@59282c7f]
+[DEBUG] new HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0} -> SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=86/30000}{io=0/0,kio=0,kro=0}-><null>,null,HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0}
+[DEBUG] New HTTP Connection HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=107/30000}{io=0/0,kio=0,kro=0}-><null>
+[DEBUG] Queued change lazy=true org.eclipse.jetty.io.ManagedSelector$$Lambda$478/2084879914@40742e5d on ManagedSelector@72cf2de5{STARTED} id=0 keys=1 selected=0 updates=0
+[DEBUG] onOpen SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=108/30000}{io=0/0,kio=0,kro=0}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] onOpen HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=108/30000}{io=0/0,kio=0,kro=0}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] fillInterested HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=109/30000}{io=0/0,kio=0,kro=0}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] interested FillInterest@6258fb58{AC.ReadCB@60cb21a2{HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=FI,flush=-,to=0/30000}{io=0/0,kio=0,kro=0}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0}}}
+[DEBUG] changeInterests p=false 0->1 for SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=FI,flush=-,to=2/30000}{io=0/1,kio=0,kro=0}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] Queued change lazy=false org.eclipse.jetty.io.ChannelEndPoint$$Lambda$475/336675676@3bb4acd7 on ManagedSelector@72cf2de5{STARTED} id=0 keys=1 selected=0 updates=1
+[DEBUG] Wakeup on submit ManagedSelector@72cf2de5{STARTED} id=0 keys=1 selected=0 updates=2
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 woken with none selected
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 woken up from select, 0/0/1 selected
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 processing 0 keys, 2 updates
+[DEBUG] updateable 2
+[DEBUG] update org.eclipse.jetty.io.ManagedSelector$$Lambda$478/2084879914@40742e5d
+[DEBUG] update org.eclipse.jetty.io.ChannelEndPoint$$Lambda$475/336675676@3bb4acd7
+[DEBUG] Key interests updated 0 -> 1 on SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=FI,flush=-,to=2/30000}{io=1/1,kio=1,kro=0}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] updates 0
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 waiting with 1 keys
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 woken up from select, 1/1/1 selected
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 processing 1 keys, 0 updates
+[DEBUG] selected 1 sun.nio.ch.SelectionKeyImpl@4654c5b9 SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=FI,flush=-,to=3/30000}{io=1/1,kio=1,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0} 
+[DEBUG] onSelected 1->0 r=true w=false for SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=FI,flush=-,to=3/30000}{io=1/0,kio=1,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] task CEP:SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=FI,flush=-,to=3/30000}{io=1/0,kio=1,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0}:runFillable:BLOCKING
+[DEBUG] ReservedThreadExecutor@278bb07e{s=0/1,p=0} tryExecute EatWhatYouKill@63b1d4fa/SelectorProducer@4c4d27c8/PRODUCING/p=false/QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=5,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-09-28T06:03:27.314Z
+[DEBUG] ReservedThreadExecutor@278bb07e{s=0/1,p=1} startReservedThread p=1
+[DEBUG] run ReservedThreadExecutor@278bb07e{s=0/1,p=1}@51ac140 in QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=4,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=1}]
+[DEBUG] ReservedThreadExecutor@278bb07e{s=1/1,p=1}@51ac140 started
+[DEBUG] ReservedThreadExecutor@278bb07e{s=1/1,p=0}@51ac140 waiting
+[DEBUG] queue ReservedThreadExecutor@278bb07e{s=1/1,p=0}@51ac140 startThread=0
+[DEBUG] EatWhatYouKill@63b1d4fa/SelectorProducer@4c4d27c8/PRODUCING/p=false/QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=4,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=1/1,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-09-28T06:03:27.317Z m=PRODUCE_EXECUTE_CONSUME t=CEP:SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=FI,flush=-,to=6/30000}{io=1/0,kio=1,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0}:runFillable:BLOCKING/BLOCKING
+[DEBUG] Created SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=FI,flush=-,to=6/30000}{io=1/0,kio=1,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] run CEP:SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=FI,flush=-,to=7/30000}{io=1/0,kio=1,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0}:runFillable:BLOCKING in QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=3,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=1/1,p=0}]
+[DEBUG] fillable FillInterest@6258fb58{AC.ReadCB@60cb21a2{HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=FI,flush=-,to=7/30000}{io=1/0,kio=1,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0}}}
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=7/30000}{io=1/0,kio=1,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0} onFillable enter HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0} null
+[DEBUG] queue CEP:SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=2/30000}{io=1/0,kio=1,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0}:runFillable:BLOCKING startThread=0
+[DEBUG] updateable 0
+[DEBUG] updates 0
+[DEBUG] ran Accept@77f5fa3c[java.nio.channels.SocketChannel[connected local=/127.0.0.1:35372 remote=/127.0.0.1:60186]] in QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=3,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=1/1,p=0}]
+[DEBUG] Key interests updated 1 -> 0 on SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=3/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 waiting with 1 keys
+[DEBUG] This JVM Runtime does not support Modules, disabling Jetty internal support
+[DEBUG] filled 305 HeapByteBuffer@460916c[p=0,l=305,c=8192,r=305]={<<<GET /CookieServlet?setCoo...nection: keep-alive\r\n\r\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=5/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0} filled 305 HeapByteBuffer@460916c[p=0,l=305,c=8192,r=305]={<<<GET /CookieServlet?setCoo...nection: keep-alive\r\n\r\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=6/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0} parse HeapByteBuffer@460916c[p=0,l=305,c=8192,r=305]={<<<GET /CookieServlet?setCoo...nection: keep-alive\r\n\r\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00} {}
+[DEBUG] parseNext s=START HeapByteBuffer@460916c[p=0,l=305,c=8192,r=305]={<<<GET /CookieServlet?setCoo...nection: keep-alive\r\n\r\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] START --> SPACE1
+[DEBUG] SPACE1 --> URI
+[DEBUG] URI --> SPACE2
+[DEBUG] SPACE2 --> REQUEST_VERSION
+[DEBUG] REQUEST_VERSION --> HEADER
+[DEBUG] HEADER:Accept-Encoding: gzip --> IN_VALUE
+[DEBUG] HEADER:Accept-Encoding: gzip --> FIELD
+[DEBUG] HEADER:User-Agent --> VALUE
+[DEBUG] HEADER:User-Agent --> IN_VALUE
+[DEBUG] HEADER:User-Agent --> FIELD
+[DEBUG] HEADER:Host --> VALUE
+[DEBUG] HEADER:Host --> IN_VALUE
+[DEBUG] HEADER:Host --> FIELD
+[DEBUG] HEADER:Accept --> VALUE
+[DEBUG] HEADER:Accept --> IN_VALUE
+[DEBUG] HEADER:Accept --> FIELD
+[DEBUG] HEADER:Connection: keep-alive --> IN_VALUE
+[DEBUG] HEADER:Connection: keep-alive --> FIELD
+[DEBUG] HEADER --> CONTENT
+[DEBUG] REQUEST for //localhost:35372/CookieServlet?setCookies=1 on HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=//localhost:35372/CookieServlet?setCookies=1,age=1}
+GET //localhost:35372/CookieServlet?setCookies=1 HTTP/1.1
+Accept-Encoding: gzip
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Host: localhost:35372
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=20/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=CONTENT,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=//localhost:35372/CookieServlet?setCookies=1,age=1} parsed true HttpParser{s=CONTENT,0 of -1}
+[DEBUG] releaseRequestBuffer HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=20/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=CONTENT,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=//localhost:35372/CookieServlet?setCookies=1,age=2}
+[DEBUG] handle //localhost:35372/CookieServlet?setCookies=1 HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=//localhost:35372/CookieServlet?setCookies=1,age=3} 
+[DEBUG] handling HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0}
+[DEBUG] action DISPATCH HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=HANDLING,uri=//localhost:35372/CookieServlet?setCookies=1,age=8}
+[DEBUG] REQUEST GET /CookieServlet on HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=HANDLING,uri=//localhost:35372/CookieServlet?setCookies=1,age=10}
+[DEBUG] servlet null|/CookieServlet|null -> org.jsoup.integration.servlets.CookieServlet-22b53226==org.jsoup.integration.servlets.CookieServlet@50417851{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STARTED}
+[DEBUG] chain=null
+[DEBUG] Servlet.init null for org.jsoup.integration.servlets.CookieServlet-22b53226
+[DEBUG] write(array HeapByteBuffer@3ee9ae5a[p=0,l=7,c=512,r=7]={<<<<table>>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=7,c=32768,r=7]={<<<<table>>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@f4f0099[p=0,l=1,c=512,r=1]={<<<\n>>>table>\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=8,c=32768,r=8]={<<<<table>\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@17e28fbb[p=0,l=8,c=512,r=8]={<<<</table>>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=16,c=32768,r=16]={<<<<table>\n</table>>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@3e8a4454[p=0,l=1,c=512,r=1]={<<<\n>>>/table>\x00\x00...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=17,c=32768,r=17]={<<<<table>\n</table>\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] handled=true async=false committed=false on HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=HANDLING,uri=//localhost:35372/CookieServlet?setCookies=1,age=46}
+[DEBUG] unhandle HttpChannelState@25abfa74{s=HANDLING rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0}
+[DEBUG] nextAction(false) COMPLETE HttpChannelState@25abfa74{s=HANDLING rs=COMPLETING os=OPEN is=IDLE awp=false se=false i=false al=0}
+[DEBUG] action COMPLETE HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=COMPLETING os=OPEN is=IDLE awp=false se=false i=false al=0},r=1,c=false/false,a=HANDLING,uri=//localhost:35372/CookieServlet?setCookies=1,age=46}
+[DEBUG] filled 0 HeapByteBuffer@460916c[p=0,l=0,c=8192,r=0]={<<<>>>GET /Cook...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] filled 0 HeapByteBuffer@460916c[p=0,l=0,c=8192,r=0]={<<<>>>GET /Cook...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=64/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=CONTENT,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=COMPLETING os=OPEN is=IDLE awp=false se=false i=false al=0},r=1,c=false/false,a=HANDLING,uri=//localhost:35372/CookieServlet?setCookies=1,age=46} filled 0 HeapByteBuffer@460916c[p=0,l=0,c=8192,r=0]={<<<>>>GET /Cook...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=65/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=CONTENT,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=COMPLETING os=OPEN is=IDLE awp=false se=false i=false al=0},r=1,c=false/false,a=HANDLING,uri=//localhost:35372/CookieServlet?setCookies=1,age=46} parse HeapByteBuffer@460916c[p=0,l=0,c=8192,r=0]={<<<>>>GET /Cook...\x00\x00\x00\x00\x00\x00\x00} {}
+[DEBUG] parseNext s=CONTENT HeapByteBuffer@460916c[p=0,l=0,c=8192,r=0]={<<<>>>GET /Cook...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] CONTENT --> CONTENT_END
+[DEBUG] onContentComplete HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=COMPLETING os=OPEN is=IDLE awp=false se=false i=false al=0},r=1,c=false/false,a=HANDLING,uri=//localhost:35372/CookieServlet?setCookies=1,age=47}
+[DEBUG] CONTENT_END --> END
+[DEBUG] onRequestComplete HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=COMPLETING os=OPEN is=IDLE awp=false se=false i=false al=0},r=1,c=false/false,a=HANDLING,uri=//localhost:35372/CookieServlet?setCookies=1,age=47}
+[DEBUG] HttpInputOverHTTP@7dbf978e[c=0,q=0,[0]=null,s=STREAM] addContent EOF
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=65/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=END,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=COMPLETING os=OPEN is=IDLE awp=false se=false i=false al=0},r=1,c=false/false,a=HANDLING,uri=//localhost:35372/CookieServlet?setCookies=1,age=47} parsed false HttpParser{s=END,0 of -1}
+[DEBUG] releaseRequestBuffer HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=65/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=END,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=COMPLETING os=OPEN is=IDLE awp=false se=false i=false al=0},r=1,c=false/false,a=HANDLING,uri=//localhost:35372/CookieServlet?setCookies=1,age=47}
+[DEBUG] complete(org.eclipse.jetty.util.Callback$3@1ed9d59) s=CLOSING,api=BLOCKED,sc=false,e=null s=false e=null, c=DirectByteBuffer@7c27fa39[p=0,l=17,c=32768,r=17]={<<<<table>\n</table>\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] sendResponse info=null content=DirectByteBuffer@7c27fa39[p=0,l=17,c=32768,r=17]={<<<<table>\n</table>\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00} complete=true committing=true callback=org.eclipse.jetty.server.HttpOutput$WriteCompleteCB@7a00e68a
+[DEBUG] COMMIT for /CookieServlet on HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=COMPLETING os=COMMITTED is=IDLE awp=false se=false i=false al=0},r=1,c=false/false,a=HANDLING,uri=//localhost:35372/CookieServlet?setCookies=1,age=56}
+200 null HTTP/1.1
+Date: Tue, 28 Sep 2021 06:03:27 GMT
+Set-Cookie: One=Root; Path=/
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Set-Cookie: One=CookieServlet; Path=/CookieServlet; HttpOnly
+Set-Cookie: One=EchoServlet; Path=/EchoServlet
+Content-Type: text/html;charset=utf-8
+
+
+[DEBUG] generate: NEED_HEADER for SendCallback@6024692f[PROCESSING][i=HTTP/1.1{s=200,h=6,cl=-1},cb=org.eclipse.jetty.server.HttpChannel$SendCallback@24e142c6] (null,[p=0,l=17,c=32768,r=17],true)@START
+[DEBUG] generateHeaders HTTP/1.1{s=200,h=6,cl=-1} last=true content=DirectByteBuffer@7c27fa39[p=0,l=17,c=32768,r=17]={<<<<table>\n</table>\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] Date: Tue, 28 Sep 2021 06:03:27 GMT
+Set-Cookie: One=Root; Path=/
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Set-Cookie: One=CookieServlet; Path=/CookieServlet; HttpOnly
+Set-Cookie: One=EchoServlet; Path=/EchoServlet
+Content-Type: text/html;charset=utf-8
+
+
+[DEBUG] CONTENT_LENGTH
+[DEBUG] generate: FLUSH for SendCallback@6024692f[PROCESSING][i=HTTP/1.1{s=200,h=6,cl=-1},cb=org.eclipse.jetty.server.HttpChannel$SendCallback@24e142c6] ([p=0,l=328,c=8192,r=328],[p=0,l=17,c=32768,r=17],true)@COMPLETING
+[DEBUG] write: WriteFlusher@66c907f8{IDLE}->null [HeapByteBuffer@460916c[p=0,l=328,c=8192,r=328]={<<<HTTP/1.1 200 OK\r\nDate: Tu...y(9.4.43.v20210629)\r\n\r\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00},DirectByteBuffer@7c27fa39[p=0,l=17,c=32768,r=17]={<<<<table>\n</table>\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}]
+[DEBUG] update WriteFlusher@66c907f8{WRITING}->null:IDLE-->WRITING
+[DEBUG] flushed 345 SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=W,to=88/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=END,0 of -1},g=HttpGenerator@3ae636a6{s=COMPLETING}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=COMPLETING os=COMMITTED is=IDLE awp=false se=false i=false al=0},r=1,c=false/false,a=HANDLING,uri=//localhost:35372/CookieServlet?setCookies=1,age=70}
+[DEBUG] Flushed=true written=345 remaining=0 WriteFlusher@66c907f8{WRITING}->null
+[DEBUG] update WriteFlusher@66c907f8{IDLE}->null:WRITING-->IDLE
+[DEBUG] generate: DONE for SendCallback@6024692f[PROCESSING][i=HTTP/1.1{s=200,h=6,cl=-1},cb=org.eclipse.jetty.server.HttpChannel$SendCallback@24e142c6] ([p=328,l=328,c=8192,r=0],[p=17,l=17,c=32768,r=0],true)@END
+[DEBUG] onWriteComplete(true,null) s=CLOSING,api=BLOCKED,sc=false,e=null->s=CLOSED,api=BLOCKING,sc=false,e=null c=null cb=org.eclipse.jetty.util.Callback$3@1ed9d59 w=false
+[DEBUG] completed HttpChannelState@25abfa74{s=HANDLING rs=COMPLETING os=COMPLETED is=IDLE awp=false se=false i=false al=0}
+[DEBUG] unhandle HttpChannelState@25abfa74{s=HANDLING rs=COMPLETED os=COMPLETED is=IDLE awp=false se=false i=false al=0}
+[DEBUG] nextAction(false) TERMINATED HttpChannelState@25abfa74{s=IDLE rs=COMPLETED os=COMPLETED is=IDLE awp=false se=false i=false al=0}
+[DEBUG] action TERMINATED HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=COMPLETED os=COMPLETED is=IDLE awp=false se=false i=false al=0},r=1,c=true/true,a=IDLE,uri=//localhost:35372/CookieServlet?setCookies=1,age=71}
+[DEBUG] onCompleted for /CookieServlet written=17
+[DEBUG] recycle HttpChannelState@25abfa74{s=IDLE rs=COMPLETED os=COMPLETED is=IDLE awp=false se=false i=false al=0}
+[DEBUG] reset HttpParser{s=END,0 of -1}
+[DEBUG] END --> START
+[DEBUG] !handle TERMINATED HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] filled 0 HeapByteBuffer@460916c[p=0,l=0,c=8192,r=0]={<<<>>>HTTP/1.1 ...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] filled 0 HeapByteBuffer@460916c[p=0,l=0,c=8192,r=0]={<<<>>>HTTP/1.1 ...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=3/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0} filled 0 HeapByteBuffer@460916c[p=0,l=0,c=8192,r=0]={<<<>>>HTTP/1.1 ...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=3/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0} parse HeapByteBuffer@460916c[p=0,l=0,c=8192,r=0]={<<<>>>HTTP/1.1 ...\x00\x00\x00\x00\x00\x00\x00} {}
+[DEBUG] parseNext s=START HeapByteBuffer@460916c[p=0,l=0,c=8192,r=0]={<<<>>>HTTP/1.1 ...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=3/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0} parsed false HttpParser{s=START,0 of -1}
+[DEBUG] releaseRequestBuffer HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=3/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] fillInterested HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=3/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] interested FillInterest@6258fb58{AC.ReadCB@60cb21a2{HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=FI,flush=-,to=0/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0}}}
+[DEBUG] changeInterests p=false 0->1 for SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=FI,flush=-,to=0/30000}{io=0/1,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] Queued change lazy=false org.eclipse.jetty.io.ChannelEndPoint$$Lambda$475/336675676@3bb4acd7 on ManagedSelector@72cf2de5{STARTED} id=0 keys=1 selected=0 updates=0
+[DEBUG] Wakeup on submit ManagedSelector@72cf2de5{STARTED} id=0 keys=1 selected=0 updates=1
+[DEBUG] starting org.jsoup.integration.servlets.FileServlet-60dce7ea==org.jsoup.integration.servlets.FileServlet@c786463a{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STOPPED}
+[DEBUG] STARTED @7949ms org.jsoup.integration.servlets.FileServlet-60dce7ea==org.jsoup.integration.servlets.FileServlet@c786463a{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STARTED}
+[DEBUG] ServletHandler@2eced48b{STARTED} added {org.jsoup.integration.servlets.FileServlet-60dce7ea==org.jsoup.integration.servlets.FileServlet@c786463a{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STARTED},UNMANAGED}
+[DEBUG] ServletHandler@2eced48b{STARTED} added {[/FileServlet/*]=>org.jsoup.integration.servlets.FileServlet-60dce7ea,POJO}
+[DEBUG] Path=/EchoServlet/*[EMBEDDED:null] mapped to servlet=org.jsoup.integration.servlets.EchoServlet-60d1a32f[EMBEDDED:null]
+[DEBUG] Added MappedResource[pathSpec=ServletPathSpec@8f86de6b{/EchoServlet/*},resource=org.jsoup.integration.servlets.EchoServlet-60d1a32f==org.jsoup.integration.servlets.EchoServlet@1f7ecb09{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STARTED}] to PathMappings[size=1]
+[DEBUG] Path=/FileServlet/*[EMBEDDED:null] mapped to servlet=org.jsoup.integration.servlets.FileServlet-60dce7ea[EMBEDDED:null]
+[DEBUG] Added MappedResource[pathSpec=ServletPathSpec@74e824f4{/FileServlet/*},resource=org.jsoup.integration.servlets.FileServlet-60dce7ea==org.jsoup.integration.servlets.FileServlet@c786463a{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STARTED}] to PathMappings[size=2]
+[DEBUG] Path=/CookieServlet/*[EMBEDDED:null] mapped to servlet=org.jsoup.integration.servlets.CookieServlet-22b53226[EMBEDDED:null]
+[DEBUG] Added MappedResource[pathSpec=ServletPathSpec@5e4054cc{/CookieServlet/*},resource=org.jsoup.integration.servlets.CookieServlet-22b53226==org.jsoup.integration.servlets.CookieServlet@50417851{jsp=null,order=-1,inst=true,async=true,src=EMBEDDED:null,STARTED}] to PathMappings[size=3]
+[DEBUG] Path=/[EMBEDDED:null] mapped to servlet=org.eclipse.jetty.servlet.ServletHandler$Default404Servlet-2974f221[EMBEDDED:null]
+[DEBUG] Added MappedResource[pathSpec=ServletPathSpec@4e{/},resource=org.eclipse.jetty.servlet.ServletHandler$Default404Servlet-2974f221==org.eclipse.jetty.servlet.ServletHandler$Default404Servlet@cf4d2ec3{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STARTED}] to PathMappings[size=4]
+[DEBUG] filterNameMap={}
+[DEBUG] pathFilters=null
+[DEBUG] servletFilterMap=null
+[DEBUG] servletPathMap=PathMappings[size=4]
+[DEBUG] servletNameMap={org.jsoup.integration.servlets.CookieServlet-22b53226=org.jsoup.integration.servlets.CookieServlet-22b53226==org.jsoup.integration.servlets.CookieServlet@50417851{jsp=null,order=-1,inst=true,async=true,src=EMBEDDED:null,STARTED}, org.jsoup.integration.servlets.EchoServlet-60d1a32f=org.jsoup.integration.servlets.EchoServlet-60d1a32f==org.jsoup.integration.servlets.EchoServlet@1f7ecb09{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STARTED}, org.jsoup.integration.servlets.FileServlet-60dce7ea=org.jsoup.integration.servlets.FileServlet-60dce7ea==org.jsoup.integration.servlets.FileServlet@c786463a{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STARTED}, org.eclipse.jetty.servlet.ServletHandler$Default404Servlet-2974f221=org.eclipse.jetty.servlet.ServletHandler$Default404Servlet-2974f221==org.eclipse.jetty.servlet.ServletHandler$Default404Servlet@cf4d2ec3{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STARTED}}
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 woken with none selected
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 woken up from select, 0/0/1 selected
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 processing 0 keys, 1 updates
+[DEBUG] updateable 1
+[DEBUG] update org.eclipse.jetty.io.ChannelEndPoint$$Lambda$475/336675676@3bb4acd7
+[DEBUG] Key interests updated 0 -> 1 on SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=FI,flush=-,to=13/30000}{io=1/1,kio=1,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] updates 0
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 waiting with 1 keys
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 woken up from select, 1/1/1 selected
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 processing 1 keys, 0 updates
+[DEBUG] selected 1 sun.nio.ch.SelectionKeyImpl@4654c5b9 SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=FI,flush=-,to=14/30000}{io=1/1,kio=1,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0} 
+[DEBUG] onSelected 1->0 r=true w=false for SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=FI,flush=-,to=14/30000}{io=1/0,kio=1,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] task CEP:SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=FI,flush=-,to=14/30000}{io=1/0,kio=1,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0}:runFillable:BLOCKING
+[DEBUG] ReservedThreadExecutor@278bb07e{s=1/1,p=0} tryExecute EatWhatYouKill@63b1d4fa/SelectorProducer@4c4d27c8/PRODUCING/p=false/QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=4,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=1/1,p=0}][pc=0,pic=0,pec=1,epc=0]@2021-09-28T06:03:27.431Z
+[DEBUG] ReservedThreadExecutor@278bb07e{s=0/1,p=0}@51ac140 offer EatWhatYouKill@63b1d4fa/SelectorProducer@4c4d27c8/PRODUCING/p=false/QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=4,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=0}][pc=0,pic=0,pec=1,epc=0]@2021-09-28T06:03:27.431Z
+[DEBUG] ReservedThreadExecutor@278bb07e{s=0/1,p=1} startReservedThread p=1
+[DEBUG] run ReservedThreadExecutor@278bb07e{s=0/1,p=1}@209ee91a in QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=3,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=0/1,p=1}]
+[DEBUG] ReservedThreadExecutor@278bb07e{s=1/1,p=1}@209ee91a started
+[DEBUG] ReservedThreadExecutor@278bb07e{s=1/1,p=0}@209ee91a waiting
+[DEBUG] queue ReservedThreadExecutor@278bb07e{s=1/1,p=0}@209ee91a startThread=0
+[DEBUG] ReservedThreadExecutor@278bb07e{s=0/1,p=0}@51ac140 task=EatWhatYouKill@63b1d4fa/SelectorProducer@4c4d27c8/IDLE/p=true/QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=3,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=1/1,p=0}][pc=0,pic=0,pec=1,epc=0]@2021-09-28T06:03:27.44Z
+[DEBUG] EatWhatYouKill@63b1d4fa/SelectorProducer@4c4d27c8/IDLE/p=true/QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=3,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=1/1,p=0}][pc=0,pic=0,pec=1,epc=0]@2021-09-28T06:03:27.441Z tryProduce true
+[DEBUG] updateable 0
+[DEBUG] updates 0
+[DEBUG] Key interests updated 1 -> 0 on SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=FI,flush=-,to=33/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 waiting with 1 keys
+[DEBUG] EatWhatYouKill@63b1d4fa/SelectorProducer@4c4d27c8/PRODUCING/p=false/QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=3,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=1/1,p=0}][pc=0,pic=0,pec=1,epc=0]@2021-09-28T06:03:27.446Z m=EXECUTE_PRODUCE_CONSUME t=CEP:SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=FI,flush=-,to=34/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0}:runFillable:BLOCKING/BLOCKING
+[DEBUG] fillable FillInterest@6258fb58{AC.ReadCB@60cb21a2{HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=FI,flush=-,to=34/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0}}}
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=35/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0} onFillable enter HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0} null
+[DEBUG] filled 335 HeapByteBuffer@460916c[p=0,l=335,c=8192,r=335]={<<<GET /FileServlet/htmltest...nection: keep-alive\r\n\r\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=0/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0} filled 335 HeapByteBuffer@460916c[p=0,l=335,c=8192,r=335]={<<<GET /FileServlet/htmltest...nection: keep-alive\r\n\r\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=0/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0} parse HeapByteBuffer@460916c[p=0,l=335,c=8192,r=335]={<<<GET /FileServlet/htmltest...nection: keep-alive\r\n\r\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00} {}
+[DEBUG] parseNext s=START HeapByteBuffer@460916c[p=0,l=335,c=8192,r=335]={<<<GET /FileServlet/htmltest...nection: keep-alive\r\n\r\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] START --> SPACE1
+[DEBUG] SPACE1 --> URI
+[DEBUG] URI --> SPACE2
+[DEBUG] SPACE2 --> REQUEST_VERSION
+[DEBUG] REQUEST_VERSION --> HEADER
+[DEBUG] HEADER:Cookie --> VALUE
+[DEBUG] HEADER:Cookie --> IN_VALUE
+[DEBUG] HEADER:Cookie --> FIELD
+[DEBUG] HEADER:Accept-Encoding: gzip --> IN_VALUE
+[DEBUG] HEADER:Accept-Encoding: gzip --> FIELD
+[DEBUG] HEADER:User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36 --> IN_VALUE
+[DEBUG] HEADER:User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36 --> FIELD
+[DEBUG] HEADER:Host: localhost:35372 --> IN_VALUE
+[DEBUG] HEADER:Host: localhost:35372 --> FIELD
+[DEBUG] HEADER:Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2 --> IN_VALUE
+[DEBUG] HEADER:Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2 --> FIELD
+[DEBUG] HEADER:Connection: keep-alive --> IN_VALUE
+[DEBUG] HEADER:Connection: keep-alive --> FIELD
+[DEBUG] HEADER --> CONTENT
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=0/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=SPACE2,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0} onFillable exit HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0} HeapByteBuffer@460916c[p=45,l=335,c=8192,r=290]={GET /File....html H<<<TTP/1.1\r\nCookie: One=Root...nection: keep-alive\r\n\r\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] ran CEP:SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=1/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=CONTENT,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=2,c=false/false,a=IDLE,uri=//localhost:35372/FileServlet/htmltests/upload-form.html,age=1}:runFillable:BLOCKING in QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=3,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=1/1,p=0}]
+[DEBUG] REQUEST for //localhost:35372/FileServlet/htmltests/upload-form.html on HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=2,c=false/false,a=IDLE,uri=//localhost:35372/FileServlet/htmltests/upload-form.html,age=0}
+GET //localhost:35372/FileServlet/htmltests/upload-form.html HTTP/1.1
+Cookie: One=Root
+Accept-Encoding: gzip
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Host: localhost:35372
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=2/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=CONTENT,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=2,c=false/false,a=IDLE,uri=//localhost:35372/FileServlet/htmltests/upload-form.html,age=1} parsed true HttpParser{s=CONTENT,0 of -1}
+[DEBUG] releaseRequestBuffer HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=2/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=CONTENT,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=2,c=false/false,a=IDLE,uri=//localhost:35372/FileServlet/htmltests/upload-form.html,age=1}
+[DEBUG] handle //localhost:35372/FileServlet/htmltests/upload-form.html HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=2,c=false/false,a=IDLE,uri=//localhost:35372/FileServlet/htmltests/upload-form.html,age=1} 
+[DEBUG] handling HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0}
+[DEBUG] action DISPATCH HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=2,c=false/false,a=HANDLING,uri=//localhost:35372/FileServlet/htmltests/upload-form.html,age=1}
+[DEBUG] REQUEST GET /FileServlet/htmltests/upload-form.html on HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=2,c=false/false,a=HANDLING,uri=//localhost:35372/FileServlet/htmltests/upload-form.html,age=1}
+[DEBUG] servlet null|/FileServlet|/htmltests/upload-form.html -> org.jsoup.integration.servlets.FileServlet-60dce7ea==org.jsoup.integration.servlets.FileServlet@c786463a{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STARTED}
+[DEBUG] chain=null
+[DEBUG] Servlet.init null for org.jsoup.integration.servlets.FileServlet-60dce7ea
+[DEBUG] write(array HeapByteBuffer@9b2b53a[p=0,l=404,c=8192,r=404]={<<<<html>\n<head>\n  <title>Up...form>\n\n</body>\n</html>\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=404,c=32768,r=404]={<<<<html>\n<head>\n  <title>Up...form>\n\n</body>\n</html>\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] sendResponse info=null content=DirectByteBuffer@7c27fa39[p=0,l=404,c=32768,r=404]={<<<<html>\n<head>\n  <title>Up...form>\n\n</body>\n</html>\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00} complete=false committing=true callback=Blocker@5e862982{null}
+[DEBUG] COMMIT for /FileServlet/htmltests/upload-form.html on HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=BLOCKING os=COMMITTED is=IDLE awp=false se=false i=true al=0},r=2,c=false/false,a=HANDLING,uri=//localhost:35372/FileServlet/htmltests/upload-form.html,age=26}
+200 null HTTP/1.1
+Date: Tue, 28 Sep 2021 06:03:27 GMT
+Content-Type: text/html
+
+
+[DEBUG] generate: NEED_HEADER for SendCallback@6024692f[PROCESSING][i=HTTP/1.1{s=200,h=2,cl=-1},cb=org.eclipse.jetty.server.HttpChannel$SendCallback@22750db4] (null,[p=0,l=404,c=32768,r=404],false)@START
+[DEBUG] generateHeaders HTTP/1.1{s=200,h=2,cl=-1} last=false content=DirectByteBuffer@7c27fa39[p=0,l=404,c=32768,r=404]={<<<<html>\n<head>\n  <title>Up...form>\n\n</body>\n</html>\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] Date: Tue, 28 Sep 2021 06:03:27 GMT
+Content-Type: text/html
+
+
+[DEBUG] CHUNKED_CONTENT
+[DEBUG] generate: FLUSH for SendCallback@6024692f[PROCESSING][i=HTTP/1.1{s=200,h=2,cl=-1},cb=org.eclipse.jetty.server.HttpChannel$SendCallback@22750db4] ([p=0,l=147,c=8192,r=147],[p=0,l=404,c=32768,r=404],false)@COMMITTED
+[DEBUG] write: WriteFlusher@66c907f8{IDLE}->null [HeapByteBuffer@460916c[p=0,l=147,c=8192,r=147]={<<<HTTP/1.1 200 OK\r\nDate: Tu....43.v20210629)\r\n\r\n194\r\n>>>) AppleWe...\x00\x00\x00\x00\x00\x00\x00},DirectByteBuffer@7c27fa39[p=0,l=404,c=32768,r=404]={<<<<html>\n<head>\n  <title>Up...form>\n\n</body>\n</html>\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}]
+[DEBUG] update WriteFlusher@66c907f8{WRITING}->null:IDLE-->WRITING
+[DEBUG] flushed 551 SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=W,to=28/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=CONTENT,0 of -1},g=HttpGenerator@3ae636a6{s=COMMITTED}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=BLOCKING os=COMMITTED is=IDLE awp=false se=false i=true al=0},r=2,c=false/false,a=HANDLING,uri=//localhost:35372/FileServlet/htmltests/upload-form.html,age=28}
+[DEBUG] Flushed=true written=551 remaining=0 WriteFlusher@66c907f8{WRITING}->null
+[DEBUG] update WriteFlusher@66c907f8{IDLE}->null:WRITING-->IDLE
+[DEBUG] generate: DONE for SendCallback@6024692f[PROCESSING][i=HTTP/1.1{s=200,h=2,cl=-1},cb=org.eclipse.jetty.server.HttpChannel$SendCallback@22750db4] ([p=147,l=147,c=8192,r=0],[p=404,l=404,c=32768,r=0],false)@COMMITTED
+[DEBUG] onWriteComplete(false,null) s=OPEN,api=BLOCKED,sc=false,e=null->s=OPEN,api=BLOCKING,sc=false,e=null c=null cb=null w=false
+[DEBUG] handled=true async=false committed=true on HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=BLOCKING os=COMMITTED is=IDLE awp=false se=false i=true al=0},r=2,c=false/false,a=HANDLING,uri=//localhost:35372/FileServlet/htmltests/upload-form.html,age=31}
+[DEBUG] unhandle HttpChannelState@25abfa74{s=HANDLING rs=BLOCKING os=COMMITTED is=IDLE awp=false se=false i=true al=0}
+[DEBUG] nextAction(false) COMPLETE HttpChannelState@25abfa74{s=HANDLING rs=COMPLETING os=COMMITTED is=IDLE awp=false se=false i=false al=0}
+[DEBUG] action COMPLETE HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=COMPLETING os=COMMITTED is=IDLE awp=false se=false i=false al=0},r=2,c=false/false,a=HANDLING,uri=//localhost:35372/FileServlet/htmltests/upload-form.html,age=31}
+[DEBUG] complete(org.eclipse.jetty.util.Callback$3@fdd887e) s=CLOSING,api=BLOCKED,sc=false,e=null s=false e=null, c=HeapByteBuffer@13dae45a[p=0,l=0,c=0,r=0]={<<<>>>}
+[DEBUG] sendResponse info=null content=HeapByteBuffer@13dae45a[p=0,l=0,c=0,r=0]={<<<>>>} complete=true committing=false callback=org.eclipse.jetty.server.HttpOutput$WriteCompleteCB@60f86a3e
+[DEBUG] generate: CONTINUE for SendCallback@6024692f[PROCESSING][i=null,cb=org.eclipse.jetty.server.HttpChannel$SendCallback@6a6ad338] (null,[p=0,l=0,c=0,r=0],true)@COMPLETING
+[DEBUG] generate: NEED_CHUNK for SendCallback@6024692f[PROCESSING][i=null,cb=org.eclipse.jetty.server.HttpChannel$SendCallback@6a6ad338] (null,[p=0,l=0,c=0,r=0],true)@COMPLETING
+[DEBUG] generate: FLUSH for SendCallback@6024692f[PROCESSING][i=null,cb=org.eclipse.jetty.server.HttpChannel$SendCallback@6a6ad338] (null,[p=0,l=0,c=0,r=0],true)@COMPLETING
+[DEBUG] write: WriteFlusher@66c907f8{IDLE}->null [HeapByteBuffer@2ed6021b[p=0,l=7,c=1024,r=7]={<<<\r\n0\r\n\r\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}]
+[DEBUG] update WriteFlusher@66c907f8{WRITING}->null:IDLE-->WRITING
+[DEBUG] flushed 7 SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=W,to=7/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=CONTENT,0 of -1},g=HttpGenerator@3ae636a6{s=COMPLETING}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=COMPLETING os=COMMITTED is=IDLE awp=false se=false i=false al=0},r=2,c=false/false,a=HANDLING,uri=//localhost:35372/FileServlet/htmltests/upload-form.html,age=35}
+[DEBUG] Flushed=true written=7 remaining=0 WriteFlusher@66c907f8{WRITING}->null
+[DEBUG] update WriteFlusher@66c907f8{IDLE}->null:WRITING-->IDLE
+[DEBUG] generate: DONE for SendCallback@6024692f[PROCESSING][i=null,cb=org.eclipse.jetty.server.HttpChannel$SendCallback@6a6ad338] (null,[p=0,l=0,c=0,r=0],true)@END
+[DEBUG] onWriteComplete(true,null) s=CLOSING,api=BLOCKED,sc=false,e=null->s=CLOSED,api=BLOCKING,sc=false,e=null c=null cb=org.eclipse.jetty.util.Callback$3@fdd887e w=false
+[DEBUG] completed HttpChannelState@25abfa74{s=HANDLING rs=COMPLETING os=COMPLETED is=IDLE awp=false se=false i=false al=0}
+[DEBUG] unhandle HttpChannelState@25abfa74{s=HANDLING rs=COMPLETED os=COMPLETED is=IDLE awp=false se=false i=false al=0}
+[DEBUG] nextAction(false) TERMINATED HttpChannelState@25abfa74{s=IDLE rs=COMPLETED os=COMPLETED is=IDLE awp=false se=false i=false al=0}
+[DEBUG] action TERMINATED HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=COMPLETED os=COMPLETED is=IDLE awp=false se=false i=false al=0},r=2,c=true/true,a=IDLE,uri=//localhost:35372/FileServlet/htmltests/upload-form.html,age=35}
+[DEBUG] onCompleted for /FileServlet/htmltests/upload-form.html written=404
+[DEBUG] filled 431 HeapByteBuffer@460916c[p=0,l=431,c=8192,r=431]={<<<POST /EchoServlet HTTP/1....\r\n_function=tidy&_file=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=0/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=CONTENT,0 of -1},g=HttpGenerator@3ae636a6{s=END}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=COMPLETED os=COMPLETED is=IDLE awp=false se=false i=false al=0},r=2,c=true/true,a=IDLE,uri=//localhost:35372/FileServlet/htmltests/upload-form.html,age=36} filled 431 HeapByteBuffer@460916c[p=0,l=431,c=8192,r=431]={<<<POST /EchoServlet HTTP/1....\r\n_function=tidy&_file=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=0/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=CONTENT,0 of -1},g=HttpGenerator@3ae636a6{s=END}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=COMPLETED os=COMPLETED is=IDLE awp=false se=false i=false al=0},r=2,c=true/true,a=IDLE,uri=//localhost:35372/FileServlet/htmltests/upload-form.html,age=36} parse HeapByteBuffer@460916c[p=0,l=431,c=8192,r=431]={<<<POST /EchoServlet HTTP/1....\r\n_function=tidy&_file=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00} {}
+[DEBUG] parseNext s=CONTENT HeapByteBuffer@460916c[p=0,l=431,c=8192,r=431]={<<<POST /EchoServlet HTTP/1....\r\n_function=tidy&_file=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] CONTENT --> CONTENT_END
+[DEBUG] onContentComplete HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=COMPLETED os=COMPLETED is=IDLE awp=false se=false i=false al=0},r=2,c=true/true,a=IDLE,uri=//localhost:35372/FileServlet/htmltests/upload-form.html,age=36}
+[DEBUG] CONTENT_END --> END
+[DEBUG] onRequestComplete HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=COMPLETED os=COMPLETED is=IDLE awp=false se=false i=false al=0},r=2,c=true/true,a=IDLE,uri=//localhost:35372/FileServlet/htmltests/upload-form.html,age=36}
+[DEBUG] HttpInputOverHTTP@7dbf978e[c=0,q=0,[0]=null,s=STREAM] addContent EOF
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=0/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=END,0 of -1},g=HttpGenerator@3ae636a6{s=END}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=COMPLETED os=COMPLETED is=IDLE awp=false se=false i=false al=0},r=2,c=true/true,a=IDLE,uri=//localhost:35372/FileServlet/htmltests/upload-form.html,age=36} parsed false HttpParser{s=END,0 of -1}
+[DEBUG] recycle HttpChannelState@25abfa74{s=IDLE rs=COMPLETED os=COMPLETED is=IDLE awp=false se=false i=false al=0}
+[DEBUG] reset HttpParser{s=END,0 of -1}
+[DEBUG] END --> START
+[DEBUG] !handle TERMINATED HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=2,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=0/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=2,c=false/false,a=IDLE,uri=null,age=0} parse HeapByteBuffer@460916c[p=0,l=431,c=8192,r=431]={<<<POST /EchoServlet HTTP/1....\r\n_function=tidy&_file=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00} {}
+[DEBUG] parseNext s=START HeapByteBuffer@460916c[p=0,l=431,c=8192,r=431]={<<<POST /EchoServlet HTTP/1....\r\n_function=tidy&_file=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] START --> SPACE1
+[DEBUG] SPACE1 --> URI
+[DEBUG] URI --> SPACE2
+[DEBUG] SPACE2 --> REQUEST_VERSION
+[DEBUG] REQUEST_VERSION --> HEADER
+[DEBUG] HEADER:Cookie --> VALUE
+[DEBUG] HEADER:Cookie --> IN_VALUE
+[DEBUG] HEADER:Cookie --> FIELD
+[DEBUG] HEADER:Accept-Encoding: gzip --> IN_VALUE
+[DEBUG] HEADER:Accept-Encoding: gzip --> FIELD
+[DEBUG] HEADER:User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36 --> IN_VALUE
+[DEBUG] HEADER:User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36 --> FIELD
+[DEBUG] HEADER:Content-Type: application/x-www-form-urlencoded; charset=UTF-8 --> IN_VALUE
+[DEBUG] HEADER:Content-Type: application/x-www-form-urlencoded; charset=UTF-8 --> FIELD
+[DEBUG] HEADER:Host: localhost:35372 --> IN_VALUE
+[DEBUG] HEADER:Host: localhost:35372 --> FIELD
+[DEBUG] HEADER:Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2 --> IN_VALUE
+[DEBUG] HEADER:Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2 --> FIELD
+[DEBUG] HEADER:Connection: keep-alive --> IN_VALUE
+[DEBUG] HEADER:Connection: keep-alive --> FIELD
+[DEBUG] HEADER:Content-Length --> VALUE
+[DEBUG] HEADER:Content-Length --> IN_VALUE
+[DEBUG] HEADER:Content-Length --> FIELD
+[DEBUG] HEADER --> CONTENT
+[DEBUG] REQUEST for //localhost:35372/EchoServlet on HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=3,c=false/false,a=IDLE,uri=//localhost:35372/EchoServlet,age=0}
+POST //localhost:35372/EchoServlet HTTP/1.1
+Cookie: One=EchoServlet; One=Root
+Accept-Encoding: gzip
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Host: localhost:35372
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+Content-Length: 21
+
+
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=10/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=CONTENT,0 of 21},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=3,c=false/false,a=IDLE,uri=//localhost:35372/EchoServlet,age=0} parsed true HttpParser{s=CONTENT,0 of 21}
+[DEBUG] handle //localhost:35372/EchoServlet HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=3,c=false/false,a=IDLE,uri=//localhost:35372/EchoServlet,age=0} 
+[DEBUG] handling HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0}
+[DEBUG] action DISPATCH HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=3,c=false/false,a=HANDLING,uri=//localhost:35372/EchoServlet,age=1}
+[DEBUG] REQUEST POST /EchoServlet on HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=3,c=false/false,a=HANDLING,uri=//localhost:35372/EchoServlet,age=1}
+[DEBUG] servlet null|/EchoServlet|null -> org.jsoup.integration.servlets.EchoServlet-60d1a32f==org.jsoup.integration.servlets.EchoServlet@1f7ecb09{jsp=null,order=-1,inst=false,async=true,src=EMBEDDED:null,STARTED}
+[DEBUG] chain=null
+[DEBUG] Servlet.init null for org.jsoup.integration.servlets.EchoServlet-60d1a32f
+[DEBUG] write(array HeapByteBuffer@4d2bf1c7[p=0,l=235,c=512,r=235]={<<<<title>Webserver Environm...\n    <table border="0">>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=235,c=32768,r=235]={<<<<title>Webserver Environm...\n    <table border="0">>>>="_functi...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@6e21dbc6[p=0,l=37,c=512,r=37]={<<<<tr><th>Method</th><td>POST</td></tr>>>>s</title>...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=272,c=32768,r=272]={<<<<title>Webserver Environm...</th><td>POST</td></tr>>>>or="_file...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@526e3629[p=0,l=1,c=512,r=1]={<<<\n>>>tr><th>Me...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=273,c=32768,r=273]={<<<<title>Webserver Environm.../th><td>POST</td></tr>\n>>>r="_file"...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@4cb630a5[p=0,l=50,c=512,r=50]={<<<<tr><th>Request URI</th><...>/EchoServlet</td></tr>>>> <style t...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=323,c=32768,r=323]={<<<<title>Webserver Environm...>/EchoServlet</td></tr>>>>="_file" ...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@5e81453d[p=0,l=1,c=512,r=1]={<<<\n>>>tr><th>Re...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=324,c=32768,r=324]={<<<<title>Webserver Environm.../EchoServlet</td></tr>\n>>>"_file" t...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@3e1e5ac0[p=0,l=39,c=512,r=39]={<<<<tr><th>Query String</th><td></td></tr>>>>t</td></t...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=363,c=32768,r=363]={<<<<title>Webserver Environm...ring</th><td></td></tr>>>> type="su...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@1d62fc54[p=0,l=1,c=512,r=1]={<<<\n>>>tr><th>Qu...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=364,c=32768,r=364]={<<<<title>Webserver Environm...ing</th><td></td></tr>\n>>>type="sub...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@78d459d0[p=0,l=58,c=512,r=58]={<<<<tr><th>Cookie</th><td>On...let; One=Root</td></tr>>>>type="tex...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=422,c=32768,r=422]={<<<<title>Webserver Environm...let; One=Root</td></tr>>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@72de8ac2[p=0,l=1,c=512,r=1]={<<<\n>>>tr><th>Co...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=423,c=32768,r=423]={<<<<title>Webserver Environm...et; One=Root</td></tr>\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@74567630[p=0,l=85,c=512,r=85]={<<<<tr><th>Accept</th><td>te....2, */*; q=.2</td></tr>>>>, td, th ...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=508,c=32768,r=508]={<<<<title>Webserver Environm....2, */*; q=.2</td></tr>>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@465a1b37[p=0,l=1,c=512,r=1]={<<<\n>>>tr><th>Ac...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=509,c=32768,r=509]={<<<<title>Webserver Environm...2, */*; q=.2</td></tr>\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@1c9ad0f5[p=0,l=152,c=512,r=152]={<<<<tr><th>User-Agent</th><t...Safari/537.36</td></tr>>>>      th ...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=661,c=32768,r=661]={<<<<title>Webserver Environm...Safari/537.36</td></tr>>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@1a14d13e[p=0,l=1,c=512,r=1]={<<<\n>>>tr><th>Us...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=662,c=32768,r=662]={<<<<title>Webserver Environm...afari/537.36</td></tr>\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@5d34d3ba[p=0,l=47,c=512,r=47]={<<<<tr><th>Connection</th><td>keep-alive</td></tr>>>> NT 10.0;...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=709,c=32768,r=709]={<<<<title>Webserver Environm...td>keep-alive</td></tr>>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@4b21f888[p=0,l=1,c=512,r=1]={<<<\n>>>tr><th>Co...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=710,c=32768,r=710]={<<<<title>Webserver Environm...d>keep-alive</td></tr>\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@1768461[p=0,l=46,c=512,r=46]={<<<<tr><th>Host</th><td>localhost:35372</td></tr>>>>> NT 10.0...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=756,c=32768,r=756]={<<<<title>Webserver Environm...calhost:35372</td></tr>>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@3dd72850[p=0,l=1,c=512,r=1]={<<<\n>>>tr><th>Ho...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=757,c=32768,r=757]={<<<<title>Webserver Environm...alhost:35372</td></tr>\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@46859553[p=0,l=46,c=512,r=46]={<<<<tr><th>Accept-Encoding</th><td>gzip</td></tr>>>>> NT 10.0...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=803,c=32768,r=803]={<<<<title>Webserver Environm...</th><td>gzip</td></tr>>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@2a4c0b3[p=0,l=1,c=512,r=1]={<<<\n>>>tr><th>Ac...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=804,c=32768,r=804]={<<<<title>Webserver Environm.../th><td>gzip</td></tr>\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@37c4090a[p=0,l=43,c=512,r=43]={<<<<tr><th>Content-Length</th><td>21</td></tr>>>>tr>> NT 1...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=847,c=32768,r=847]={<<<<title>Webserver Environm...th</th><td>21</td></tr>>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@3355220a[p=0,l=1,c=512,r=1]={<<<\n>>>tr><th>Co...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=848,c=32768,r=848]={<<<<title>Webserver Environm...h</th><td>21</td></tr>\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@5910163e[p=0,l=87,c=512,r=87]={<<<<tr><th>Content-Type</th>...charset=UTF-8</td></tr>>>> (KHTML, ...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=935,c=32768,r=935]={<<<<title>Webserver Environm...charset=UTF-8</td></tr>>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@7d15f4f7[p=0,l=1,c=512,r=1]={<<<\n>>>tr><th>Co...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=936,c=32768,r=936]={<<<<title>Webserver Environm...harset=UTF-8</td></tr>\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@29a95ded[p=0,l=49,c=512,r=49]={<<<<tr><th>Cookie: One</th><...d>EchoServlet</td></tr>>>>rm-urlenc...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=985,c=32768,r=985]={<<<<title>Webserver Environm...d>EchoServlet</td></tr>>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@7bc9b663[p=0,l=1,c=512,r=1]={<<<\n>>>tr><th>Co...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=986,c=32768,r=986]={<<<<title>Webserver Environm...>EchoServlet</td></tr>\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@602cd902[p=0,l=42,c=512,r=42]={<<<<tr><th>Cookie: One</th><td>Root</td></tr>>>>d></tr>rm...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=1028,c=32768,r=1028]={<<<<title>Webserver Environm...</th><td>Root</td></tr>>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@182449c4[p=0,l=1,c=512,r=1]={<<<\n>>>tr><th>Co...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=1029,c=32768,r=1029]={<<<<title>Webserver Environm.../th><td>Root</td></tr>\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=25/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=CONTENT,0 of 21},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=3,c=false/false,a=HANDLING,uri=//localhost:35372/EchoServlet,age=15} parse HeapByteBuffer@460916c[p=410,l=431,c=8192,r=21]={POST /Ech... 21\r\n\r\n<<<_function=tidy&_file=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00} {}
+[DEBUG] parseNext s=CONTENT HeapByteBuffer@460916c[p=410,l=431,c=8192,r=21]={POST /Ech... 21\r\n\r\n<<<_function=tidy&_file=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] onContent HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=3,c=false/false,a=HANDLING,uri=//localhost:35372/EchoServlet,age=15} Content@7b812918{HeapByteBufferR@4dcdf2a5[p=410,l=431,c=8192,r=21]={POST /Ech... 21\r\n\r\n<<<_function=tidy&_file=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}}
+[DEBUG] HttpInputOverHTTP@7dbf978e[c=0,q=0,[0]=null,s=STREAM] addContent Content@7b812918{HeapByteBufferR@4dcdf2a5[p=410,l=431,c=8192,r=21]={POST /Ech... 21\r\n\r\n<<<_function=tidy&_file=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}}
+[DEBUG] CONTENT --> CONTENT_END
+[DEBUG] onContentComplete HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=3,c=false/false,a=HANDLING,uri=//localhost:35372/EchoServlet,age=21}
+[DEBUG] CONTENT_END --> END
+[DEBUG] onRequestComplete HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=3,c=false/false,a=HANDLING,uri=//localhost:35372/EchoServlet,age=21}
+[DEBUG] HttpInputOverHTTP@7dbf978e[c=0,q=1,[0]=EOF,s=STREAM] addContent EOF
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=32/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=END,21 of 21},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=3,c=false/false,a=HANDLING,uri=//localhost:35372/EchoServlet,age=22} parsed false HttpParser{s=END,21 of 21}
+[DEBUG] HttpInputOverHTTP@7dbf978e[c=1,q=1,[0]=EOF,s=STREAM] read 1 from Content@7b812918{HeapByteBufferR@4dcdf2a5[p=411,l=431,c=8192,r=20]={POST /Ech...21\r\n\r\n_<<<function=tidy&_file=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}}
+[DEBUG] HttpInputOverHTTP@7dbf978e[c=2,q=1,[0]=EOF,s=STREAM] read 1 from Content@7b812918{HeapByteBufferR@4dcdf2a5[p=412,l=431,c=8192,r=19]={POST /Ech...1\r\n\r\n_f<<<unction=tidy&_file=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}}
+[DEBUG] HttpInputOverHTTP@7dbf978e[c=3,q=1,[0]=EOF,s=STREAM] read 1 from Content@7b812918{HeapByteBufferR@4dcdf2a5[p=413,l=431,c=8192,r=18]={POST /Ech...\r\n\r\n_fu<<<nction=tidy&_file=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}}
+[DEBUG] HttpInputOverHTTP@7dbf978e[c=4,q=1,[0]=EOF,s=STREAM] read 1 from Content@7b812918{HeapByteBufferR@4dcdf2a5[p=414,l=431,c=8192,r=17]={POST /Ech...\n\r\n_fun<<<ction=tidy&_file=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}}
+[DEBUG] HttpInputOverHTTP@7dbf978e[c=5,q=1,[0]=EOF,s=STREAM] read 1 from Content@7b812918{HeapByteBufferR@4dcdf2a5[p=415,l=431,c=8192,r=16]={POST /Ech...\r\n_func<<<tion=tidy&_file=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}}
+[DEBUG] HttpInputOverHTTP@7dbf978e[c=6,q=1,[0]=EOF,s=STREAM] read 1 from Content@7b812918{HeapByteBufferR@4dcdf2a5[p=416,l=431,c=8192,r=15]={POST /Ech...\n_funct<<<ion=tidy&_file=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}}
+[DEBUG] HttpInputOverHTTP@7dbf978e[c=7,q=1,[0]=EOF,s=STREAM] read 1 from Content@7b812918{HeapByteBufferR@4dcdf2a5[p=417,l=431,c=8192,r=14]={POST /Ech..._functi<<<on=tidy&_file=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}}
+[DEBUG] HttpInputOverHTTP@7dbf978e[c=8,q=1,[0]=EOF,s=STREAM] read 1 from Content@7b812918{HeapByteBufferR@4dcdf2a5[p=418,l=431,c=8192,r=13]={POST /Ech...functio<<<n=tidy&_file=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}}
+[DEBUG] HttpInputOverHTTP@7dbf978e[c=9,q=1,[0]=EOF,s=STREAM] read 1 from Content@7b812918{HeapByteBufferR@4dcdf2a5[p=419,l=431,c=8192,r=12]={POST /Ech...unction<<<=tidy&_file=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}}
+[DEBUG] HttpInputOverHTTP@7dbf978e[c=10,q=1,[0]=EOF,s=STREAM] read 1 from Content@7b812918{HeapByteBufferR@4dcdf2a5[p=420,l=431,c=8192,r=11]={POST /Ech...nction=<<<tidy&_file=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}}
+[DEBUG] HttpInputOverHTTP@7dbf978e[c=11,q=1,[0]=EOF,s=STREAM] read 1 from Content@7b812918{HeapByteBufferR@4dcdf2a5[p=421,l=431,c=8192,r=10]={POST /Ech...ction=t<<<idy&_file=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}}
+[DEBUG] HttpInputOverHTTP@7dbf978e[c=12,q=1,[0]=EOF,s=STREAM] read 1 from Content@7b812918{HeapByteBufferR@4dcdf2a5[p=422,l=431,c=8192,r=9]={POST /Ech...tion=ti<<<dy&_file=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}}
+[DEBUG] HttpInputOverHTTP@7dbf978e[c=13,q=1,[0]=EOF,s=STREAM] read 1 from Content@7b812918{HeapByteBufferR@4dcdf2a5[p=423,l=431,c=8192,r=8]={POST /Ech...ion=tid<<<y&_file=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}}
+[DEBUG] HttpInputOverHTTP@7dbf978e[c=14,q=1,[0]=EOF,s=STREAM] read 1 from Content@7b812918{HeapByteBufferR@4dcdf2a5[p=424,l=431,c=8192,r=7]={POST /Ech...on=tidy<<<&_file=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}}
+[DEBUG] HttpInputOverHTTP@7dbf978e[c=15,q=1,[0]=EOF,s=STREAM] read 1 from Content@7b812918{HeapByteBufferR@4dcdf2a5[p=425,l=431,c=8192,r=6]={POST /Ech...n=tidy&<<<_file=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}}
+[DEBUG] HttpInputOverHTTP@7dbf978e[c=16,q=1,[0]=EOF,s=STREAM] read 1 from Content@7b812918{HeapByteBufferR@4dcdf2a5[p=426,l=431,c=8192,r=5]={POST /Ech...=tidy&_<<<file=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}}
+[DEBUG] HttpInputOverHTTP@7dbf978e[c=17,q=1,[0]=EOF,s=STREAM] read 1 from Content@7b812918{HeapByteBufferR@4dcdf2a5[p=427,l=431,c=8192,r=4]={POST /Ech...tidy&_f<<<ile=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}}
+[DEBUG] HttpInputOverHTTP@7dbf978e[c=18,q=1,[0]=EOF,s=STREAM] read 1 from Content@7b812918{HeapByteBufferR@4dcdf2a5[p=428,l=431,c=8192,r=3]={POST /Ech...idy&_fi<<<le=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}}
+[DEBUG] HttpInputOverHTTP@7dbf978e[c=19,q=1,[0]=EOF,s=STREAM] read 1 from Content@7b812918{HeapByteBufferR@4dcdf2a5[p=429,l=431,c=8192,r=2]={POST /Ech...dy&_fil<<<e=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}}
+[DEBUG] HttpInputOverHTTP@7dbf978e[c=20,q=1,[0]=EOF,s=STREAM] read 1 from Content@7b812918{HeapByteBufferR@4dcdf2a5[p=430,l=431,c=8192,r=1]={POST /Ech...y&_file<<<=>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}}
+[DEBUG] HttpInputOverHTTP@7dbf978e[c=21,q=1,[0]=EOF,s=STREAM] read 1 from Content@7b812918{HeapByteBufferR@4dcdf2a5[p=431,l=431,c=8192,r=0]={POST /Ech...&_file=<<<>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}}
+[DEBUG] releaseRequestBuffer HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=52/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=END,21 of 21},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=3,c=false/false,a=HANDLING,uri=//localhost:35372/EchoServlet,age=45}
+[DEBUG] onEof HttpChannelState@25abfa74{s=HANDLING rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0}
+[DEBUG] write(array HeapByteBuffer@4bafd6d7[p=0,l=32,c=512,r=32]={<<<<tr><th>_file</th><td></td></tr>>>></td></tr...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=1061,c=32768,r=1061]={<<<<title>Webserver Environm...file</th><td></td></tr>>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@717fcc0f[p=0,l=1,c=512,r=1]={<<<\n>>>tr><th>_f...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=1062,c=32768,r=1062]={<<<<title>Webserver Environm...ile</th><td></td></tr>\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@3c4e2d1[p=0,l=40,c=512,r=40]={<<<<tr><th>_function</th><td>tidy</td></tr>>>>r>d></tr>...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=1102,c=32768,r=1102]={<<<<title>Webserver Environm...</th><td>tidy</td></tr>>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@21be60d6[p=0,l=1,c=512,r=1]={<<<\n>>>tr><th>_f...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=1103,c=32768,r=1103]={<<<<title>Webserver Environm.../th><td>tidy</td></tr>\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] onEof HttpChannelState@25abfa74{s=HANDLING rs=BLOCKING os=OPEN is=READY awp=false se=false i=true al=0}
+[DEBUG] write(array HeapByteBuffer@14121358[p=0,l=8,c=512,r=8]={<<<</table>>>>_function...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=1111,c=32768,r=1111]={<<<<title>Webserver Environm...tidy</td></tr>\n</table>>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] write(array HeapByteBuffer@1b82aa61[p=0,l=1,c=512,r=1]={<<<\n>>>/table>_f...\x00\x00\x00\x00\x00\x00\x00})
+[DEBUG] write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@7c27fa39[p=0,l=1112,c=32768,r=1112]={<<<<title>Webserver Environm...idy</td></tr>\n</table>\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] handled=true async=false committed=false on HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=BLOCKING os=OPEN is=READY awp=false se=false i=true al=0},r=3,c=false/false,a=HANDLING,uri=//localhost:35372/EchoServlet,age=46}
+[DEBUG] unhandle HttpChannelState@25abfa74{s=HANDLING rs=BLOCKING os=OPEN is=READY awp=false se=false i=true al=0}
+[DEBUG] nextAction(false) COMPLETE HttpChannelState@25abfa74{s=HANDLING rs=COMPLETING os=OPEN is=READY awp=false se=false i=false al=0}
+[DEBUG] action COMPLETE HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=COMPLETING os=OPEN is=READY awp=false se=false i=false al=0},r=3,c=false/false,a=HANDLING,uri=//localhost:35372/EchoServlet,age=47}
+[DEBUG] complete(org.eclipse.jetty.util.Callback$3@3f7411aa) s=CLOSING,api=BLOCKED,sc=false,e=null s=false e=null, c=DirectByteBuffer@7c27fa39[p=0,l=1112,c=32768,r=1112]={<<<<title>Webserver Environm...idy</td></tr>\n</table>\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] sendResponse info=null content=DirectByteBuffer@7c27fa39[p=0,l=1112,c=32768,r=1112]={<<<<title>Webserver Environm...idy</td></tr>\n</table>\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00} complete=true committing=true callback=org.eclipse.jetty.server.HttpOutput$WriteCompleteCB@6d1e7e42
+[DEBUG] COMMIT for /EchoServlet on HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=COMPLETING os=COMMITTED is=READY awp=false se=false i=false al=0},r=3,c=false/false,a=HANDLING,uri=//localhost:35372/EchoServlet,age=47}
+200 null HTTP/1.1
+Date: Tue, 28 Sep 2021 06:03:27 GMT
+Content-Type: text/html;charset=utf-8
+Cache-Control: no-cache
+Cache-Control: no-store
+
+
+[DEBUG] generate: NEED_HEADER for SendCallback@6024692f[PROCESSING][i=HTTP/1.1{s=200,h=4,cl=-1},cb=org.eclipse.jetty.server.HttpChannel$SendCallback@6992386a] (null,[p=0,l=1112,c=32768,r=1112],true)@START
+[DEBUG] generateHeaders HTTP/1.1{s=200,h=4,cl=-1} last=true content=DirectByteBuffer@7c27fa39[p=0,l=1112,c=32768,r=1112]={<<<<title>Webserver Environm...idy</td></tr>\n</table>\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] Date: Tue, 28 Sep 2021 06:03:27 GMT
+Content-Type: text/html;charset=utf-8
+Cache-Control: no-cache
+Cache-Control: no-store
+
+
+[DEBUG] CONTENT_LENGTH
+[DEBUG] generate: FLUSH for SendCallback@6024692f[PROCESSING][i=HTTP/1.1{s=200,h=4,cl=-1},cb=org.eclipse.jetty.server.HttpChannel$SendCallback@6992386a] ([p=0,l=200,c=8192,r=200],[p=0,l=1112,c=32768,r=1112],true)@COMPLETING
+[DEBUG] write: WriteFlusher@66c907f8{IDLE}->null [HeapByteBuffer@460916c[p=0,l=200,c=8192,r=200]={<<<HTTP/1.1 200 OK\r\nDate: Tu...y(9.4.43.v20210629)\r\n\r\n>>>Safari/53...\x00\x00\x00\x00\x00\x00\x00},DirectByteBuffer@7c27fa39[p=0,l=1112,c=32768,r=1112]={<<<<title>Webserver Environm...idy</td></tr>\n</table>\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}]
+[DEBUG] update WriteFlusher@66c907f8{WRITING}->null:IDLE-->WRITING
+]]></system-out>
+  </testcase>
+  <testcase name="createsFormData" classname="org.jsoup.nodes.FormElementTest" time="0.001"/>
+  <testcase name="actionWithNoValue" classname="org.jsoup.nodes.FormElementTest" time="0.009"/>
+  <testcase name="removeFormElement" classname="org.jsoup.nodes.FormElementTest" time="0"/>
+  <testcase name="formsAddedAfterParseAreFormElements" classname="org.jsoup.nodes.FormElementTest" time="0.001"/>
+  <testcase name="createsSubmitableConnection" classname="org.jsoup.nodes.FormElementTest" time="0.001"/>
+  <testcase name="formDataUsesFirstAttribute" classname="org.jsoup.nodes.FormElementTest" time="0.004">
+    <system-out><![CDATA[[DEBUG] flushed 1312 SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=W,to=71/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=END,21 of 21},g=HttpGenerator@3ae636a6{s=COMPLETING}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=HANDLING rs=COMPLETING os=COMMITTED is=READY awp=false se=false i=false al=0},r=3,c=false/false,a=HANDLING,uri=//localhost:35372/EchoServlet,age=61}
+[DEBUG] Flushed=true written=1312 remaining=0 WriteFlusher@66c907f8{WRITING}->null
+[DEBUG] update WriteFlusher@66c907f8{IDLE}->null:WRITING-->IDLE
+[DEBUG] generate: DONE for SendCallback@6024692f[PROCESSING][i=HTTP/1.1{s=200,h=4,cl=-1},cb=org.eclipse.jetty.server.HttpChannel$SendCallback@6992386a] ([p=200,l=200,c=8192,r=0],[p=1112,l=1112,c=32768,r=0],true)@END
+[DEBUG] onWriteComplete(true,null) s=CLOSING,api=BLOCKED,sc=false,e=null->s=CLOSED,api=BLOCKING,sc=false,e=null c=null cb=org.eclipse.jetty.util.Callback$3@3f7411aa w=false
+[DEBUG] completed HttpChannelState@25abfa74{s=HANDLING rs=COMPLETING os=COMPLETED is=READY awp=false se=false i=false al=0}
+[DEBUG] unhandle HttpChannelState@25abfa74{s=HANDLING rs=COMPLETED os=COMPLETED is=READY awp=false se=false i=false al=0}
+[DEBUG] nextAction(false) TERMINATED HttpChannelState@25abfa74{s=IDLE rs=COMPLETED os=COMPLETED is=READY awp=false se=false i=false al=0}
+[DEBUG] action TERMINATED HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=COMPLETED os=COMPLETED is=READY awp=false se=false i=false al=0},r=3,c=true/true,a=IDLE,uri=//localhost:35372/EchoServlet,age=62}
+[DEBUG] onCompleted for /EchoServlet written=1112
+[DEBUG] recycle HttpChannelState@25abfa74{s=IDLE rs=COMPLETED os=COMPLETED is=READY awp=false se=false i=false al=0}
+[DEBUG] reset HttpParser{s=END,21 of 21}
+[DEBUG] END --> START
+[DEBUG] !handle TERMINATED HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=3,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] filled 0 HeapByteBuffer@460916c[p=0,l=0,c=8192,r=0]={<<<>>>HTTP/1.1 ...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] filled 0 HeapByteBuffer@460916c[p=0,l=0,c=8192,r=0]={<<<>>>HTTP/1.1 ...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=0/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=3,c=false/false,a=IDLE,uri=null,age=0} filled 0 HeapByteBuffer@460916c[p=0,l=0,c=8192,r=0]={<<<>>>HTTP/1.1 ...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=0/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=3,c=false/false,a=IDLE,uri=null,age=0} parse HeapByteBuffer@460916c[p=0,l=0,c=8192,r=0]={<<<>>>HTTP/1.1 ...\x00\x00\x00\x00\x00\x00\x00} {}
+[DEBUG] parseNext s=START HeapByteBuffer@460916c[p=0,l=0,c=8192,r=0]={<<<>>>HTTP/1.1 ...\x00\x00\x00\x00\x00\x00\x00}
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=0/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=3,c=false/false,a=IDLE,uri=null,age=0} parsed false HttpParser{s=START,0 of -1}
+[DEBUG] releaseRequestBuffer HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=1/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=3,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] fillInterested HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=-,flush=-,to=1/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=3,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] interested FillInterest@6258fb58{AC.ReadCB@60cb21a2{HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=FI,flush=-,to=0/30000}{io=0/0,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=3,c=false/false,a=IDLE,uri=null,age=0}}}
+[DEBUG] changeInterests p=false 0->1 for SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=FI,flush=-,to=0/30000}{io=0/1,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=3,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] Queued change lazy=false org.eclipse.jetty.io.ChannelEndPoint$$Lambda$475/336675676@3bb4acd7 on ManagedSelector@72cf2de5{STARTED} id=0 keys=1 selected=0 updates=0
+[DEBUG] Wakeup on submit ManagedSelector@72cf2de5{STARTED} id=0 keys=1 selected=0 updates=1
+]]></system-out>
+  </testcase>
+  <testcase name="controlsAddedAfterParseAreLinkedWithForms" classname="org.jsoup.nodes.FormElementTest" time="0.001">
+    <system-out><![CDATA[[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 woken with none selected
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 woken up from select, 0/0/1 selected
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 processing 0 keys, 1 updates
+[DEBUG] updateable 1
+[DEBUG] update org.eclipse.jetty.io.ChannelEndPoint$$Lambda$475/336675676@3bb4acd7
+[DEBUG] Key interests updated 0 -> 1 on SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=FI,flush=-,to=3/30000}{io=1/1,kio=1,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=3,c=false/false,a=IDLE,uri=null,age=0}
+[DEBUG] updates 0
+[DEBUG] Selector sun.nio.ch.EPollSelectorImpl@36abfb12 waiting with 1 keys
+[DEBUG] HttpConnection@60cb21a2::SocketChannelEndPoint@7c84d6a0{l=/127.0.0.1:35372,r=/127.0.0.1:60186,OPEN,fill=FI,flush=-,to=3/30000}{io=0/1,kio=0,kro=1}->HttpConnection@60cb21a2[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3ae636a6{s=START}]=>HttpChannelOverHttp@16e68720{s=HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=3,c=false/false,a=IDLE,uri=null,age=0} onFillable exit HttpChannelState@25abfa74{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0} null
+[DEBUG] ran org.eclipse.jetty.io.ManagedSelector$$Lambda$473/1594039997@197ee339 in QueuedThreadPool[qtp638486177]@260e86a1{STARTED,8<=8<=200,i=4,r=-1,q=0}[ReservedThreadExecutor@278bb07e{s=1/1,p=0}]
+]]></system-out>
+  </testcase>
+  <testcase name="adoptedFormsRetainInputs" classname="org.jsoup.nodes.FormElementTest" time="0"/>
+  <testcase name="usesOnForCheckboxValueIfNoValueSet" classname="org.jsoup.nodes.FormElementTest" time="0.001"/>
+  <testcase name="hasAssociatedControls" classname="org.jsoup.nodes.FormElementTest" time="0"/>
+  <testcase name="actionWithNoBaseUri" classname="org.jsoup.nodes.FormElementTest" time="0"/>
+</testsuite>
