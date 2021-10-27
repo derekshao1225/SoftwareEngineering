@@ -1,0 +1,2457 @@
+Found 306 issues
+
+src/joblist.c:19: error: NULL_DEREFERENCE
+  pointer `srv->joblist->ptr` last assigned on line 16 could be null and is dereferenced at line 19, column 2.
+  17.   	}
+  18.   
+  19. > 	srv->joblist->ptr[srv->joblist->used++] = con;
+  20.   
+  21.   	return 0;
+
+src/etag.c:19: error: MEMORY_LEAK
+  memory dynamically allocated to `etag->ptr` by call to `buffer_append_long()` at line 18, column 3 is not reachable after line 19, column 3.
+  17.   	if (flags & ETAG_USE_INODE) {
+  18.   		buffer_append_off_t(etag, st->st_ino);
+  19. > 		buffer_append_string_len(etag, CONST_STR_LEN("-"));
+  20.   	}
+  21.   	
+
+src/fdevent.c:19: error: NULL_DEREFERENCE
+  pointer `ev` last assigned on line 18 could be null and is dereferenced at line 19, column 2.
+  17.   
+  18.   	ev = calloc(1, sizeof(*ev));
+  19. > 	ev->fdarray = calloc(maxfds, sizeof(*ev->fdarray));
+  20.   	ev->maxfds = maxfds;
+  21.   
+
+src/status_counter.c:30: error: MEMORY_LEAK
+  memory dynamically allocated by call to `buffer_copy_string_len()` at line 27, column 3 is not reachable after line 30, column 3.
+  28.   		di->value = 0;
+  29.   
+  30. > 		array_insert_unique(srv->status, (data_unset *)di);
+  31.   	}
+  32.   	return di;
+
+src/chunk.c:26: error: NULL_DEREFERENCE
+  pointer `cq` last assigned on line 24 could be null and is dereferenced at line 26, column 2.
+  24.   	cq = calloc(1, sizeof(*cq));
+  25.   
+  26. > 	cq->first = NULL;
+  27.   	cq->last = NULL;
+  28.   
+
+src/fdevent_poll.c:44: error: NULL_DEREFERENCE
+  pointer `ev->unused.ptr` last assigned on line 41 could be null and is dereferenced at line 44, column 3.
+  42.   		}
+  43.   
+  44. > 		ev->unused.ptr[ev->unused.used++] = k;
+  45.   	} else {
+  46.   		SEGFAULT();
+
+src/mod_cml.c:26: error: NULL_DEREFERENCE
+  pointer `p` last assigned on line 24 could be null and is dereferenced at line 26, column 2.
+  24.   	p = calloc(1, sizeof(*p));
+  25.   
+  26. > 	p->basedir         = buffer_init();
+  27.   	p->baseurl         = buffer_init();
+  28.   	p->trigger_handler = buffer_init();
+
+src/array.c:34: error: NULL_DEREFERENCE
+  pointer `a->data` last assigned on line 32 could be null and is dereferenced at line 34, column 21.
+  32.   	a->data = malloc(sizeof(*src->data) * src->size);
+  33.   	for (i = 0; i < src->size; i++) {
+  34. > 		if (src->data[i]) a->data[i] = src->data[i]->copy(src->data[i]);
+  35.   		else a->data[i] = NULL;
+  36.   	}
+
+src/array.c:35: error: NULL_DEREFERENCE
+  pointer `a->data` last assigned on line 32 could be null and is dereferenced at line 35, column 8.
+  33.   	for (i = 0; i < src->size; i++) {
+  34.   		if (src->data[i]) a->data[i] = src->data[i]->copy(src->data[i]);
+  35. > 		else a->data[i] = NULL;
+  36.   	}
+  37.   
+
+src/configfile.c:220: error: MEMORY_LEAK
+  memory dynamically allocated to `srv->config_storage` by call to `calloc()` at line 136, column 24 is not reachable after line 220, column 19.
+  218.   		srv->config_storage[i] = s;
+  219.   
+  220. > 		if (0 != (ret = config_insert_values_global(srv, ((data_config *)srv->config_context->data[i])->value, cv))) {
+  221.   			break;
+  222.   		}
+
+src/configfile.c:236: error: MEMORY_LEAK
+  memory dynamically allocated to `srv->config_storage` by call to `calloc()` at line 136, column 24 is not reachable after line 236, column 3.
+  234.   		srv->srvconf.stat_cache_engine = STAT_CACHE_ENGINE_NONE;
+  235.   	} else {
+  236. > 		log_error_write(srv, __FILE__, __LINE__, "sb",
+  237.   				"server.stat-cache-engine can be one of \"disable\", \"simple\","
+  238.   #ifdef HAVE_FAM_H
+
+src/fdevent_linux_rtsig.c:50: error: NULL_DEREFERENCE
+  pointer `ev->unused.ptr` last assigned on line 47 could be null and is dereferenced at line 50, column 3.
+  48.   		}
+  49.   
+  50. > 		ev->unused.ptr[ev->unused.used++] = k;
+  51.   	} else {
+  52.   		fprintf(stderr, "%s.%d: del! %d %d\n", __FILE__, __LINE__, ev->pollfds[fde_ndx].fd, fd);
+
+src/mod_evhost.c:32: error: NULL_DEREFERENCE
+  pointer `p` last assigned on line 30 could be null and is dereferenced at line 32, column 2.
+  30.   	p = calloc(1, sizeof(*p));
+  31.   
+  32. > 	p->tmp_buf = buffer_init();
+  33.   
+  34.   	return p;
+
+src/network_write.c:72: error: DEAD_STORE
+  The value written to &p is never used.
+  70.   		case FILE_CHUNK: {
+  71.   #ifdef USE_MMAP
+  72. > 			char *p = NULL;
+  73.   #endif
+  74.   			ssize_t r;
+
+src/network_write.c:89: error: NULL_DEREFERENCE
+  pointer `sce` last assigned on line 77 could be null and is dereferenced at line 89, column 17.
+  87.   			toSend = c->file.length - c->offset;
+  88.   
+  89. > 			if (offset > sce->st.st_size) {
+  90.   				log_error_write(srv, __FILE__, __LINE__, "sb", "file was shrinked:", c->file.name);
+  91.   
+
+src/response.c:41: error: MEMORY_LEAK
+  memory dynamically allocated to `b->ptr` by call to `buffer_copy_string_len()` at line 39, column 3 is not reachable after line 41, column 2.
+  39.   		BUFFER_COPY_STRING_CONST(b, "HTTP/1.0 ");
+  40.   	}
+  41. > 	buffer_append_long(b, con->http_status);
+  42.   	BUFFER_APPEND_STRING_CONST(b, " ");
+  43.   	buffer_append_string(b, get_http_status_name(con->http_status));
+
+src/network.c:33: error: DEAD_STORE
+  The value written to &loops is never used.
+  31.   	server_socket *srv_socket = (server_socket *)context;
+  32.   	connection *con;
+  33. > 	int loops = 0;
+  34.   
+  35.   	UNUSED(context);
+
+src/mod_auth.c:35: error: NULL_DEREFERENCE
+  pointer `p` last assigned on line 33 could be null and is dereferenced at line 35, column 2.
+  33.   	p = calloc(1, sizeof(*p));
+  34.   
+  35. > 	p->tmp_buf = buffer_init();
+  36.   
+  37.   	p->auth_user = buffer_init();
+
+src/mod_redirect.c:36: error: NULL_DEREFERENCE
+  pointer `p` last assigned on line 34 could be null and is dereferenced at line 36, column 2.
+  34.   	p = calloc(1, sizeof(*p));
+  35.   
+  36. > 	p->match_buf = buffer_init();
+  37.   	p->location = buffer_init();
+  38.   
+
+src/mod_indexfile.c:37: error: NULL_DEREFERENCE
+  pointer `p` last assigned on line 35 could be null and is dereferenced at line 37, column 2.
+  35.   	p = calloc(1, sizeof(*p));
+  36.   
+  37. > 	p->tmp_buf = buffer_init();
+  38.   
+  39.   	return p;
+
+src/mod_setenv.c:38: error: NULL_DEREFERENCE
+  pointer `hctx` last assigned on line 36 could be null and is dereferenced at line 38, column 2.
+  36.   	hctx = calloc(1, sizeof(*hctx));
+  37.   
+  38. > 	hctx->handled = 0;
+  39.   
+  40.   	return hctx;
+
+src/network_writev.c:164: error: DEAD_STORE
+  The value written to &start is never used.
+  162.   #define GByte * 1024 MByte
+  163.   			const off_t we_want_to_mmap = 512 KByte;
+  164. > 			char *start = NULL;
+  165.   
+  166.   			if (HANDLER_ERROR == stat_cache_get_entry(srv, con, c->file.name, &sce)) {
+
+src/network_writev.c:231: error: DEAD_STORE
+  The value written to &we_want_to_send is never used.
+  229.   				/* we have more to send than we can mmap() at once */
+  230.   				if (abs_offset + we_want_to_send > c->file.mmap.offset + we_want_to_mmap) {
+  231. > 					we_want_to_send = (c->file.mmap.offset + we_want_to_mmap) - abs_offset;
+  232.   					to_mmap = we_want_to_mmap;
+  233.   				}
+
+src/chunk.c:39: error: NULL_DEREFERENCE
+  pointer `c` last assigned on line 37 could be null and is dereferenced at line 39, column 2.
+  37.   	c = calloc(1, sizeof(*c));
+  38.   
+  39. > 	c->mem = buffer_init();
+  40.   	c->file.name = buffer_init();
+  41.   	c->file.fd = -1;
+
+src/mod_flv_streaming.c:41: error: NULL_DEREFERENCE
+  pointer `p` last assigned on line 39 could be null and is dereferenced at line 41, column 2.
+  39.   	p = calloc(1, sizeof(*p));
+  40.   
+  41. > 	p->query_str = buffer_init();
+  42.   	p->get_params = array_init();
+  43.   
+
+src/mod_simple_vhost.c:43: error: NULL_DEREFERENCE
+  pointer `p` last assigned on line 41 could be null and is dereferenced at line 43, column 2.
+  41.   	p = calloc(1, sizeof(*p));
+  42.   
+  43. > 	p->doc_root = buffer_init();
+  44.   
+  45.   	return p;
+
+src/mod_userdir.c:43: error: NULL_DEREFERENCE
+  pointer `p` last assigned on line 41 could be null and is dereferenced at line 43, column 2.
+  41.   	p = calloc(1, sizeof(*p));
+  42.   
+  43. > 	p->username = buffer_init();
+  44.   	p->temp_path = buffer_init();
+  45.   
+
+src/mod_expire.c:44: error: NULL_DEREFERENCE
+  pointer `p` last assigned on line 42 could be null and is dereferenced at line 44, column 2.
+  42.   	p = calloc(1, sizeof(*p));
+  43.   
+  44. > 	p->expire_tstmp = buffer_init();
+  45.   
+  46.   	buffer_prepare_copy(p->expire_tstmp, 255);
+
+src/mod_ssi.c:45: error: NULL_DEREFERENCE
+  pointer `p` last assigned on line 43 could be null and is dereferenced at line 45, column 2.
+  43.   	p = calloc(1, sizeof(*p));
+  44.   
+  45. > 	p->timefmt = buffer_init();
+  46.   	p->stat_fn = buffer_init();
+  47.   
+
+src/mod_staticfile.c:47: error: NULL_DEREFERENCE
+  pointer `p` last assigned on line 45 could be null and is dereferenced at line 47, column 2.
+  45.   	p = calloc(1, sizeof(*p));
+  46.   
+  47. > 	p->range_buf = buffer_init();
+  48.   
+  49.   	return p;
+
+src/connections.c:59: error: NULL_DEREFERENCE
+  pointer `conns->ptr` last assigned on line 56 could be null and is dereferenced at line 59, column 4.
+  57.   
+  58.   		for (i = conns->used; i < conns->size; i++) {
+  59. > 			conns->ptr[i] = connection_init(srv);
+  60.   		}
+  61.   	}
+
+src/mod_ssi_expr.c:46: error: DEAD_STORE
+  The value written to &tid is never used.
+  44.   static int ssi_expr_tokenizer(server *srv, connection *con, plugin_data *p,
+  45.   			      ssi_tokenizer_t *t, int *token_id, buffer *token) {
+  46. > 	int tid = 0;
+  47.   	size_t i;
+  48.   
+
+src/joblist.c:54: error: NULL_DEREFERENCE
+  pointer `srv->fdwaitqueue->ptr` last assigned on line 51 could be null and is dereferenced at line 54, column 2.
+  52.   	}
+  53.   
+  54. > 	srv->fdwaitqueue->ptr[srv->fdwaitqueue->used++] = con;
+  55.   
+  56.   	return 0;
+
+src/log.c:75: error: RESOURCE_LEAK
+  resource acquired to `srv->errorlog_fd` by call to `open()` at line 61, column 33 is not released after line 75, column 2.
+  73.   	}
+  74.   
+  75. > 	log_error_write(srv, __FILE__, __LINE__, "s", "server started");
+  76.   
+  77.   #ifdef HAVE_VALGRIND_VALGRIND_H
+
+src/mod_rrdtool.c:52: error: NULL_DEREFERENCE
+  pointer `p` last assigned on line 50 could be null and is dereferenced at line 52, column 2.
+  50.   	p = calloc(1, sizeof(*p));
+  51.   
+  52. > 	p->resp = buffer_init();
+  53.   	p->cmd = buffer_init();
+  54.   
+
+src/data_array.c:54: error: NULL_DEREFERENCE
+  pointer `ds` last assigned on line 52 could be null and is dereferenced at line 54, column 2.
+  52.   	ds = calloc(1, sizeof(*ds));
+  53.   
+  54. > 	ds->key = buffer_init();
+  55.   	ds->value = array_init();
+  56.   
+
+src/data_integer.c:54: error: NULL_DEREFERENCE
+  pointer `ds` last assigned on line 52 could be null and is dereferenced at line 54, column 2.
+  52.   	ds = calloc(1, sizeof(*ds));
+  53.   
+  54. > 	ds->key = buffer_init();
+  55.   	ds->value = 0;
+  56.   
+
+src/data_fastcgi.c:56: error: NULL_DEREFERENCE
+  pointer `ds` last assigned on line 54 could be null and is dereferenced at line 56, column 2.
+  54.   	ds = calloc(1, sizeof(*ds));
+  55.   
+  56. > 	ds->key = buffer_init();
+  57.   	ds->host = buffer_init();
+  58.   	ds->port = 0;
+
+src/mod_rewrite.c:56: error: NULL_DEREFERENCE
+  pointer `hctx` last assigned on line 54 could be null and is dereferenced at line 56, column 2.
+  54.   	hctx = calloc(1, sizeof(*hctx));
+  55.   
+  56. > 	hctx->state = REWRITE_STATE_UNSET;
+  57.   	hctx->loops = 0;
+  58.   
+
+src/data_count.c:57: error: NULL_DEREFERENCE
+  pointer `ds` last assigned on line 55 could be null and is dereferenced at line 57, column 2.
+  55.   	ds = calloc(1, sizeof(*ds));
+  56.   
+  57. > 	ds->key = buffer_init();
+  58.   	ds->count = 1;
+  59.   
+
+src/mod_secure_download.c:59: error: NULL_DEREFERENCE
+  pointer `p` last assigned on line 57 could be null and is dereferenced at line 59, column 2.
+  57.   	p = calloc(1, sizeof(*p));
+  58.   
+  59. > 	p->md5 = buffer_init();
+  60.   
+  61.   	return p;
+
+src/mod_access.c:57: error: DEAD_STORE
+  The value written to &i is never used.
+  55.   SETDEFAULTS_FUNC(mod_access_set_defaults) {
+  56.   	plugin_data *p = p_d;
+  57. > 	size_t i = 0;
+  58.   
+  59.   	config_values_t cv[] = {
+
+src/mod_access.c:74: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 64 could be null and is dereferenced at line 74, column 3.
+  72.   		cv[0].destination = s->access_deny;
+  73.   
+  74. > 		p->config_storage[i] = s;
+  75.   
+  76.   		if (0 != config_insert_values_global(srv, ((data_config *)srv->config_context->data[i])->value, cv)) {
+
+src/mod_access.c:70: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 69 could be null and is dereferenced at line 70, column 3.
+  68.   
+  69.   		s = calloc(1, sizeof(plugin_config));
+  70. > 		s->access_deny    = array_init();
+  71.   
+  72.   		cv[0].destination = s->access_deny;
+
+src/mod_status.c:61: error: NULL_DEREFERENCE
+  pointer `p` last assigned on line 59 could be null and is dereferenced at line 61, column 19.
+  59.   	p = calloc(1, sizeof(*p));
+  60.   
+  61. > 	p->traffic_out = p->requests = 0;
+  62.   	p->rel_traffic_out = p->rel_requests = 0;
+  63.   	p->abs_traffic_out = p->abs_requests = 0;
+
+src/splaytree.c:69: error: DEAD_STORE
+  The value written to &root_size is never used.
+  67.       N.left = N.right = NULL;
+  68.       l = r = &N;
+  69. >     root_size = node_size(t);
+  70.       l_size = r_size = 0;
+  71.   
+
+src/mod_compress.c:68: error: NULL_DEREFERENCE
+  pointer `p` last assigned on line 66 could be null and is dereferenced at line 68, column 2.
+  66.   	p = calloc(1, sizeof(*p));
+  67.   
+  68. > 	p->ofn = buffer_init();
+  69.   	p->b = buffer_init();
+  70.   
+
+src/mod_alias.c:66: error: DEAD_STORE
+  The value written to &i is never used.
+  64.   SETDEFAULTS_FUNC(mod_alias_set_defaults) {
+  65.   	plugin_data *p = p_d;
+  66. > 	size_t i = 0;
+  67.   
+  68.   	config_values_t cv[] = {
+
+src/mod_alias.c:84: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 75 could be null and is dereferenced at line 84, column 3.
+  82.   		cv[0].destination = s->alias;
+  83.   
+  84. > 		p->config_storage[i] = s;
+  85.   
+  86.   		if (0 != config_insert_values_global(srv, ((data_config *)srv->config_context->data[i])->value, cv)) {
+
+src/mod_alias.c:81: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 80 could be null and is dereferenced at line 81, column 3.
+  79.   
+  80.   		s = calloc(1, sizeof(plugin_config));
+  81. > 		s->alias = array_init();
+  82.   		cv[0].destination = s->alias;
+  83.   
+
+src/fdevent_poll.c:94: error: NULL_DEREFERENCE
+  pointer `ev->pollfds` last assigned on line 91 could be null and is dereferenced at line 94, column 3.
+  92.   		}
+  93.   
+  94. > 		ev->pollfds[ev->used].fd = fd;
+  95.   		ev->pollfds[ev->used].events = events;
+  96.   
+
+src/network.c:287: error: DEAD_STORE
+  The value written to &addr_len is never used.
+  285.   		break;
+  286.   	default:
+  287. > 		addr_len = 0;
+  288.   
+  289.   		return -1;
+
+src/network.c:70: error: DEAD_STORE
+  The value written to &port is never used.
+  68.   	server_socket *srv_socket;
+  69.   	char *sp;
+  70. > 	unsigned int port = 0;
+  71.   	const char *host;
+  72.   	buffer *b;
+
+src/network.c:96: error: NULL_DEREFERENCE
+  pointer `srv_socket` last assigned on line 95 could be null and is dereferenced at line 96, column 2.
+  94.   
+  95.   	srv_socket = calloc(1, sizeof(*srv_socket));
+  96. > 	srv_socket->fd = -1;
+  97.   
+  98.   	srv_socket->srv_token = buffer_init();
+
+src/mod_redirect.c:87: error: DEAD_STORE
+  The value written to &da is never used.
+  85.   		size_t j;
+  86.   		array *ca;
+  87. > 		data_array *da = (data_array *)du;
+  88.   
+  89.   		s = calloc(1, sizeof(plugin_config));
+
+src/mod_redirect.c:71: error: DEAD_STORE
+  The value written to &i is never used.
+  69.   	plugin_data *p = p_d;
+  70.   	data_unset *du;
+  71. > 	size_t i = 0;
+  72.   
+  73.   	config_values_t cv[] = {
+
+src/mod_redirect.c:94: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 81 could be null and is dereferenced at line 94, column 3.
+  92.   		cv[0].destination = s->redirect;
+  93.   
+  94. > 		p->config_storage[i] = s;
+  95.   		ca = ((data_config *)srv->config_context->data[i])->value;
+  96.   
+
+src/mod_redirect.c:90: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 89 could be null and is dereferenced at line 90, column 3.
+  88.   
+  89.   		s = calloc(1, sizeof(plugin_config));
+  90. > 		s->redirect   = pcre_keyvalue_buffer_init();
+  91.   
+  92.   		cv[0].destination = s->redirect;
+
+src/mod_trigger_b4_dl.c:73: error: NULL_DEREFERENCE
+  pointer `p` last assigned on line 71 could be null and is dereferenced at line 73, column 2.
+  71.   	p = calloc(1, sizeof(*p));
+  72.   
+  73. > 	p->tmp_buf = buffer_init();
+  74.   
+  75.   	return p;
+
+src/mod_evasive.c:72: error: DEAD_STORE
+  The value written to &i is never used.
+  70.   SETDEFAULTS_FUNC(mod_evasive_set_defaults) {
+  71.   	plugin_data *p = p_d;
+  72. > 	size_t i = 0;
+  73.   
+  74.   	config_values_t cv[] = {
+
+src/mod_evasive.c:89: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 79 could be null and is dereferenced at line 89, column 3.
+  87.   		cv[0].destination = &(s->max_conns);
+  88.   
+  89. > 		p->config_storage[i] = s;
+  90.   
+  91.   		if (0 != config_insert_values_global(srv, ((data_config *)srv->config_context->data[i])->value, cv)) {
+
+src/mod_evasive.c:85: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 84 could be null and is dereferenced at line 85, column 3.
+  83.   
+  84.   		s = calloc(1, sizeof(plugin_config));
+  85. > 		s->max_conns       = 0;
+  86.   
+  87.   		cv[0].destination = &(s->max_conns);
+
+src/mod_usertrack.c:72: error: DEAD_STORE
+  The value written to &i is never used.
+  70.   SETDEFAULTS_FUNC(mod_usertrack_set_defaults) {
+  71.   	plugin_data *p = p_d;
+  72. > 	size_t i = 0;
+  73.   
+  74.   	config_values_t cv[] = {
+
+src/mod_usertrack.c:99: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 85 could be null and is dereferenced at line 99, column 3.
+  97.   		cv[2].destination = s->cookie_domain;
+  98.   
+  99. > 		p->config_storage[i] = s;
+  100.   
+  101.   		if (0 != config_insert_values_global(srv, ((data_config *)srv->config_context->data[i])->value, cv)) {
+
+src/mod_usertrack.c:91: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 90 could be null and is dereferenced at line 91, column 3.
+  89.   
+  90.   		s = calloc(1, sizeof(plugin_config));
+  91. > 		s->cookie_name    = buffer_init();
+  92.   		s->cookie_domain  = buffer_init();
+  93.   		s->cookie_max_age = 0;
+
+src/mod_cml.c:74: error: DEAD_STORE
+  The value written to &i is never used.
+  72.   SETDEFAULTS_FUNC(mod_cml_set_defaults) {
+  73.   	plugin_data *p = p_d;
+  74. > 	size_t i = 0;
+  75.   
+  76.   	config_values_t cv[] = {
+
+src/mod_cml.c:105: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 86 could be null and is dereferenced at line 105, column 3.
+  103.   		cv[3].destination = s->power_magnet;
+  104.   
+  105. > 		p->config_storage[i] = s;
+  106.   
+  107.   		if (0 != config_insert_values_global(srv, ((data_config *)srv->config_context->data[i])->value, cv)) {
+
+src/mod_cml.c:92: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 91 could be null and is dereferenced at line 92, column 3.
+  90.   
+  91.   		s = malloc(sizeof(plugin_config));
+  92. > 		s->ext    = buffer_init();
+  93.   		s->mc_hosts       = array_init();
+  94.   		s->mc_namespace   = buffer_init();
+
+src/mod_indexfile.c:75: error: DEAD_STORE
+  The value written to &i is never used.
+  73.   SETDEFAULTS_FUNC(mod_indexfile_set_defaults) {
+  74.   	plugin_data *p = p_d;
+  75. > 	size_t i = 0;
+  76.   
+  77.   	config_values_t cv[] = {
+
+src/mod_indexfile.c:96: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 85 could be null and is dereferenced at line 96, column 3.
+  94.   		cv[1].destination = s->indexfiles; /* old name for [0] */
+  95.   
+  96. > 		p->config_storage[i] = s;
+  97.   
+  98.   		if (0 != config_insert_values_global(srv, ((data_config *)srv->config_context->data[i])->value, cv)) {
+
+src/mod_indexfile.c:91: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 90 could be null and is dereferenced at line 91, column 3.
+  89.   
+  90.   		s = calloc(1, sizeof(plugin_config));
+  91. > 		s->indexfiles    = array_init();
+  92.   
+  93.   		cv[0].destination = s->indexfiles;
+
+src/mod_evhost.c:81: error: MEMORY_LEAK
+  memory dynamically allocated by call to `realloc()` at line 81, column 21 is not reachable after line 81, column 4.
+  79.   	for(pos=ptr;*ptr;ptr++) {
+  80.   		if(*ptr == '%') {
+  81. > 			s->path_pieces = realloc(s->path_pieces,(s->len+2) * sizeof(*s->path_pieces));
+  82.   			s->path_pieces[s->len] = buffer_init();
+  83.   			s->path_pieces[s->len+1] = buffer_init();
+
+src/mod_evhost.c:82: error: NULL_DEREFERENCE
+  pointer `s->path_pieces` last assigned on line 81 could be null and is dereferenced at line 82, column 4.
+  80.   		if(*ptr == '%') {
+  81.   			s->path_pieces = realloc(s->path_pieces,(s->len+2) * sizeof(*s->path_pieces));
+  82. > 			s->path_pieces[s->len] = buffer_init();
+  83.   			s->path_pieces[s->len+1] = buffer_init();
+  84.   
+
+src/http-header-glue.c:86: error: MEMORY_LEAK
+  memory dynamically allocated to `ds->key->ptr` by call to `buffer_copy_string_len()` at line 83, column 2 is not reachable after line 86, column 2.
+  84.   	buffer_copy_string_len(ds->value, value, vallen);
+  85.   
+  86. > 	array_insert_unique(con->response.headers, (data_unset *)ds);
+  87.   
+  88.   	return 0;
+
+src/http-header-glue.c:86: error: MEMORY_LEAK
+  memory dynamically allocated to `ds->value->ptr` by call to `buffer_copy_string_len()` at line 84, column 2 is not reachable after line 86, column 2.
+  84.   	buffer_copy_string_len(ds->value, value, vallen);
+  85.   
+  86. > 	array_insert_unique(con->response.headers, (data_unset *)ds);
+  87.   
+  88.   	return 0;
+
+src/fdevent_linux_rtsig.c:106: error: NULL_DEREFERENCE
+  pointer `ev->pollfds` last assigned on line 103 could be null and is dereferenced at line 106, column 3.
+  104.   		}
+  105.   
+  106. > 		ev->pollfds[ev->used].fd = fd;
+  107.   		ev->pollfds[ev->used].events = events;
+  108.   
+
+src/mod_expire.c:80: error: DEAD_STORE
+  The value written to &type is never used.
+  78.   static int mod_expire_get_offset(server *srv, plugin_data *p, buffer *expire, int *offset) {
+  79.   	char *ts;
+  80. > 	int type = -1;
+  81.   	int retts = 0;
+  82.   
+
+src/mod_flv_streaming.c:82: error: DEAD_STORE
+  The value written to &i is never used.
+  80.   SETDEFAULTS_FUNC(mod_flv_streaming_set_defaults) {
+  81.   	plugin_data *p = p_d;
+  82. > 	size_t i = 0;
+  83.   
+  84.   	config_values_t cv[] = {
+
+src/mod_flv_streaming.c:101: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 91 could be null and is dereferenced at line 101, column 3.
+  99.   		cv[0].destination = s->extensions;
+  100.   
+  101. > 		p->config_storage[i] = s;
+  102.   
+  103.   		if (0 != config_insert_values_global(srv, ((data_config *)srv->config_context->data[i])->value, cv)) {
+
+src/mod_flv_streaming.c:97: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 96 could be null and is dereferenced at line 97, column 3.
+  95.   
+  96.   		s = calloc(1, sizeof(plugin_config));
+  97. > 		s->extensions     = array_init();
+  98.   
+  99.   		cv[0].destination = s->extensions;
+
+src/mod_staticfile.c:82: error: DEAD_STORE
+  The value written to &i is never used.
+  80.   SETDEFAULTS_FUNC(mod_staticfile_set_defaults) {
+  81.   	plugin_data *p = p_d;
+  82. > 	size_t i = 0;
+  83.   
+  84.   	config_values_t cv[] = {
+
+src/mod_staticfile.c:104: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 92 could be null and is dereferenced at line 104, column 3.
+  102.   		cv[1].destination = &(s->etags_used);
+  103.   
+  104. > 		p->config_storage[i] = s;
+  105.   
+  106.   		if (0 != config_insert_values_global(srv, ((data_config *)srv->config_context->data[i])->value, cv)) {
+
+src/mod_staticfile.c:98: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 97 could be null and is dereferenced at line 98, column 3.
+  96.   
+  97.   		s = calloc(1, sizeof(plugin_config));
+  98. > 		s->exclude_ext    = array_init();
+  99.   		s->etags_used     = 1;
+  100.   
+
+src/mod_simple_vhost.c:118: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 95 could be null and is dereferenced at line 118, column 3.
+  116.   
+  117.   
+  118. > 		p->config_storage[i] = s;
+  119.   
+  120.   		if (0 != config_insert_values_global(srv, ((data_config *)srv->config_context->data[i])->value, cv)) {
+
+src/mod_simple_vhost.c:102: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 100 could be null and is dereferenced at line 102, column 3.
+  100.   		s = calloc(1, sizeof(plugin_config));
+  101.   
+  102. > 		s->server_root = buffer_init();
+  103.   		s->default_host = buffer_init();
+  104.   		s->document_root = buffer_init();
+
+src/mod_userdir.c:111: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 95 could be null and is dereferenced at line 111, column 3.
+  109.   		cv[3].destination = s->basepath;
+  110.   
+  111. > 		p->config_storage[i] = s;
+  112.   
+  113.   		if (0 != config_insert_values_global(srv, ((data_config *)srv->config_context->data[i])->value, cv)) {
+
+src/mod_userdir.c:101: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 100 could be null and is dereferenced at line 101, column 3.
+  99.   
+  100.   		s = calloc(1, sizeof(plugin_config));
+  101. > 		s->exclude_user = array_init();
+  102.   		s->include_user = array_init();
+  103.   		s->path = buffer_init();
+
+src/array.c:86: error: DEAD_STORE
+  The value written to &pos is never used.
+  84.   static int array_get_index(array *a, const char *key, size_t keylen, int *rndx) {
+  85.   	int ndx = -1;
+  86. > 	int i, pos = 0;
+  87.   
+  88.   	if (key == NULL) return -1;
+
+src/fdevent_linux_sysepoll.c:92: error: DEAD_STORE
+  The value written to &events is never used.
+  90.   	if (e & EPOLLERR) events |= FDEVENT_ERR;
+  91.   	if (e & EPOLLHUP) events |= FDEVENT_HUP;
+  92. > 	if (e & EPOLLPRI) events |= FDEVENT_PRI;
+  93.   
+  94.   	return e;
+
+src/mod_setenv.c:88: error: DEAD_STORE
+  The value written to &i is never used.
+  86.   SETDEFAULTS_FUNC(mod_setenv_set_defaults) {
+  87.   	plugin_data *p = p_d;
+  88. > 	size_t i = 0;
+  89.   
+  90.   	config_values_t cv[] = {
+
+src/mod_setenv.c:113: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 99 could be null and is dereferenced at line 113, column 3.
+  111.   		cv[2].destination = s->environment;
+  112.   
+  113. > 		p->config_storage[i] = s;
+  114.   
+  115.   		if (0 != config_insert_values_global(srv, ((data_config *)srv->config_context->data[i])->value, cv)) {
+
+src/mod_setenv.c:105: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 104 could be null and is dereferenced at line 105, column 3.
+  103.   
+  104.   		s = calloc(1, sizeof(plugin_config));
+  105. > 		s->request_header   = array_init();
+  106.   		s->response_header  = array_init();
+  107.   		s->environment      = array_init();
+
+src/mod_ssi.c:90: error: DEAD_STORE
+  The value written to &i is never used.
+  88.   SETDEFAULTS_FUNC(mod_ssi_set_defaults) {
+  89.   	plugin_data *p = p_d;
+  90. > 	size_t i = 0;
+  91.   #ifdef HAVE_PCRE_H
+  92.   	const char *errptr;
+
+src/mod_ssi.c:113: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 103 could be null and is dereferenced at line 113, column 3.
+  111.   		cv[0].destination = s->ssi_extension;
+  112.   
+  113. > 		p->config_storage[i] = s;
+  114.   
+  115.   		if (0 != config_insert_values_global(srv, ((data_config *)srv->config_context->data[i])->value, cv)) {
+
+src/mod_ssi.c:109: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 108 could be null and is dereferenced at line 109, column 3.
+  107.   
+  108.   		s = calloc(1, sizeof(plugin_config));
+  109. > 		s->ssi_extension  = array_init();
+  110.   
+  111.   		cv[0].destination = s->ssi_extension;
+
+src/http-header-glue.c:98: error: MEMORY_LEAK
+  memory dynamically allocated by call to `buffer_copy_string()` at line 98, column 3 is not reachable after line 98, column 3.
+  96.   	/* if there already is a key by this name overwrite the value */
+  97.   	if (NULL != (ds = (data_string *)array_get_element(con->response.headers, key))) {
+  98. > 		buffer_copy_string(ds->value, value);
+  99.   
+  100.   		return 0;
+
+src/mod_rrdtool.c:118: error: DEAD_STORE
+  The value written to &i is never used.
+  116.   		char **args;
+  117.   		int argc;
+  118. > 		int i = 0;
+  119.   		char *dash = "-";
+  120.   
+
+src/mod_rrdtool.c:149: error: DEAD_STORE
+  The value written to &i is never used.
+  147.   		args[i++] = p->conf.path_rrdtool_bin->ptr;
+  148.   		args[i++] = dash;
+  149. > 		args[i++] = NULL;
+  150.   
+  151.   		/* we don't need the client socket */
+
+src/mod_secure_download.c:96: error: DEAD_STORE
+  The value written to &i is never used.
+  94.   SETDEFAULTS_FUNC(mod_secdownload_set_defaults) {
+  95.   	plugin_data *p = p_d;
+  96. > 	size_t i = 0;
+  97.   
+  98.   	config_values_t cv[] = {
+
+src/mod_secure_download.c:124: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 108 could be null and is dereferenced at line 124, column 3.
+  122.   		cv[3].destination = &(s->timeout);
+  123.   
+  124. > 		p->config_storage[i] = s;
+  125.   
+  126.   		if (0 != config_insert_values_global(srv, ((data_config *)srv->config_context->data[i])->value, cv)) {
+
+src/mod_secure_download.c:114: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 113 could be null and is dereferenced at line 114, column 3.
+  112.   
+  113.   		s = calloc(1, sizeof(plugin_config));
+  114. > 		s->secret        = buffer_init();
+  115.   		s->doc_root      = buffer_init();
+  116.   		s->uri_prefix    = buffer_init();
+
+src/mod_webdav.c:99: error: NULL_DEREFERENCE
+  pointer `p` last assigned on line 97 could be null and is dereferenced at line 99, column 2.
+  97.   	p = calloc(1, sizeof(*p));
+  98.   
+  99. > 	p->tmp_buf = buffer_init();
+  100.   
+  101.   	p->uri.scheme = buffer_init();
+
+src/fdevent.c:99: error: NULL_DEREFERENCE
+  pointer `fdn` last assigned on line 98 could be null and is dereferenced at line 99, column 2.
+  97.   
+  98.   	fdn = calloc(1, sizeof(*fdn));
+  99. > 	fdn->fd = -1;
+  100.   	return fdn;
+  101.   }
+
+src/mod_extforward.c:100: error: NULL_DEREFERENCE
+  pointer `hctx` last assigned on line 99 could be null and is dereferenced at line 100, column 2.
+  98.   	handler_ctx * hctx;
+  99.   	hctx = calloc(1, sizeof(*hctx));
+  100. > 	hctx->saved_remote_addr = oldaddr;
+  101.   	hctx->saved_remote_addr_buf = oldaddr_buf;
+  102.   	return hctx;
+
+src/mod_status.c:133: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 117 could be null and is dereferenced at line 133, column 3.
+  131.   		cv[3].destination = s->statistics_url;
+  132.   
+  133. > 		p->config_storage[i] = s;
+  134.   
+  135.   		if (0 != config_insert_values_global(srv, ((data_config *)srv->config_context->data[i])->value, cv)) {
+
+src/mod_status.c:123: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 122 could be null and is dereferenced at line 123, column 3.
+  121.   
+  122.   		s = calloc(1, sizeof(plugin_config));
+  123. > 		s->config_url    = buffer_init();
+  124.   		s->status_url    = buffer_init();
+  125.   		s->sort          = 1;
+
+src/mod_evhost.c:142: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 130 could be null and is dereferenced at line 142, column 3.
+  140.   		cv[0].destination = s->path_pieces_raw;
+  141.   
+  142. > 		p->config_storage[i] = s;
+  143.   
+  144.   		if (0 != config_insert_values_global(srv, ((data_config *)srv->config_context->data[i])->value,  cv)) {
+
+src/mod_evhost.c:136: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 135 could be null and is dereferenced at line 136, column 3.
+  134.   
+  135.   		s = calloc(1, sizeof(plugin_config));
+  136. > 		s->path_pieces_raw = buffer_init();
+  137.   		s->path_pieces     = NULL;
+  138.   		s->len             = 0;
+
+src/mod_compress.c:107: error: DEAD_STORE
+  The value written to &i is never used.
+  105.   SETDEFAULTS_FUNC(mod_compress_setdefaults) {
+  106.   	plugin_data *p = p_d;
+  107. > 	size_t i = 0;
+  108.   
+  109.   	config_values_t cv[] = {
+
+src/mod_compress.c:130: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 116 could be null and is dereferenced at line 130, column 3.
+  128.   		cv[2].destination = &(s->compress_max_filesize);
+  129.   
+  130. > 		p->config_storage[i] = s;
+  131.   
+  132.   		if (0 != config_insert_values_global(srv, ((data_config *)srv->config_context->data[i])->value, cv)) {
+
+src/mod_compress.c:122: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 121 could be null and is dereferenced at line 122, column 3.
+  120.   
+  121.   		s = calloc(1, sizeof(plugin_config));
+  122. > 		s->compress_cache_dir = buffer_init();
+  123.   		s->compress = array_init();
+  124.   		s->compress_max_filesize = 0;
+
+src/stat_cache.c:107: error: DEAD_STORE
+  The value written to &fc is never used.
+  105.   
+  106.   stat_cache *stat_cache_init(void) {
+  107. > 	stat_cache *fc = NULL;
+  108.   
+  109.   	fc = calloc(1, sizeof(*fc));
+
+src/stat_cache.c:111: error: NULL_DEREFERENCE
+  pointer `fc` last assigned on line 109 could be null and is dereferenced at line 111, column 2.
+  109.   	fc = calloc(1, sizeof(*fc));
+  110.   
+  111. > 	fc->dir_name = buffer_init();
+  112.   	fc->hash_key = buffer_init();
+  113.   #ifdef HAVE_FAM_H
+
+src/fdevent_poll.c:133: error: DEAD_STORE
+  The value written to &r is never used.
+  131.   	if (poll_r & POLLHUP) r |= FDEVENT_HUP;
+  132.   	if (poll_r & POLLNVAL) r |= FDEVENT_NVAL;
+  133. > 	if (poll_r & POLLPRI) r |= FDEVENT_PRI;
+  134.   
+  135.   	return ev->pollfds[ndx].revents;
+
+src/mod_proxy.c:123: error: NULL_DEREFERENCE
+  pointer `hctx` last assigned on line 121 could be null and is dereferenced at line 123, column 2.
+  121.   	hctx = calloc(1, sizeof(*hctx));
+  122.   
+  123. > 	hctx->state = PROXY_STATE_INIT;
+  124.   	hctx->host = NULL;
+  125.   
+
+src/data_config.c:123: error: NULL_DEREFERENCE
+  pointer `ds` last assigned on line 121 could be null and is dereferenced at line 123, column 2.
+  121.   	ds = calloc(1, sizeof(*ds));
+  122.   
+  123. > 	ds->key = buffer_init();
+  124.   	ds->op = buffer_init();
+  125.   	ds->comp_key = buffer_init();
+
+src/plugin.c:134: error: MEMORY_LEAK
+  memory dynamically allocated to `srv->tmp_buf->ptr` by call to `buffer_copy_string_buffer()` at line 132, column 3 is not reachable after line 134, column 3.
+  132.   		buffer_copy_string_buffer(srv->tmp_buf, srv->srvconf.modules_dir);
+  133.   
+  134. > 		buffer_append_string(srv->tmp_buf, "/");
+  135.   		buffer_append_string(srv->tmp_buf, modules);
+  136.   #if defined(__WIN32) || defined(__CYGWIN__)
+
+src/response.c:181: error: MEMORY_LEAK
+  memory dynamically allocated by call to `buffer_copy_string_buffer()` at line 180, column 3 is not reachable after line 181, column 3.
+  179.   		buffer_copy_string(con->uri.scheme, con->conf.is_ssl ? "https" : "http");
+  180.   		buffer_copy_string_buffer(con->uri.authority, con->request.http_host);
+  181. > 		buffer_to_lower(con->uri.authority);
+  182.   
+  183.   		config_patch_connection(srv, con, COMP_HTTP_HOST);      /* Host:        */
+
+src/stat_cache.c:125: error: DEAD_STORE
+  The value written to &sce is never used.
+  123.   
+  124.   static stat_cache_entry * stat_cache_entry_init(void) {
+  125. > 	stat_cache_entry *sce = NULL;
+  126.   
+  127.   	sce = calloc(1, sizeof(*sce));
+
+src/stat_cache.c:129: error: NULL_DEREFERENCE
+  pointer `sce` last assigned on line 127 could be null and is dereferenced at line 129, column 2.
+  127.   	sce = calloc(1, sizeof(*sce));
+  128.   
+  129. > 	sce->name = buffer_init();
+  130.   	sce->etag = buffer_init();
+  131.   	sce->content_type = buffer_init();
+
+src/mod_trigger_b4_dl.c:128: error: DEAD_STORE
+  The value written to &i is never used.
+  126.   SETDEFAULTS_FUNC(mod_trigger_b4_dl_set_defaults) {
+  127.   	plugin_data *p = p_d;
+  128. > 	size_t i = 0;
+  129.   
+  130.   
+
+src/mod_trigger_b4_dl.c:171: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 145 could be null and is dereferenced at line 171, column 3.
+  169.   		cv[7].destination = &(s->debug);
+  170.   
+  171. > 		p->config_storage[i] = s;
+  172.   
+  173.   		if (0 != config_insert_values_global(srv, ((data_config *)srv->config_context->data[i])->value, cv)) {
+
+src/mod_trigger_b4_dl.c:155: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 154 could be null and is dereferenced at line 155, column 3.
+  153.   
+  154.   		s = calloc(1, sizeof(plugin_config));
+  155. > 		s->db_filename    = buffer_init();
+  156.   		s->download_url   = buffer_init();
+  157.   		s->trigger_url    = buffer_init();
+
+src/mod_simple_vhost.c:134: error: MEMORY_LEAK
+  memory dynamically allocated to `out->ptr` by call to `buffer_prepare_copy()` at line 131, column 2 is not reachable after line 134, column 3.
+  132.   
+  133.   	if (p->conf.server_root->used) {
+  134. > 		buffer_copy_string_buffer(out, p->conf.server_root);
+  135.   
+  136.   		if (host->used) {
+
+src/mod_simple_vhost.c:159: error: MEMORY_LEAK
+  memory dynamically allocated to `out->ptr` by call to `buffer_prepare_copy()` at line 131, column 2 is not reachable after line 159, column 3.
+  157.   		}
+  158.   	} else {
+  159. > 		buffer_copy_string_buffer(out, con->conf.document_root);
+  160.   		BUFFER_APPEND_SLASH(out);
+  161.   	}
+
+src/keyvalue.c:150: error: NULL_DEREFERENCE
+  pointer `kvb->kv` last assigned on line 147 could be null and is dereferenced at line 150, column 4.
+  148.   
+  149.   		for(i = kvb->used; i < kvb->size; i++) {
+  150. > 			kvb->kv[i] = calloc(1, sizeof(**kvb->kv));
+  151.   		}
+  152.   	}
+
+src/mod_flv_streaming.c:144: error: DEAD_STORE
+  The value written to &key is never used.
+  142.   	size_t is_key = 1;
+  143.   	size_t i;
+  144. > 	char *key = NULL, *val = NULL;
+  145.   
+  146.   	key = qrystr->ptr;
+
+src/mod_rewrite.c:146: error: NULL_DEREFERENCE
+  pointer `p` last assigned on line 144 could be null and is dereferenced at line 146, column 2.
+  144.   	p = calloc(1, sizeof(*p));
+  145.   
+  146. > 	p->match_buf = buffer_init();
+  147.   
+  148.   	return p;
+
+src/mod_cgi.c:147: error: DEAD_STORE
+  The value written to &i is never used.
+  145.   SETDEFAULTS_FUNC(mod_fastcgi_set_defaults) {
+  146.   	plugin_data *p = p_d;
+  147. > 	size_t i = 0;
+  148.   
+  149.   	config_values_t cv[] = {
+
+src/mod_cgi.c:168: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 156 could be null and is dereferenced at line 168, column 3.
+  166.   		cv[0].destination = s->cgi;
+  167.   
+  168. > 		p->config_storage[i] = s;
+  169.   
+  170.   		if (0 != config_insert_values_global(srv, ((data_config *)srv->config_context->data[i])->value, cv)) {
+
+src/mod_proxy.c:150: error: NULL_DEREFERENCE
+  pointer `p` last assigned on line 148 could be null and is dereferenced at line 150, column 2.
+  148.   	p = calloc(1, sizeof(*p));
+  149.   
+  150. > 	p->parse_response = buffer_init();
+  151.   	p->balance_buf = buffer_init();
+  152.   
+
+src/mod_status.c:149: error: MEMORY_LEAK
+  memory dynamically allocated to `b->ptr` by call to `buffer_append_string()` at line 148, column 2 is not reachable after line 149, column 2.
+  147.   	BUFFER_APPEND_STRING_CONST(b, "    <td><b>");
+  148.   	buffer_append_string(b, key);
+  149. > 	BUFFER_APPEND_STRING_CONST(b, "</b></td>\n");
+  150.   	BUFFER_APPEND_STRING_CONST(b, "    <td>");
+  151.   	buffer_append_string(b, value);
+
+src/mod_status.c:152: error: MEMORY_LEAK
+  memory dynamically allocated to `b->ptr` by call to `buffer_append_string()` at line 151, column 2 is not reachable after line 152, column 2.
+  150.   	BUFFER_APPEND_STRING_CONST(b, "    <td>");
+  151.   	buffer_append_string(b, value);
+  152. > 	BUFFER_APPEND_STRING_CONST(b, "</td>\n");
+  153.   	BUFFER_APPEND_STRING_CONST(b, "   </tr>\n");
+  154.   
+
+src/mod_status.c:147: error: MEMORY_LEAK
+  memory dynamically allocated to `b->ptr` by call to `buffer_append_string_len()` at line 146, column 2 is not reachable after line 147, column 2.
+  145.   static int mod_status_row_append(buffer *b, const char *key, const char *value) {
+  146.   	BUFFER_APPEND_STRING_CONST(b, "   <tr>\n");
+  147. > 	BUFFER_APPEND_STRING_CONST(b, "    <td><b>");
+  148.   	buffer_append_string(b, key);
+  149.   	BUFFER_APPEND_STRING_CONST(b, "</b></td>\n");
+
+src/mod_status.c:148: error: MEMORY_LEAK
+  memory dynamically allocated to `b->ptr` by call to `buffer_append_string_len()` at line 147, column 2 is not reachable after line 148, column 2.
+  146.   	BUFFER_APPEND_STRING_CONST(b, "   <tr>\n");
+  147.   	BUFFER_APPEND_STRING_CONST(b, "    <td><b>");
+  148. > 	buffer_append_string(b, key);
+  149.   	BUFFER_APPEND_STRING_CONST(b, "</b></td>\n");
+  150.   	BUFFER_APPEND_STRING_CONST(b, "    <td>");
+
+src/mod_status.c:150: error: MEMORY_LEAK
+  memory dynamically allocated to `b->ptr` by call to `buffer_append_string_len()` at line 149, column 2 is not reachable after line 150, column 2.
+  148.   	buffer_append_string(b, key);
+  149.   	BUFFER_APPEND_STRING_CONST(b, "</b></td>\n");
+  150. > 	BUFFER_APPEND_STRING_CONST(b, "    <td>");
+  151.   	buffer_append_string(b, value);
+  152.   	BUFFER_APPEND_STRING_CONST(b, "</td>\n");
+
+src/mod_status.c:151: error: MEMORY_LEAK
+  memory dynamically allocated to `b->ptr` by call to `buffer_append_string_len()` at line 150, column 2 is not reachable after line 151, column 2.
+  149.   	BUFFER_APPEND_STRING_CONST(b, "</b></td>\n");
+  150.   	BUFFER_APPEND_STRING_CONST(b, "    <td>");
+  151. > 	buffer_append_string(b, value);
+  152.   	BUFFER_APPEND_STRING_CONST(b, "</td>\n");
+  153.   	BUFFER_APPEND_STRING_CONST(b, "   </tr>\n");
+
+src/mod_extforward.c:149: error: DEAD_STORE
+  The value written to &i is never used.
+  147.   SETDEFAULTS_FUNC(mod_extforward_set_defaults) {
+  148.   	plugin_data *p = p_d;
+  149. > 	size_t i = 0;
+  150.   
+  151.   	config_values_t cv[] = {
+
+src/mod_extforward.c:168: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 158 could be null and is dereferenced at line 168, column 3.
+  166.   		cv[0].destination = s->forwarder;
+  167.   
+  168. > 		p->config_storage[i] = s;
+  169.   
+  170.   		if (0 != config_insert_values_global(srv, ((data_config *)srv->config_context->data[i])->value, cv)) {
+
+src/mod_extforward.c:164: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 163 could be null and is dereferenced at line 164, column 3.
+  162.   
+  163.   		s = calloc(1, sizeof(plugin_config));
+  164. > 		s->forwarder    = array_init();
+  165.   
+  166.   		cv[0].destination = s->forwarder;
+
+src/mod_dirlisting.c:153: error: NULL_DEREFERENCE
+  pointer `p` last assigned on line 151 could be null and is dereferenced at line 153, column 2.
+  151.   	p = calloc(1, sizeof(*p));
+  152.   
+  153. > 	p->tmp_buf = buffer_init();
+  154.   	p->content_charset = buffer_init();
+  155.   
+
+src/log.c:165: error: MEMORY_LEAK
+  memory dynamically allocated to `srv->errorlog_buf->ptr` by call to `buffer_copy_string_buffer()` at line 164, column 3 is not reachable after line 165, column 3.
+  163.   
+  164.   		buffer_copy_string_buffer(srv->errorlog_buf, srv->ts_debug_str);
+  165. > 		BUFFER_APPEND_STRING_CONST(srv->errorlog_buf, ": (");
+  166.   		break;
+  167.   	case ERRORLOG_SYSLOG:
+
+src/mod_alias.c:178: error: MEMORY_LEAK
+  memory dynamically allocated to `srv->tmp_buf->ptr` by call to `buffer_copy_string_buffer()` at line 177, column 4 is not reachable after line 178, column 4.
+  176.   			buffer_copy_string_buffer(con->physical.basedir, ds->value);
+  177.   			buffer_copy_string_buffer(srv->tmp_buf, ds->value);
+  178. > 			buffer_append_string(srv->tmp_buf, uri_ptr + alias_len);
+  179.   			buffer_copy_string_buffer(con->physical.path, srv->tmp_buf);
+  180.   
+
+src/mod_status.c:162: error: MEMORY_LEAK
+  memory dynamically allocated to `b->ptr` by call to `buffer_append_string()` at line 161, column 2 is not reachable after line 162, column 2.
+  160.   	BUFFER_APPEND_STRING_CONST(b, "    <th colspan=\"2\">");
+  161.   	buffer_append_string(b, key);
+  162. > 	BUFFER_APPEND_STRING_CONST(b, "</th>\n");
+  163.   	BUFFER_APPEND_STRING_CONST(b, "   </tr>\n");
+  164.   
+
+src/mod_status.c:160: error: MEMORY_LEAK
+  memory dynamically allocated to `b->ptr` by call to `buffer_append_string_len()` at line 159, column 2 is not reachable after line 160, column 2.
+  158.   static int mod_status_header_append(buffer *b, const char *key) {
+  159.   	BUFFER_APPEND_STRING_CONST(b, "   <tr>\n");
+  160. > 	BUFFER_APPEND_STRING_CONST(b, "    <th colspan=\"2\">");
+  161.   	buffer_append_string(b, key);
+  162.   	BUFFER_APPEND_STRING_CONST(b, "</th>\n");
+
+src/mod_status.c:161: error: MEMORY_LEAK
+  memory dynamically allocated to `b->ptr` by call to `buffer_append_string_len()` at line 160, column 2 is not reachable after line 161, column 2.
+  159.   	BUFFER_APPEND_STRING_CONST(b, "   <tr>\n");
+  160.   	BUFFER_APPEND_STRING_CONST(b, "    <th colspan=\"2\">");
+  161. > 	buffer_append_string(b, key);
+  162.   	BUFFER_APPEND_STRING_CONST(b, "</th>\n");
+  163.   	BUFFER_APPEND_STRING_CONST(b, "   </tr>\n");
+
+src/mod_status.c:163: error: MEMORY_LEAK
+  memory dynamically allocated to `b->ptr` by call to `buffer_append_string_len()` at line 162, column 2 is not reachable after line 163, column 2.
+  161.   	buffer_append_string(b, key);
+  162.   	BUFFER_APPEND_STRING_CONST(b, "</th>\n");
+  163. > 	BUFFER_APPEND_STRING_CONST(b, "   </tr>\n");
+  164.   
+  165.   	return 0;
+
+src/mod_accesslog.c:160: error: DEAD_STORE
+  The value written to &k is never used.
+  158.   
+  159.   int accesslog_parse_format(server *srv, format_fields *fields, buffer *format) {
+  160. > 	size_t i, j, k = 0, start = 0;
+  161.   
+  162.   	if (format->used == 0) return -1;
+
+src/mod_accesslog.c:215: error: NULL_DEREFERENCE
+  pointer `*fields->ptr[fields->used]` last assigned on line 214 could be null and is dereferenced at line 215, column 6.
+  213.   
+  214.   					fields->ptr[fields->used] = malloc(sizeof(format_fields));
+  215. > 					fields->ptr[fields->used]->type = FIELD_FORMAT;
+  216.   					fields->ptr[fields->used]->field = fmap[j].type;
+  217.   					fields->ptr[fields->used]->string = NULL;
+
+src/mod_accesslog.c:214: error: NULL_DEREFERENCE
+  pointer `fields->ptr` last assigned on line 195 could be null and is dereferenced at line 214, column 6.
+  212.   					/* found key */
+  213.   
+  214. > 					fields->ptr[fields->used] = malloc(sizeof(format_fields));
+  215.   					fields->ptr[fields->used]->type = FIELD_FORMAT;
+  216.   					fields->ptr[fields->used]->field = fmap[j].type;
+
+src/mod_userdir.c:173: error: DEAD_STORE
+  The value written to &uri_len is never used.
+  171.   	mod_userdir_patch_connection(srv, con, p);
+  172.   
+  173. > 	uri_len = con->uri.path->used - 1;
+  174.   
+  175.   	/* /~user/foo.html -> /home/user/public_html/foo.html */
+
+src/array.c:164: error: DEAD_STORE
+  The value written to &ndx is never used.
+  162.   
+  163.   int array_insert_unique(array *a, data_unset *str) {
+  164. > 	int ndx = -1;
+  165.   	int pos = 0;
+  166.   	size_t j;
+
+src/mod_evhost.c:214: error: DEAD_STORE
+  The value written to &i is never used.
+  212.   			ds = data_string_init();
+  213.   			buffer_copy_string(ds->key,"%");
+  214. > 			buffer_append_long(ds->key, i++);
+  215.   			buffer_copy_string_len(ds->value,ptr,colon-ptr);
+  216.   
+
+src/mod_status.c:174: error: MEMORY_LEAK
+  memory dynamically allocated to `b->ptr` by call to `buffer_append_string()` at line 173, column 3 is not reachable after line 174, column 3.
+  172.   		BUFFER_APPEND_STRING_CONST(b, "<th class=\"status\"><a href=\"#\" class=\"sortheader\" onclick=\"resort(this);return false;\">");
+  173.   		buffer_append_string(b, key);
+  174. > 		BUFFER_APPEND_STRING_CONST(b, "<span class=\"sortarrow\">:</span></a></th>\n");
+  175.   	} else {
+  176.   		BUFFER_APPEND_STRING_CONST(b, "<th class=\"status\">");
+
+src/mod_status.c:178: error: MEMORY_LEAK
+  memory dynamically allocated to `b->ptr` by call to `buffer_append_string()` at line 177, column 3 is not reachable after line 178, column 3.
+  176.   		BUFFER_APPEND_STRING_CONST(b, "<th class=\"status\">");
+  177.   		buffer_append_string(b, key);
+  178. > 		BUFFER_APPEND_STRING_CONST(b, "</th>\n");
+  179.   	}
+  180.   
+
+src/mod_status.c:173: error: MEMORY_LEAK
+  memory dynamically allocated to `b->ptr` by call to `buffer_append_string_len()` at line 172, column 3 is not reachable after line 173, column 3.
+  171.   	if (p->conf.sort) {
+  172.   		BUFFER_APPEND_STRING_CONST(b, "<th class=\"status\"><a href=\"#\" class=\"sortheader\" onclick=\"resort(this);return false;\">");
+  173. > 		buffer_append_string(b, key);
+  174.   		BUFFER_APPEND_STRING_CONST(b, "<span class=\"sortarrow\">:</span></a></th>\n");
+  175.   	} else {
+
+src/mod_status.c:177: error: MEMORY_LEAK
+  memory dynamically allocated to `b->ptr` by call to `buffer_append_string_len()` at line 176, column 3 is not reachable after line 177, column 3.
+  175.   	} else {
+  176.   		BUFFER_APPEND_STRING_CONST(b, "<th class=\"status\">");
+  177. > 		buffer_append_string(b, key);
+  178.   		BUFFER_APPEND_STRING_CONST(b, "</th>\n");
+  179.   	}
+
+src/mod_webdav.c:174: error: DEAD_STORE
+  The value written to &i is never used.
+  172.   SETDEFAULTS_FUNC(mod_webdav_set_defaults) {
+  173.   	plugin_data *p = p_d;
+  174. > 	size_t i = 0;
+  175.   
+  176.   	config_values_t cv[] = {
+
+src/mod_webdav.c:199: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 186 could be null and is dereferenced at line 199, column 3.
+  197.   		cv[3].destination = &(s->log_xml);
+  198.   
+  199. > 		p->config_storage[i] = s;
+  200.   
+  201.   		if (0 != config_insert_values_global(srv, ((data_config *)srv->config_context->data[i])->value, cv)) {
+
+src/mod_webdav.c:192: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 191 could be null and is dereferenced at line 192, column 3.
+  190.   
+  191.   		s = calloc(1, sizeof(plugin_config));
+  192. > 		s->sqlite_db_name = buffer_init();
+  193.   
+  194.   		cv[0].destination = &(s->enabled);
+
+src/mod_auth.c:176: error: DEAD_STORE
+  The value written to &auth_required is never used.
+  174.   static handler_t mod_auth_uri_handler(server *srv, connection *con, void *p_d) {
+  175.   	size_t k;
+  176. > 	int auth_required = 0, auth_satisfied = 0;
+  177.   	char *http_authorization = NULL;
+  178.   	data_string *ds;
+
+src/mod_auth.c:176: error: DEAD_STORE
+  The value written to &auth_satisfied is never used.
+  174.   static handler_t mod_auth_uri_handler(server *srv, connection *con, void *p_d) {
+  175.   	size_t k;
+  176. > 	int auth_required = 0, auth_satisfied = 0;
+  177.   	char *http_authorization = NULL;
+  178.   	data_string *ds;
+
+src/mod_rewrite.c:179: error: DEAD_STORE
+  The value written to &da is never used.
+  177.   
+  178.   	if (NULL != (du = array_get_element(ca, option))) {
+  179. > 		data_array *da = (data_array *)du;
+  180.   		size_t j;
+  181.   
+
+src/configfile-glue.c:240: error: DEAD_STORE
+  The value written to &ck_colon is never used.
+  238.   	switch (dc->comp) {
+  239.   	case COMP_HTTP_HOST: {
+  240. > 		char *ck_colon = NULL, *val_colon = NULL;
+  241.   
+  242.   		if (!buffer_is_empty(con->uri.authority)) {
+
+src/configfile-glue.c:240: error: DEAD_STORE
+  The value written to &val_colon is never used.
+  238.   	switch (dc->comp) {
+  239.   	case COMP_HTTP_HOST: {
+  240. > 		char *ck_colon = NULL, *val_colon = NULL;
+  241.   
+  242.   		if (!buffer_is_empty(con->uri.authority)) {
+
+src/keyvalue.c:201: error: NULL_DEREFERENCE
+  pointer `kvb->kv` last assigned on line 198 could be null and is dereferenced at line 201, column 4.
+  199.   
+  200.   		for(i = kvb->used; i < kvb->size; i++) {
+  201. > 			kvb->kv[i] = calloc(1, sizeof(**kvb->kv));
+  202.   		}
+  203.   	}
+
+src/mod_proxy.c:188: error: DEAD_STORE
+  The value written to &i is never used.
+  186.   	plugin_data *p = p_d;
+  187.   	data_unset *du;
+  188. > 	size_t i = 0;
+  189.   
+  190.   	config_values_t cv[] = {
+
+src/mod_proxy.c:213: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 197 could be null and is dereferenced at line 213, column 3.
+  211.   		buffer_reset(p->balance_buf);
+  212.   
+  213. > 		p->config_storage[i] = s;
+  214.   		ca = ((data_config *)srv->config_context->data[i])->value;
+  215.   
+
+src/mod_proxy.c:204: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 203 could be null and is dereferenced at line 204, column 3.
+  202.   
+  203.   		s = malloc(sizeof(plugin_config));
+  204. > 		s->extensions    = array_init();
+  205.   		s->debug         = 0;
+  206.   
+
+src/mod_flv_streaming.c:220: error: MEMORY_LEAK
+  memory dynamically allocated to `p_d->query_str->ptr` by call to `buffer_copy_string_buffer()` at line 219, column 4 is not reachable after line 220, column 4.
+  218.   			array_reset(p->get_params);
+  219.   			buffer_copy_string_buffer(p->query_str, con->uri.query);
+  220. > 			split_get_params(p->get_params, p->query_str);
+  221.   
+  222.   			if (NULL == (get_param = (data_string *)array_get_element(p->get_params, "start"))) {
+
+src/mod_rrdtool.c:206: error: MEMORY_LEAK
+  memory dynamically allocated to `p->cmd->ptr` by call to `buffer_copy_string_len()` at line 205, column 3 is not reachable after line 206, column 3.
+  204.   
+  205.   		BUFFER_COPY_STRING_CONST(p->cmd, "create ");
+  206. > 		buffer_append_string_buffer(p->cmd, s->path_rrd);
+  207.   		buffer_append_string(p->cmd, " --step 60 ");
+  208.   		buffer_append_string(p->cmd, "DS:InOctets:ABSOLUTE:600:U:U ");
+
+src/mod_rrdtool.c:207: error: MEMORY_LEAK
+  memory dynamically allocated to `p->cmd->ptr` by call to `buffer_copy_string_len()` at line 205, column 3 is not reachable after line 207, column 3.
+  205.   		BUFFER_COPY_STRING_CONST(p->cmd, "create ");
+  206.   		buffer_append_string_buffer(p->cmd, s->path_rrd);
+  207. > 		buffer_append_string(p->cmd, " --step 60 ");
+  208.   		buffer_append_string(p->cmd, "DS:InOctets:ABSOLUTE:600:U:U ");
+  209.   		buffer_append_string(p->cmd, "DS:OutOctets:ABSOLUTE:600:U:U ");
+
+src/mod_dirlisting.c:196: error: DEAD_STORE
+  The value written to &da is never used.
+  194.   
+  195.   	if (NULL != (du = array_get_element(ca, option))) {
+  196. > 		data_array *da = (data_array *)du;
+  197.   		size_t j;
+  198.   
+
+src/mod_status.c:232: error: MEMORY_LEAK
+  memory dynamically allocated to `b->ptr` by call to `buffer_append_string_len()` at line 220, column 2 is not reachable after line 232, column 3.
+  230.   
+  231.   	if (p->conf.sort) {
+  232. > 		BUFFER_APPEND_STRING_CONST(b,
+  233.   					   "<script type=\"text/javascript\">\n"
+  234.   					   "// <!--\n"
+
+src/mod_status.c:238: error: MEMORY_LEAK
+  memory dynamically allocated to `b->ptr` by call to `buffer_append_string_len()` at line 232, column 3 is not reachable after line 238, column 3.
+  236.   					   "var prev_span = null;\n");
+  237.   
+  238. > 		BUFFER_APPEND_STRING_CONST(b,
+  239.   					   "function get_inner_text(el) {\n"
+  240.   					   " if((typeof el == 'string')||(typeof el == 'undefined'))\n"
+
+src/mod_status.c:256: error: MEMORY_LEAK
+  memory dynamically allocated to `b->ptr` by call to `buffer_append_string_len()` at line 238, column 3 is not reachable after line 256, column 3.
+  254.   					   "}\n");
+  255.   
+  256. > 		BUFFER_APPEND_STRING_CONST(b,
+  257.   					   "function sortfn(a,b) {\n"
+  258.   					   " var at = get_inner_text(a.cells[sort_column]);\n"
+
+src/mod_status.c:220: error: MEMORY_LEAK
+  memory dynamically allocated to `b->ptr` by call to `buffer_copy_string_len()` at line 212, column 2 is not reachable after line 220, column 2.
+  218.   				 "  <title>Status</title>\n");
+  219.   
+  220. > 	BUFFER_APPEND_STRING_CONST(b,
+  221.   				   "  <style type=\"text/css\">\n"
+  222.   				   "    table.status { border: black solid thin; }\n"
+
+src/request.c:220: error: DEAD_STORE
+  The value written to &end is never used.
+  218.   
+  219.   	for (i =0; i < b->used - 1; ) {
+  220. > 		char *start = NULL, *end = NULL;
+  221.   		data_string *ds;
+  222.   
+
+src/request.c:220: error: DEAD_STORE
+  The value written to &start is never used.
+  218.   
+  219.   	for (i =0; i < b->used - 1; ) {
+  220. > 		char *start = NULL, *end = NULL;
+  221.   		data_string *ds;
+  222.   
+
+src/mod_expire.c:215: error: DEAD_STORE
+  The value written to &i is never used.
+  213.   SETDEFAULTS_FUNC(mod_expire_set_defaults) {
+  214.   	plugin_data *p = p_d;
+  215. > 	size_t i = 0, k;
+  216.   
+  217.   	config_values_t cv[] = {
+
+src/mod_expire.c:245: error: MEMORY_LEAK
+  memory dynamically allocated by call to `calloc()` at line 229, column 7 is not reachable after line 245, column 21.
+  243.   			/* parse lines */
+  244.   			if (-1 == mod_expire_get_offset(srv, p, ds->value, NULL)) {
+  245. > 				log_error_write(srv, __FILE__, __LINE__, "sb",
+  246.   						"parsing expire.url failed:", ds->value);
+  247.   				return HANDLER_ERROR;
+
+src/mod_expire.c:244: error: MEMORY_LEAK
+  memory dynamically allocated to `p_d->config_storage` by call to `calloc()` at line 224, column 22 is not reachable after line 244, column 14.
+  242.   
+  243.   			/* parse lines */
+  244. > 			if (-1 == mod_expire_get_offset(srv, p, ds->value, NULL)) {
+  245.   				log_error_write(srv, __FILE__, __LINE__, "sb",
+  246.   						"parsing expire.url failed:", ds->value);
+
+src/mod_expire.c:234: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 224 could be null and is dereferenced at line 234, column 3.
+  232.   		cv[0].destination = s->expire_url;
+  233.   
+  234. > 		p->config_storage[i] = s;
+  235.   
+  236.   		if (0 != config_insert_values_global(srv, ((data_config *)srv->config_context->data[i])->value, cv)) {
+
+src/mod_expire.c:230: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 229 could be null and is dereferenced at line 230, column 3.
+  228.   
+  229.   		s = calloc(1, sizeof(plugin_config));
+  230. > 		s->expire_url    = array_init();
+  231.   
+  232.   		cv[0].destination = s->expire_url;
+
+src/mod_rewrite.c:221: error: DEAD_STORE
+  The value written to &i is never used.
+  219.   SETDEFAULTS_FUNC(mod_rewrite_set_defaults) {
+  220.   	plugin_data *p = p_d;
+  221. > 	size_t i = 0;
+  222.   
+  223.   	config_values_t cv[] = {
+
+src/mod_rewrite.c:254: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 241 could be null and is dereferenced at line 254, column 3.
+  252.   		cv[2].destination = s->rewrite;
+  253.   
+  254. > 		p->config_storage[i] = s;
+  255.   		ca = ((data_config *)srv->config_context->data[i])->value;
+  256.   
+
+src/mod_rewrite.c:248: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 247 could be null and is dereferenced at line 248, column 3.
+  246.   
+  247.   		s = calloc(1, sizeof(plugin_config));
+  248. > 		s->rewrite   = rewrite_rule_buffer_init();
+  249.   
+  250.   		cv[0].destination = s->rewrite;
+
+src/proc_open.c:258: error: QUANDARY_TAINT_ERROR
+  EnvironmentVariable(getenv at line 237, column 23) -> ShellExec(execl at line 258, column 3).
+  256.   		proc_close_parents(proc);
+  257.   
+  258. > 		execl(shell, shell, "-c", command, (char *)NULL);
+  259.   		_exit(127);
+  260.   
+
+src/keyvalue.c:252: error: NULL_DEREFERENCE
+  pointer `kvb->kv` last assigned on line 249 could be null and is dereferenced at line 252, column 4.
+  250.   
+  251.   		for(i = kvb->used; i < kvb->size; i++) {
+  252. > 			kvb->kv[i] = calloc(1, sizeof(**kvb->kv));
+  253.   		}
+  254.   	}
+
+src/mod_dirlisting.c:250: error: DEAD_STORE
+  The value written to &i is never used.
+  248.   SETDEFAULTS_FUNC(mod_dirlisting_set_defaults) {
+  249.   	plugin_data *p = p_d;
+  250. > 	size_t i = 0;
+  251.   
+  252.   	config_values_t cv[] = {
+
+src/mod_dirlisting.c:300: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 270 could be null and is dereferenced at line 300, column 3.
+  298.   		cv[10].destination = s->set_footer;
+  299.   
+  300. > 		p->config_storage[i] = s;
+  301.   		ca = ((data_config *)srv->config_context->data[i])->value;
+  302.   
+
+src/mod_dirlisting.c:277: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 276 could be null and is dereferenced at line 277, column 3.
+  275.   
+  276.   		s = calloc(1, sizeof(plugin_config));
+  277. > 		s->excludes = excludes_buffer_init();
+  278.   		s->dir_listing = 0;
+  279.   		s->external_css = buffer_init();
+
+src/chunk.c:298: error: NULL_DEREFERENCE
+  pointer `template` last assigned on line 282 could be null and is dereferenced at line 298, column 4.
+  296.   
+  297.   			buffer_copy_string_buffer(template, ds->value);
+  298. > 			BUFFER_APPEND_SLASH(template);
+  299.   			BUFFER_APPEND_STRING_CONST(template, "lighttpd-upload-XXXXXX");
+  300.   
+
+src/chunk.c:308: error: NULL_DEREFERENCE
+  pointer `template` last assigned on line 282 could be null and is dereferenced at line 308, column 35.
+  306.   		}
+  307.   	} else {
+  308. > 		if (-1 != (c->file.fd = mkstemp(template->ptr))) {
+  309.   			/* only trigger the unlink if we created the temp-file successfully */
+  310.   			c->file.is_temp = 1;
+
+src/mod_rrdtool.c:349: error: MEMORY_LEAK
+  memory dynamically allocated by call to `calloc()` at line 310, column 7 is not reachable after line 349, column 6.
+  347.   
+  348.   	/* open the pipe to rrdtool */
+  349. > 	if (mod_rrd_create_pipe(srv, p)) {
+  350.   		return HANDLER_ERROR;
+  351.   	}
+
+src/mod_rrdtool.c:349: error: MEMORY_LEAK
+  memory dynamically allocated to `p_d->config_storage` by call to `calloc()` at line 305, column 22 is not reachable after line 349, column 6.
+  347.   
+  348.   	/* open the pipe to rrdtool */
+  349. > 	if (mod_rrd_create_pipe(srv, p)) {
+  350.   		return HANDLER_ERROR;
+  351.   	}
+
+src/mod_rrdtool.c:320: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 305 could be null and is dereferenced at line 320, column 3.
+  318.   		cv[1].destination = s->path_rrd;
+  319.   
+  320. > 		p->config_storage[i] = s;
+  321.   
+  322.   		if (0 != config_insert_values_global(srv, ((data_config *)srv->config_context->data[i])->value, cv)) {
+
+src/mod_rrdtool.c:337: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 305 could be null and is dereferenced at line 337, column 29.
+  335.   	}
+  336.   
+  337. > 	p->conf.path_rrdtool_bin = p->config_storage[0]->path_rrdtool_bin;
+  338.   	p->rrdtool_running = 0;
+  339.   
+
+src/mod_rrdtool.c:311: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 310 could be null and is dereferenced at line 311, column 3.
+  309.   
+  310.   		s = calloc(1, sizeof(plugin_config));
+  311. > 		s->path_rrdtool_bin = buffer_init();
+  312.   		s->path_rrd = buffer_init();
+  313.   		s->requests = 0;
+
+src/http_auth.c:298: error: DEAD_STORE
+  The value written to &r is never used.
+  296.   
+  297.   static int http_auth_match_rules(server *srv, mod_auth_plugin_data *p, const char *url, const char *username, const char *group, const char *host) {
+  298. > 	const char *r = NULL, *rules = NULL;
+  299.   	size_t i;
+  300.   	int username_len;
+
+src/http_auth.c:298: error: DEAD_STORE
+  The value written to &rules is never used.
+  296.   
+  297.   static int http_auth_match_rules(server *srv, mod_auth_plugin_data *p, const char *url, const char *username, const char *group, const char *host) {
+  298. > 	const char *r = NULL, *rules = NULL;
+  299.   	size_t i;
+  300.   	int username_len;
+
+src/mod_auth.c:373: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 325 could be null and is dereferenced at line 373, column 3.
+  371.   		cv[14].destination = &(s->auth_debug);
+  372.   
+  373. > 		p->config_storage[i] = s;
+  374.   		ca = ((data_config *)srv->config_context->data[i])->value;
+  375.   
+
+src/mod_auth.c:334: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 333 could be null and is dereferenced at line 334, column 3.
+  332.   
+  333.   		s = calloc(1, sizeof(mod_auth_plugin_config));
+  334. > 		s->auth_plain_groupfile = buffer_init();
+  335.   		s->auth_plain_userfile = buffer_init();
+  336.   		s->auth_htdigest_userfile = buffer_init();
+
+src/connections.c:329: error: NULL_DEREFERENCE
+  pointer `b` last assigned on line 326 could be null and is dereferenced at line 329, column 22.
+  327.   	buffer_prepare_copy(b, toread + 1);
+  328.   
+  329. > 	len = read(con->fd, b->ptr, b->size - 1);
+  330.   #endif
+  331.   
+
+src/mod_trigger_b4_dl.c:310: error: DEAD_STORE
+  The value written to &p is never used.
+  308.   
+  309.   URIHANDLER_FUNC(mod_trigger_b4_dl_uri_handler) {
+  310. > 	plugin_data *p = p_d;
+  311.   	const char *remote_ip;
+  312.   	data_string *ds;
+
+src/mod_extforward.c:316: error: DEAD_STORE
+  The value written to &addrlist is never used.
+  314.   #ifdef HAVE_IPV6
+  315.   	char b2[INET6_ADDRSTRLEN + 1];
+  316. > 	struct addrinfo *addrlist = NULL;
+  317.   #endif
+  318.   	const char *dst_addr_str = NULL;
+
+src/mod_extforward.c:318: error: DEAD_STORE
+  The value written to &dst_addr_str is never used.
+  316.   	struct addrinfo *addrlist = NULL;
+  317.   #endif
+  318. > 	const char *dst_addr_str = NULL;
+  319.   	int i;
+  320.   	array *forward_array = NULL;
+
+src/mod_extforward.c:320: error: DEAD_STORE
+  The value written to &forward_array is never used.
+  318.   	const char *dst_addr_str = NULL;
+  319.   	int i;
+  320. > 	array *forward_array = NULL;
+  321.   	char *real_remote_addr = NULL;
+  322.   #ifdef HAVE_IPV6
+
+src/mod_extforward.c:313: error: DEAD_STORE
+  The value written to &forwarded is never used.
+  311.   URIHANDLER_FUNC(mod_extforward_uri_handler) {
+  312.   	plugin_data *p = p_d;
+  313. > 	data_string *forwarded = NULL;
+  314.   #ifdef HAVE_IPV6
+  315.   	char b2[INET6_ADDRSTRLEN + 1];
+
+src/mod_compress.c:325: error: DEAD_STORE
+  The value written to &ret is never used.
+  323.   static int deflate_file_to_file(server *srv, connection *con, plugin_data *p, buffer *fn, stat_cache_entry *sce, int type) {
+  324.   	int ifd, ofd;
+  325. > 	int ret = -1;
+  326.   	void *start;
+  327.   	const char *filename = fn->ptr;
+
+src/mod_compress.c:367: error: MEMORY_LEAK
+  memory dynamically allocated to `p->ofn->ptr` by call to `buffer_copy_string_buffer()` at line 341, column 2 is not reachable after line 367, column 3.
+  365.   		}
+  366.   	} else {
+  367. > 		buffer_append_string_buffer(p->ofn, con->uri.path);
+  368.   	}
+  369.   
+
+src/mod_staticfile.c:379: error: DEAD_STORE
+  The value written to &s_len is never used.
+  377.   	mod_staticfile_patch_connection(srv, con, p);
+  378.   
+  379. > 	s_len = con->uri.path->used - 1;
+  380.   
+  381.   	/* ignore certain extensions */
+
+src/mod_rrdtool.c:379: error: MEMORY_LEAK
+  memory dynamically allocated to `p_d->cmd->ptr` by call to `buffer_append_long()` at line 378, column 3 is not reachable after line 379, column 3.
+  377.   		BUFFER_APPEND_STRING_CONST(p->cmd, " N:");
+  378.   		buffer_append_off_t(p->cmd, s->bytes_read);
+  379. > 		BUFFER_APPEND_STRING_CONST(p->cmd, ":");
+  380.   		buffer_append_off_t(p->cmd, s->bytes_written);
+  381.   		BUFFER_APPEND_STRING_CONST(p->cmd, ":");
+
+src/mod_rrdtool.c:378: error: MEMORY_LEAK
+  memory dynamically allocated to `p_d->cmd->ptr` by call to `buffer_append_string_len()` at line 377, column 3 is not reachable after line 378, column 3.
+  376.   		buffer_append_string_buffer(p->cmd, s->path_rrd);
+  377.   		BUFFER_APPEND_STRING_CONST(p->cmd, " N:");
+  378. > 		buffer_append_off_t(p->cmd, s->bytes_read);
+  379.   		BUFFER_APPEND_STRING_CONST(p->cmd, ":");
+  380.   		buffer_append_off_t(p->cmd, s->bytes_written);
+
+src/mod_rrdtool.c:376: error: MEMORY_LEAK
+  memory dynamically allocated to `p_d->cmd->ptr` by call to `buffer_copy_string_len()` at line 375, column 3 is not reachable after line 376, column 3.
+  374.   
+  375.   		BUFFER_COPY_STRING_CONST(p->cmd, "update ");
+  376. > 		buffer_append_string_buffer(p->cmd, s->path_rrd);
+  377.   		BUFFER_APPEND_STRING_CONST(p->cmd, " N:");
+  378.   		buffer_append_off_t(p->cmd, s->bytes_read);
+
+src/mod_rrdtool.c:377: error: MEMORY_LEAK
+  memory dynamically allocated to `p_d->cmd->ptr` by call to `buffer_copy_string_len()` at line 375, column 3 is not reachable after line 377, column 3.
+  375.   		BUFFER_COPY_STRING_CONST(p->cmd, "update ");
+  376.   		buffer_append_string_buffer(p->cmd, s->path_rrd);
+  377. > 		BUFFER_APPEND_STRING_CONST(p->cmd, " N:");
+  378.   		buffer_append_off_t(p->cmd, s->bytes_read);
+  379.   		BUFFER_APPEND_STRING_CONST(p->cmd, ":");
+
+src/plugin.c:390: error: NULL_DEREFERENCE
+  pointer `slot` last assigned on line 390 could be null and is dereferenced at line 390, column 3.
+  388.   
+  389.   
+  390. > 		PLUGIN_TO_SLOT(PLUGIN_FUNC_HANDLE_URI_CLEAN, handle_uri_clean);
+  391.   		PLUGIN_TO_SLOT(PLUGIN_FUNC_HANDLE_URI_RAW, handle_uri_raw);
+  392.   		PLUGIN_TO_SLOT(PLUGIN_FUNC_HANDLE_REQUEST_DONE, handle_request_done);
+
+src/plugin.c:390: error: NULL_DEREFERENCE
+  pointer `srv->plugin_slots` last assigned on line 367 could be null and is dereferenced at line 390, column 3.
+  388.   
+  389.   
+  390. > 		PLUGIN_TO_SLOT(PLUGIN_FUNC_HANDLE_URI_CLEAN, handle_uri_clean);
+  391.   		PLUGIN_TO_SLOT(PLUGIN_FUNC_HANDLE_URI_RAW, handle_uri_raw);
+  392.   		PLUGIN_TO_SLOT(PLUGIN_FUNC_HANDLE_REQUEST_DONE, handle_request_done);
+
+src/stat_cache.c:378: error: DEAD_STORE
+  The value written to &file_node is never used.
+  376.   
+  377.   	int file_ndx;
+  378. > 	splay_tree *file_node = NULL;
+  379.   
+  380.   	*ret_sce = NULL;
+
+src/stat_cache.c:433: error: DEAD_STORE
+  The value written to &file_node is never used.
+  431.   			 *  */
+  432.   
+  433. > 			file_node = NULL;
+  434.   		}
+  435.   	} else {
+
+src/stat_cache.c:498: error: DEAD_STORE
+  The value written to &osize is never used.
+  496.   
+  497.   	if (NULL == sce) {
+  498. > 		int osize = 0;
+  499.   
+  500.   		if (sc->files) {
+
+src/stat_cache.c:501: error: DEAD_STORE
+  The value written to &osize is never used.
+  499.   
+  500.   		if (sc->files) {
+  501. > 			osize = sc->files->size;
+  502.   		}
+  503.   
+
+src/stat_cache.c:391: error: MEMORY_LEAK
+  memory dynamically allocated to `sc->hash_key->ptr` by call to `buffer_append_long()` at line 389, column 2 is not reachable after line 391, column 13.
+  389.   	buffer_append_long(sc->hash_key, con->conf.follow_symlink);
+  390.   
+  391. > 	file_ndx = hashme(sc->hash_key);
+  392.   	sc->files = splaytree_splay(sc->files, file_ndx);
+  393.   
+
+src/stat_cache.c:389: error: MEMORY_LEAK
+  memory dynamically allocated to `sc->hash_key->ptr` by call to `buffer_copy_string_buffer()` at line 388, column 2 is not reachable after line 389, column 2.
+  387.   
+  388.   	buffer_copy_string_buffer(sc->hash_key, name);
+  389. > 	buffer_append_long(sc->hash_key, con->conf.follow_symlink);
+  390.   
+  391.   	file_ndx = hashme(sc->hash_key);
+
+src/mod_scgi.c:369: error: NULL_DEREFERENCE
+  pointer `f` last assigned on line 368 could be null and is dereferenced at line 369, column 2.
+  367.   
+  368.   	f = calloc(1, sizeof(*f));
+  369. > 	f->socket = buffer_init();
+  370.   
+  371.   	f->prev = NULL;
+
+src/mod_scgi.c:392: error: NULL_DEREFERENCE
+  pointer `f` last assigned on line 390 could be null and is dereferenced at line 392, column 2.
+  390.   	f = calloc(1, sizeof(*f));
+  391.   
+  392. > 	f->host = buffer_init();
+  393.   	f->unixsocket = buffer_init();
+  394.   	f->docroot = buffer_init();
+
+src/mod_accesslog.c:397: error: DEAD_STORE
+  The value written to &i is never used.
+  395.   SETDEFAULTS_FUNC(log_access_open) {
+  396.   	plugin_data *p = p_d;
+  397. > 	size_t i = 0;
+  398.   
+  399.   	config_values_t cv[] = {
+
+src/mod_accesslog.c:444: error: MEMORY_LEAK
+  memory dynamically allocated to `s->format->ptr` by call to `buffer_copy_string()` at line 436, column 4 is not reachable after line 444, column 14.
+  442.   			s->parsed_format = calloc(1, sizeof(*(s->parsed_format)));
+  443.   
+  444. > 			if (-1 == accesslog_parse_format(srv, s->parsed_format, s->format)) {
+  445.   
+  446.   				log_error_write(srv, __FILE__, __LINE__, "sb",
+
+src/mod_accesslog.c:427: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 408 could be null and is dereferenced at line 427, column 3.
+  425.   		cv[2].destination = s->format;
+  426.   
+  427. > 		p->config_storage[i] = s;
+  428.   
+  429.   		if (0 != config_insert_values_global(srv, ((data_config *)srv->config_context->data[i])->value, cv)) {
+
+src/mod_accesslog.c:441: error: NULL_DEREFERENCE
+  pointer `s->format` last assigned on line 415 could be null and is dereferenced at line 441, column 7.
+  439.   		/* parse */
+  440.   
+  441. > 		if (s->format->used) {
+  442.   			s->parsed_format = calloc(1, sizeof(*(s->parsed_format)));
+  443.   
+
+src/mod_accesslog.c:414: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 413 could be null and is dereferenced at line 414, column 3.
+  412.   
+  413.   		s = calloc(1, sizeof(plugin_config));
+  414. > 		s->access_logfile = buffer_init();
+  415.   		s->format = buffer_init();
+  416.   		s->access_logbuffer = buffer_init();
+
+src/mod_proxy.c:437: error: MEMORY_LEAK
+  memory dynamically allocated to `b->ptr` by call to `buffer_append_string_len()` at line 435, column 2 is not reachable after line 437, column 2.
+  435.   	BUFFER_APPEND_STRING_CONST(b, " ");
+  436.   
+  437. > 	buffer_append_string_buffer(b, con->request.uri);
+  438.   	BUFFER_APPEND_STRING_CONST(b, " HTTP/1.0\r\n");
+  439.   
+
+src/mod_proxy.c:435: error: MEMORY_LEAK
+  memory dynamically allocated to `b->ptr` by call to `buffer_copy_string()` at line 434, column 2 is not reachable after line 435, column 2.
+  433.   	/* request line */
+  434.   	buffer_copy_string(b, get_http_method_name(con->request.http_method));
+  435. > 	BUFFER_APPEND_STRING_CONST(b, " ");
+  436.   
+  437.   	buffer_append_string_buffer(b, con->request.uri);
+
+src/mod_fastcgi.c:456: error: NULL_DEREFERENCE
+  pointer `f` last assigned on line 455 could be null and is dereferenced at line 456, column 2.
+  454.   
+  455.   	f = calloc(1, sizeof(*f));
+  456. > 	f->unixsocket = buffer_init();
+  457.   	f->connection_name = buffer_init();
+  458.   
+
+src/mod_dirlisting.c:463: error: MEMORY_LEAK
+  memory dynamically allocated to `out->ptr` by call to `buffer_append_string_len()` at line 457, column 2 is not reachable after line 463, column 2.
+  461.   		"<title>Index of "
+  462.   	);
+  463. > 	buffer_append_string_encoded(out, CONST_BUF_LEN(con->uri.path), ENCODING_MINIMAL_XML);
+  464.   	BUFFER_APPEND_STRING_CONST(out, "</title>\n");
+  465.   
+
+src/mod_compress.c:465: error: DEAD_STORE
+  The value written to &ret is never used.
+  463.   static int deflate_file_to_buffer(server *srv, connection *con, plugin_data *p, buffer *fn, stat_cache_entry *sce, int type) {
+  464.   	int ifd;
+  465. > 	int ret = -1;
+  466.   	void *start;
+  467.   	buffer *b;
+
+src/network.c:500: error: MEMORY_LEAK
+  memory dynamically allocated to `b->ptr` by call to `buffer_append_long()` at line 498, column 2 is not reachable after line 500, column 11.
+  498.   	buffer_append_long(b, srv->srvconf.port);
+  499.   
+  500. > 	if (0 != network_server_init(srv, b, srv->config_storage[0])) {
+  501.   		return -1;
+  502.   	}
+
+src/network.c:497: error: MEMORY_LEAK
+  memory dynamically allocated to `b->ptr` by call to `buffer_copy_string_buffer()` at line 496, column 2 is not reachable after line 497, column 2.
+  495.   
+  496.   	buffer_copy_string_buffer(b, srv->srvconf.bindhost);
+  497. > 	buffer_append_string(b, ":");
+  498.   	buffer_append_long(b, srv->srvconf.port);
+  499.   
+
+src/configfile.c:475: error: DEAD_STORE
+  The value written to &start is never used.
+  473.   	for (tid = 0; tid == 0 && t->offset < t->size && t->input[t->offset] ; ) {
+  474.   		char c = t->input[t->offset];
+  475. > 		const char *start = NULL;
+  476.   
+  477.   		switch (c) {
+
+src/configfile.c:470: error: DEAD_STORE
+  The value written to &tid is never used.
+  468.   
+  469.   static int config_tokenizer(server *srv, tokenizer_t *t, int *token_id, buffer *token) {
+  470. > 	int tid = 0;
+  471.   	size_t i;
+  472.   
+
+src/mod_fastcgi.c:481: error: NULL_DEREFERENCE
+  pointer `f` last assigned on line 479 could be null and is dereferenced at line 481, column 2.
+  479.   	f = calloc(1, sizeof(*f));
+  480.   
+  481. > 	f->id = buffer_init();
+  482.   	f->host = buffer_init();
+  483.   	f->unixsocket = buffer_init();
+
+src/mod_scgi.c:513: error: NULL_DEREFERENCE
+  pointer `p` last assigned on line 511 could be null and is dereferenced at line 513, column 2.
+  511.   	p = calloc(1, sizeof(*p));
+  512.   
+  513. > 	p->scgi_env = buffer_init();
+  514.   
+  515.   	p->path = buffer_init();
+
+src/mod_ssi_exprparser.c:103: error: NULL_DEREFERENCE
+  pointer `yygotominor.yy29` last assigned on line 102 could be null and is dereferenced at line 103, column 3.
+  101.   **
+  102.   **   YYNSTATE <= N < YYNSTATE+YYNRULE   Reduce by rule N-YYNSTATE.
+  103. > **
+  104.   **   N == YYNSTATE+YYNRULE              A syntax error has occurred.
+  105.   **
+
+src/mod_status.c:570: error: MEMORY_LEAK
+  memory dynamically allocated to `b->ptr` by call to `buffer_append_string_len()` at line 567, column 2 is not reachable after line 570, column 2.
+  568.   	avg = p->abs_requests;
+  569.   	snprintf(buf, sizeof(buf) - 1, "%.0f", avg);
+  570. > 	buffer_append_string(b, buf);
+  571.   	BUFFER_APPEND_STRING_CONST(b, "\n");
+  572.   
+
+src/mod_compress.c:620: error: DEAD_STORE
+  The value written to &matched_encodings is never used.
+  618.   				char *value = ds->value->ptr;
+  619.   				int srv_encodings = 0;
+  620. > 				int matched_encodings = 0;
+  621.   
+  622.   				/* get client side support encodings */
+
+src/mod_webdav.c:592: error: DEAD_STORE
+  The value written to &status is never used.
+  590.   		while(NULL != (de = readdir(dir))) {
+  591.   			struct stat st;
+  592. > 			int status = 0;
+  593.   
+  594.   			if ((de->d_name[0] == '.' && de->d_name[1] == '\0')  ||
+
+src/mod_webdav.c:601: error: NULL_DEREFERENCE
+  pointer `d.path` last assigned on line 584 could be null and is dereferenced at line 601, column 4.
+  599.   
+  600.   			buffer_copy_string_buffer(d.path, dst->path);
+  601. > 			BUFFER_APPEND_SLASH(d.path);
+  602.   			buffer_append_string(d.path, de->d_name);
+  603.   
+
+src/mod_scgi.c:590: error: NULL_DEREFERENCE
+  pointer `dst` last assigned on line 589 could be null and is dereferenced by call to `memcpy()` at line 590, column 2.
+  588.   
+  589.   	dst = malloc(key_len + val_len + 3);
+  590. > 	memcpy(dst, key, key_len);
+  591.   	dst[key_len] = '=';
+  592.   	/* add the \0 from the value */
+
+src/mod_scgi.c:603: error: NULL_DEREFERENCE
+  pointer `env->ptr` last assigned on line 600 could be null and is dereferenced at line 603, column 2.
+  601.   	}
+  602.   
+  603. > 	env->ptr[env->used++] = dst;
+  604.   
+  605.   	return 0;
+
+src/mod_dirlisting.c:659: error: DEAD_STORE
+  The value written to &exclude_match is never used.
+  657.   
+  658.   	while ((dent = readdir(dp)) != NULL) {
+  659. > 		unsigned short exclude_match = 0;
+  660.   
+  661.   		if (dent->d_name[0] == '.') {
+
+src/mod_status.c:600: error: DEAD_STORE
+  The value written to &b is never used.
+  598.   static handler_t mod_status_handle_server_statistics(server *srv, connection *con, void *p_d) {
+  599.   	plugin_data *p = p_d;
+  600. > 	buffer *b = p->module_list;
+  601.   	size_t i;
+  602.   	array *st = srv->status;
+
+src/http_auth.c:664: error: DEAD_STORE
+  The value written to &dollar is never used.
+  662.   			salt_len = 2;
+  663.   		} else if (password->ptr[0] == '$' && password->ptr[2] == '$') {
+  664. > 			char *dollar = NULL;
+  665.   
+  666.   			if (NULL == (dollar = strchr(password->ptr + 3, '$'))) {
+
+src/mod_fastcgi.c:607: error: NULL_DEREFERENCE
+  pointer `p` last assigned on line 605 could be null and is dereferenced at line 607, column 2.
+  605.   	p = calloc(1, sizeof(*p));
+  606.   
+  607. > 	p->fcgi_env = buffer_init();
+  608.   
+  609.   	p->path = buffer_init();
+
+src/network.c:610: error: DEAD_STORE
+  The value written to &written is never used.
+  608.   int network_write_chunkqueue(server *srv, connection *con, chunkqueue *cq) {
+  609.   	int ret = -1;
+  610. > 	off_t written = 0;
+  611.   #ifdef TCP_CORK
+  612.   	int corked = 0;
+
+src/connections.c:628: error: NULL_DEREFERENCE
+  pointer `con` last assigned on line 626 could be null and is dereferenced at line 628, column 2.
+  626.   	con = calloc(1, sizeof(*con));
+  627.   
+  628. > 	con->fd = 0;
+  629.   	con->ndx = -1;
+  630.   	con->fde_ndx = -1;
+
+src/mod_accesslog.c:675: error: NULL_DEREFERENCE
+  pointer `p->conf.ts_accesslog_str` last assigned on line 648 could be null and is dereferenced at line 675, column 15.
+  673.   # ifdef HAVE_LOCALTIME_R
+  674.   					localtime_r(&(srv->cur_ts), &tm);
+  675. > 					strftime(p->conf.ts_accesslog_str->ptr, p->conf.ts_accesslog_str->size - 1, "[%d/%b/%Y:%H:%M:%S ", &tm);
+  676.   # else
+  677.   					strftime(p->conf.ts_accesslog_str->ptr, p->conf.ts_accesslog_str->size - 1, "[%d/%b/%Y:%H:%M:%S ", localtime_r(&(srv->cur_ts)));
+
+src/mod_fastcgi.c:694: error: NULL_DEREFERENCE
+  pointer `dst` last assigned on line 693 could be null and is dereferenced by call to `memcpy()` at line 694, column 2.
+  692.   
+  693.   	dst = malloc(key_len + val_len + 3);
+  694. > 	memcpy(dst, key, key_len);
+  695.   	dst[key_len] = '=';
+  696.   	/* add the \0 from the value */
+
+src/mod_fastcgi.c:707: error: NULL_DEREFERENCE
+  pointer `env->ptr` last assigned on line 704 could be null and is dereferenced at line 707, column 2.
+  705.   	}
+  706.   
+  707. > 	env->ptr[env->used++] = dst;
+  708.   
+  709.   	return 0;
+
+src/mod_cgi.c:700: error: NULL_DEREFERENCE
+  pointer `dst` last assigned on line 699 could be null and is dereferenced by call to `memcpy()` at line 700, column 2.
+  698.   
+  699.   	dst = malloc(key_len + val_len + 3);
+  700. > 	memcpy(dst, key, key_len);
+  701.   	dst[key_len] = '=';
+  702.   	/* add the \0 from the value */
+
+src/mod_cgi.c:713: error: NULL_DEREFERENCE
+  pointer `env->ptr` last assigned on line 710 could be null and is dereferenced at line 713, column 2.
+  711.   	}
+  712.   
+  713. > 	env->ptr[env->used++] = dst;
+  714.   
+  715.   	return 0;
+
+src/mod_fastcgi.c:729: error: MEMORY_LEAK
+  memory dynamically allocated by call to `malloc()` at line 726, column 16 is not reachable after line 729, column 5.
+  727.   			} else if (env->size == env->used) {
+  728.   				env->size += 16;
+  729. > 				env->ptr = realloc(env->ptr, env->size * sizeof(*env->ptr));
+  730.   			}
+  731.   
+
+src/mod_fastcgi.c:734: error: NULL_DEREFERENCE
+  pointer `env->ptr` last assigned on line 729 could be null and is dereferenced at line 734, column 4.
+  732.   			b->ptr[i] = '\0';
+  733.   
+  734. > 			env->ptr[env->used++] = start;
+  735.   
+  736.   			start = b->ptr + i + 1;
+
+src/mod_cgi.c:757: error: DEAD_STORE
+  The value written to &i is never used.
+  755.   		char **args;
+  756.   		int argc;
+  757. > 		int i = 0;
+  758.   		char buf[32];
+  759.   		size_t n;
+
+src/mod_cgi.c:977: error: DEAD_STORE
+  The value written to &i is never used.
+  975.   		}
+  976.   		args[i++] = con->physical.path->ptr;
+  977. > 		args[i++] = NULL;
+  978.   
+  979.   		/* search for the last / */
+
+src/mod_webdav.c:760: error: NULL_DEREFERENCE
+  pointer `s.path` last assigned on line 745 could be null and is dereferenced at line 760, column 4.
+  758.   
+  759.   			buffer_copy_string_buffer(s.path, src->path);
+  760. > 			BUFFER_APPEND_SLASH(s.path);
+  761.   			buffer_append_string(s.path, de->d_name);
+  762.   
+
+src/http_auth.c:856: error: NULL_DEREFERENCE
+  pointer `realm` last assigned on line 829 could be null and is dereferenced at line 856, column 47.
+  854.   	password = buffer_init();
+  855.   	/* copy password to r1 */
+  856. > 	if (http_auth_get_password(srv, p, username, realm->value, password)) {
+  857.   		buffer_free(username);
+  858.   		buffer_free(password);
+
+src/configfile.c:835: error: MEMORY_LEAK
+  memory dynamically allocated to `lasttoken->ptr` by call to `buffer_copy_string_buffer()` at line 835, column 3 is not reachable after line 835, column 3.
+  833.   	token = buffer_init();
+  834.   	while((1 == (ret = config_tokenizer(srv, t, &token_id, token))) && context->ok) {
+  835. > 		buffer_copy_string_buffer(lasttoken, token);
+  836.   		configparser(pParser, token_id, token, context);
+  837.   
+
+src/mod_webdav.c:881: error: MEMORY_LEAK
+  memory dynamically allocated to `b->ptr` by call to `buffer_append_long()` at line 880, column 4 is not reachable after line 881, column 4.
+  879.   			buffer_append_string(b,"<D:getcontentlength>");
+  880.   			buffer_append_off_t(b, sce->st.st_size);
+  881. > 			buffer_append_string(b, "</D:getcontentlength>");
+  882.   			found = 1;
+  883.   		} else if (0 == strcmp(prop_name, "getcontentlanguage")) {
+
+src/connections.c:1044: error: DEAD_STORE
+  The value written to &dst_c is never used.
+  1042.   			/* the new way, copy everything into a chunkqueue whcih might use tempfiles */
+  1043.   			if (con->request.content_length > 64 * 1024) {
+  1044. > 				chunk *dst_c = NULL;
+  1045.   				/* copy everything to max 1Mb sized tempfiles */
+  1046.   
+
+src/connections.c:947: error: DEAD_STORE
+  The value written to &have_chars is never used.
+  945.   			for (i = 0; !last_chunk && i < b.used; i++) {
+  946.   				char ch = b.ptr[i];
+  947. > 				size_t have_chars = 0;
+  948.   
+  949.   				switch (ch) {
+
+src/mod_scgi.c:877: error: DEAD_STORE
+  The value written to &i is never used.
+  875.   	plugin_data *p = p_d;
+  876.   	data_unset *du;
+  877. > 	size_t i = 0;
+  878.   
+  879.   	config_values_t cv[] = {
+
+src/mod_scgi.c:898: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 885 could be null and is dereferenced at line 898, column 3.
+  896.   		cv[1].destination = &(s->debug);
+  897.   
+  898. > 		p->config_storage[i] = s;
+  899.   		ca = ((data_config *)srv->config_context->data[i])->value;
+  900.   
+
+src/mod_scgi.c:892: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 891 could be null and is dereferenced at line 892, column 3.
+  890.   
+  891.   		s = malloc(sizeof(plugin_config));
+  892. > 		s->exts          = scgi_extensions_init();
+  893.   		s->debug         = 0;
+  894.   
+
+src/configfile.c:896: error: MEMORY_LEAK
+  memory dynamically allocated to `filename->ptr` by call to `buffer_append_string()` at line 893, column 3 is not reachable after line 896, column 11.
+  894.   	}
+  895.   
+  896. > 	if (0 != stream_open(&s, filename)) {
+  897.   		if (s.size == 0) {
+  898.   			/* the file was empty, nothing to parse */
+
+src/configfile.c:893: error: MEMORY_LEAK
+  memory dynamically allocated to `filename->ptr` by call to `buffer_init_buffer()` at line 892, column 14 is not reachable after line 893, column 3.
+  891.   	} else {
+  892.   		filename = buffer_init_buffer(context->basedir);
+  893. > 		buffer_append_string(filename, fn);
+  894.   	}
+  895.   
+
+src/http_auth.c:915: error: DEAD_STORE
+  The value written to &m is never used.
+  913.   
+  914.   	char *e, *c;
+  915. > 	const char *m = NULL;
+  916.   	int i;
+  917.   	buffer *password, *b, *username_buf, *realm_buf;
+
+src/http_auth.c:973: error: NULL_DEREFERENCE
+  pointer `b` last assigned on line 970 could be null and is dereferenced at line 973, column 11.
+  971.   
+  972.   	/* parse credentials from client */
+  973. > 	for (c = b->ptr; *c; c++) {
+  974.   		/* skip whitespaces */
+  975.   		while (*c == ' ' || *c == '\t') c++;
+
+src/configfile.c:937: error: MEMORY_LEAK
+  memory dynamically allocated to `source->ptr` by call to `buffer_init_string()` at line 929, column 11 is not reachable after line 937, column 3.
+  935.   
+  936.   	if (0 != proc_open_buffer(&proc, cmd, NULL, out, NULL)) {
+  937. > 		log_error_write(srv, __FILE__, __LINE__, "sbss",
+  938.   				"opening", source, "failed:", strerror(errno));
+  939.   		ret = -1;
+
+src/mod_proxy.c:1055: error: DEAD_STORE
+  The value written to &last_max is never used.
+  1053.   	plugin_data *p = p_d;
+  1054.   	size_t s_len;
+  1055. > 	unsigned long last_max = ULONG_MAX;
+  1056.   	int max_usage = INT_MAX;
+  1057.   	int ndx = -1;
+
+src/mod_proxy.c:1056: error: DEAD_STORE
+  The value written to &max_usage is never used.
+  1054.   	size_t s_len;
+  1055.   	unsigned long last_max = ULONG_MAX;
+  1056. > 	int max_usage = INT_MAX;
+  1057.   	int ndx = -1;
+  1058.   	size_t k;
+
+src/mod_fastcgi.c:1082: error: DEAD_STORE
+  The value written to &i is never used.
+  1080.   	plugin_data *p = p_d;
+  1081.   	data_unset *du;
+  1082. > 	size_t i = 0;
+  1083.   	buffer *fcgi_mode = buffer_init();
+  1084.   
+
+src/mod_fastcgi.c:1107: error: NULL_DEREFERENCE
+  pointer `p->config_storage` last assigned on line 1092 could be null and is dereferenced at line 1107, column 3.
+  1105.   		cv[2].destination = s->ext_mapping;
+  1106.   
+  1107. > 		p->config_storage[i] = s;
+  1108.   		ca = ((data_config *)srv->config_context->data[i])->value;
+  1109.   
+
+src/mod_fastcgi.c:1099: error: NULL_DEREFERENCE
+  pointer `s` last assigned on line 1098 could be null and is dereferenced at line 1099, column 3.
+  1097.   
+  1098.   		s = malloc(sizeof(plugin_config));
+  1099. > 		s->exts          = fastcgi_extensions_init();
+  1100.   		s->debug         = 0;
+  1101.   		s->ext_mapping   = array_init();
+
+src/configfile.c:1160: error: DEAD_STORE
+  The value written to &is_lower is never used.
+  1158.   
+  1159.   	if (0 == stat(srv->tmp_buf->ptr, &st1)) {
+  1160. > 		int is_lower = 0;
+  1161.   
+  1162.   		is_lower = buffer_is_equal(srv->tmp_buf, s->document_root);
+
+src/configfile.c:1147: error: MEMORY_LEAK
+  memory dynamically allocated to `srv->tmp_buf->ptr` by call to `buffer_append_string_buffer()` at line 1144, column 3 is not reachable after line 1147, column 4.
+  1145.   
+  1146.   		if (-1 == stat(srv->tmp_buf->ptr, &st1)) {
+  1147. > 			log_error_write(srv, __FILE__, __LINE__, "sb",
+  1148.   					"base-docroot doesn't exist:",
+  1149.   					srv->tmp_buf);
+
+src/configfile.c:1144: error: MEMORY_LEAK
+  memory dynamically allocated to `srv->tmp_buf->ptr` by call to `buffer_copy_string_buffer()` at line 1143, column 3 is not reachable after line 1144, column 3.
+  1142.   	} else {
+  1143.   		buffer_copy_string_buffer(srv->tmp_buf, srv->srvconf.changeroot);
+  1144. > 		buffer_append_string_buffer(srv->tmp_buf, s->document_root);
+  1145.   
+  1146.   		if (-1 == stat(srv->tmp_buf->ptr, &st1)) {
+
+src/mod_webdav.c:1771: error: DEAD_STORE
+  The value written to &destination is never used.
+  1769.   	case HTTP_METHOD_MOVE:
+  1770.   	case HTTP_METHOD_COPY: {
+  1771. > 		buffer *destination = NULL;
+  1772.   		char *sep, *start;
+  1773.   		int overwrite = 1;
+
+src/mod_scgi.c:1370: error: MEMORY_LEAK
+  memory dynamically allocated to `srv->tmp_buf->ptr` by call to `buffer_copy_string_len()` at line 1366, column 5 is not reachable after line 1370, column 4.
+  1368.   			}
+  1369.   
+  1370. > 			buffer_prepare_append(srv->tmp_buf, ds->key->used + 2);
+  1371.   			for (j = 0; j < ds->key->used - 1; j++) {
+  1372.   				srv->tmp_buf->ptr[srv->tmp_buf->used++] =
+
+src/lemon.c:1592: error: DEAD_STORE
+  The value written to &spcnt is never used.
+  1590.   {
+  1591.     int spcnt, i;
+  1592. >   spcnt = 0;
+  1593.     if( argv[0] ) fprintf(err,"%s",argv[0]);
+  1594.     spcnt = strlen(argv[0]) + 1;
+
+src/lemon.c:1679: error: NULL_DEREFERENCE
+  pointer `cp` last assigned on line 1678 could be null and is dereferenced at line 1679, column 3.
+  1677.     int errcnt = 0;
+  1678.     cp = strchr(argv[i],'=');
+  1679. >   *cp = 0;
+  1680.     for(j=0; op[j].label; j++){
+  1681.       if( strcmp(argv[i],op[j].label)==0 ) break;
+
+src/mod_fastcgi.c:1743: error: MEMORY_LEAK
+  memory dynamically allocated to `srv->tmp_buf->ptr` by call to `buffer_copy_string_len()` at line 1739, column 5 is not reachable after line 1743, column 4.
+  1741.   			}
+  1742.   
+  1743. > 			buffer_prepare_append(srv->tmp_buf, ds->key->used + 2);
+  1744.   			for (j = 0; j < ds->key->used - 1; j++) {
+  1745.   				char c = '_';
+
+src/mod_scgi.c:1787: error: DEAD_STORE
+  The value written to &used is never used.
+  1785.   			int header_end = 0;
+  1786.   			int cp, eol = EOL_UNSET;
+  1787. > 			size_t used = 0;
+  1788.   
+  1789.   			buffer_append_string_buffer(hctx->response_header, hctx->response);
+
+src/mod_fastcgi.c:2053: error: DEAD_STORE
+  The value written to &weHave is never used.
+  2051.   			off_t weWant = req_cq->bytes_in - offset > FCGI_MAX_LENGTH ? FCGI_MAX_LENGTH : req_cq->bytes_in - offset;
+  2052.   			off_t written = 0;
+  2053. > 			off_t weHave = 0;
+  2054.   
+  2055.   			/* we announce toWrite octets
+
+src/mod_fastcgi.c:2052: error: DEAD_STORE
+  The value written to &written is never used.
+  2050.   		for (offset = 0, req_c = req_cq->first; offset != req_cq->bytes_in; ) {
+  2051.   			off_t weWant = req_cq->bytes_in - offset > FCGI_MAX_LENGTH ? FCGI_MAX_LENGTH : req_cq->bytes_in - offset;
+  2052. > 			off_t written = 0;
+  2053.   			off_t weHave = 0;
+  2054.   
+
+src/lemon.c:2318: error: RESOURCE_LEAK
+  resource of type `_IO_FILE` acquired by call to `fopen()` at line 2307, column 8 is not released after line 2318, column 14.
+  2316.     filebuf = (char *)malloc( filesize+1 );
+  2317.     if( filebuf==0 ){
+  2318. >     ErrorMsg(ps.filename,0,"Can't allocate %d of memory to hold this file.",
+  2319.         filesize+1);
+  2320.       gp->errorcnt++;
+
+src/lemon.c:2324: error: RESOURCE_LEAK
+  resource of type `_IO_FILE` acquired by call to `fopen()` at line 2307, column 8 is not released after line 2324, column 14.
+  2322.     }
+  2323.     if( fread(filebuf,1,filesize,fp)!=filesize ){
+  2324. >     ErrorMsg(ps.filename,0,"Can't read in all %d bytes of this file.",
+  2325.         filesize);
+  2326.       free(filebuf);
+
+src/mod_fastcgi.c:2295: error: DEAD_STORE
+  The value written to &offset is never used.
+  2293.   static int fastcgi_get_packet(server *srv, handler_ctx *hctx, fastcgi_response_packet *packet) {
+  2294.   	chunk *	c;
+  2295. > 	size_t offset = 0;
+  2296.   	size_t toread = 0;
+  2297.   	FCGI_Header *header;
+
+src/mod_fastcgi.c:2296: error: DEAD_STORE
+  The value written to &toread is never used.
+  2294.   	chunk *	c;
+  2295.   	size_t offset = 0;
+  2296. > 	size_t toread = 0;
+  2297.   	FCGI_Header *header;
+  2298.   
+
+src/mod_fastcgi.c:2310: error: MEMORY_LEAK
+  memory dynamically allocated to `packet->b->ptr` by call to `buffer_copy_string_len()` at line 2310, column 4 is not reachable after line 2310, column 4.
+  2308.   	for (c = hctx->rb->first; c; c = c->next) {
+  2309.   		if (packet->b->used == 0) {
+  2310. > 			buffer_copy_string_len(packet->b, c->mem->ptr + c->offset, c->mem->used - c->offset - 1);
+  2311.   		} else {
+  2312.   			buffer_append_string_len(packet->b, c->mem->ptr + c->offset, c->mem->used - c->offset - 1);
+
+src/mod_fastcgi.c:2312: error: MEMORY_LEAK
+  memory dynamically allocated to `packet->b->ptr` by call to `buffer_copy_string_len()` at line 2310, column 4 is not reachable after line 2312, column 4.
+  2310.   			buffer_copy_string_len(packet->b, c->mem->ptr + c->offset, c->mem->used - c->offset - 1);
+  2311.   		} else {
+  2312. > 			buffer_append_string_len(packet->b, c->mem->ptr + c->offset, c->mem->used - c->offset - 1);
+  2313.   		}
+  2314.   
+
+src/mod_fastcgi.c:2417: error: NULL_DEREFERENCE
+  pointer `b` last assigned on line 2413 could be null and is dereferenced at line 2417, column 33.
+  2415.   
+  2416.   		/* append to read-buffer */
+  2417. > 		if (-1 == (r = read(hctx->fd, b->ptr, toread))) {
+  2418.   			if (errno == EAGAIN) {
+  2419.   				/* roll back the last chunk allocation,
+
+src/lemon.c:2903: error: NULL_DEREFERENCE
+  pointer `cp` last assigned on line 2888 could be null and is dereferenced at line 2903, column 8.
+  2901.      fprintf(out,"#line %d \"%s\"\n{",lemp->vardestln,lemp->filename);
+  2902.    }
+  2903. >  for(; *cp; cp++){
+  2904.      if( *cp=='$' && cp[1]=='$' ){
+  2905.        fprintf(out,"(yypminor->yy%d)",sp->dtnum);
+
+src/lemon.c:2946: error: DEAD_STORE
+  The value written to &lhsused is never used.
+  2944.    int linecnt = 0;
+  2945.    int i;
+  2946. >  char lhsused = 0;    /* True if the LHS element has been used */
+  2947.    char used[MAXRHS];   /* True for each RHS element which is used */
+  2948.   
+
+src/mod_fastcgi.c:3076: error: DEAD_STORE
+  The value written to &host is never used.
+  3074.   		hctx->proc = NULL;
+  3075.   	} else {
+  3076. > 		host = hctx->host;
+  3077.   	}
+  3078.   
+
+src/lemon.c:3027: error: DEAD_STORE
+  The value written to &lineno is never used.
+  3025.   int mhflag;                 /* True if generating makeheaders output */
+  3026.   {
+  3027. >   int lineno = *plineno;    /* The line number of the output */
+  3028.     char **types;             /* A hash table of datatypes */
+  3029.     int arraysize;            /* Size of the "types" array */
+
+src/lemon.c:3039: error: NULL_DEREFERENCE
+  pointer `types` last assigned on line 3038 could be null and is dereferenced at line 3039, column 30.
+  3037.     arraysize = lemp->nsymbol * 2;
+  3038.     types = (char**)malloc( arraysize * sizeof(char*) );
+  3039. >   for(i=0; i<arraysize; i++) types[i] = 0;
+  3040.     maxdtlength = 0;
+  3041.     if( lemp->vartype ){
+
+Summary of the reports
+
+      NULL_DEREFERENCE: 142
+            DEAD_STORE: 94
+           MEMORY_LEAK: 66
+         RESOURCE_LEAK: 3
+  QUANDARY_TAINT_ERROR: 1
